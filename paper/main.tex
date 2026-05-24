@@ -1,0 +1,154 @@
+% main.tex
+% An Executable Verification Artifact for the Sawin et al. Lower Bound
+% on the Erdős Unit-Distance Exponent
+%
+% Compile:  latexmk -pdf main.tex   (uses biber for the bibliography)
+%
+% Style: deliberately close to the typographic conventions of
+% unit-distance-proof.pdf (OpenAI 2026), with the document TYPE marked
+% as an executable verification artifact rather than original research.
+% Theorem environments are replaced by "Verification" boxes; the paper
+% does not introduce any new mathematical result.
+
+\documentclass[11pt,a4paper]{article}
+
+% --- Packages ---------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage[backend=biber,style=alphabetic,sorting=nyt]{biblatex}
+
+\addbibresource{references.bib}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=blue!50!black,
+  pdftitle={An Executable Verification Artifact for the Sawin et al. Lower Bound on the Erdős Unit-Distance Exponent},
+  pdfauthor={Flamehaven Labs}
+}
+
+% --- Verification environment (replaces \newtheorem{theorem}) ---------------
+% We deliberately do NOT define a Theorem environment in this paper:
+% nothing in this artifact constitutes a new theorem. The Verification
+% environment records claims that this artifact computationally checks
+% against the published source.
+\newtheoremstyle{verification}%
+  {1.2em}{1.2em}%        % top/bottom spacing
+  {\itshape}{}%          % body / indent
+  {\bfseries}{.}%        % heading / punctuation
+  {.5em}%                % space after head
+  {}                     % default head spec
+\theoremstyle{verification}
+\newtheorem{verification}{Verification}[section]
+
+% Macros
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\OK}{\mathcal{O}_K}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Disc}{Disc}
+
+% --- Title block ------------------------------------------------------------
+\title{%
+  An Executable Verification Artifact for the\\
+  Sawin et al.\ Lower Bound on the\\
+  Erd\H{o}s Unit-Distance Exponent}
+\author{Flamehaven Labs%
+  \thanks{Corresponding maintainer at
+    \href{https://github.com/Flamehaven-Labs}{github.com/Flamehaven-Labs}.}}
+\date{Version 0.1.0 --- 2026-05-24}
+
+% --- Document --------------------------------------------------------------
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present \texttt{erdos-ant-verification}, an open-source Python implementation
+that computationally reproduces the finite, explicitly checkable parts of the
+2026 OpenAI/Sawin disproof of the Erd\H{o}s planar unit-distance conjecture
+\cite{OpenAI2026Proof,Sawin2026Remarks}. The central result is a numerical match
+to equation~(2.2) of the remarks paper \cite{Sawin2026Remarks}: for the explicit
+construction with $T = \{3, 5, 7, 11, 13, 17\}$, $S = \{101, \infty\}$, and
+$L_T = \Q(\sqrt{5}, \sqrt{13}, \sqrt{17}, \sqrt{21}, \sqrt{33})$, we compute the
+exponent excess to be $6.2391 \times 10^{-38}$, agreeing with the published
+value $\approx 6.24 \times 10^{-38}$ to within $0.014\%$ relative error.
+
+This artifact does \emph{not} contain a new mathematical proof, does \emph{not}
+construct the infinite Golod--Shafarevich tower required for the asymptotic
+result, and has \emph{not} been peer-reviewed. It is intended as a citable,
+CI-verified reproducibility artifact for the published numerical lower bound,
+not as an independent contribution to discrete geometry. The artifact is
+available at
+\url{https://github.com/Flamehaven-Labs/erdos-ant-verification}
+under the MIT licence.
+
+\noindent\textbf{Reproduction.}
+\verb|pip install erdos-ant-verification && python -m erdos_ant.verify|
+runs all 59 unit tests and writes a JSON certificate confirming the eq.~(2.2)
+reproduction. Pinned to commit \texttt{<COMMIT\_HASH>}.
+\end{abstract}
+
+\tableofcontents
+
+% ---------------------------------------------------------------------------
+\section{Background and scope}
+\label{sec:background}
+
+\input{sections/01_background.tex}
+
+% ---------------------------------------------------------------------------
+\section{Phase 1: faithful $h(K) = 1$ lattices}
+\label{sec:phase1}
+
+\input{sections/02_phase1.tex}
+
+% ---------------------------------------------------------------------------
+\section{Phase 2: $K = \Q(\sqrt{-5})$ with genus theory}
+\label{sec:phase2}
+
+\input{sections/03_phase2.tex}
+
+% ---------------------------------------------------------------------------
+\section{Phase 3: the Sawin multi-quadratic construction, finite parts}
+\label{sec:phase3}
+
+\input{sections/04_phase3.tex}
+
+% ---------------------------------------------------------------------------
+\section{Numerical reproduction of equation~(2.2)}
+\label{sec:eq22}
+
+\input{sections/05_eq22.tex}
+
+% ---------------------------------------------------------------------------
+\section{Limits and explicit non-claims}
+\label{sec:limits}
+
+\input{sections/06_limits.tex}
+
+% ---------------------------------------------------------------------------
+\section{Reproducibility}
+\label{sec:repro}
+
+\input{sections/07_reproducibility.tex}
+
+% ---------------------------------------------------------------------------
+\section*{Acknowledgements}
+
+\input{sections/08_acknowledgements.tex}
+
+% ---------------------------------------------------------------------------
+\printbibliography
+
+\end{document}

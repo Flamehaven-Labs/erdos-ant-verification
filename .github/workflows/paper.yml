@@ -1,0 +1,43 @@
+name: Paper
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'paper/**'
+      - '.github/workflows/paper.yml'
+  pull_request:
+    paths:
+      - 'paper/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Compile paper
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Honesty scan (overclaim check)
+        run: |
+          set -e
+          cd paper
+          if grep -nE "we prove[^d ]|we have proved|we proof" sections/*.tex main.tex; then
+            echo "ERROR: 'we prove' language detected"; exit 1
+          fi
+          if grep -niE "revolutionary|unprecedented|state-of-the-art" sections/*.tex main.tex; then
+            echo "ERROR: banned buzzword detected"; exit 1
+          fi
+          echo "Honesty scan: PASS"
+
+      - name: Compile with latexmk
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: paper
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: erdos-ant-verification-paper
+          path: paper/main.pdf

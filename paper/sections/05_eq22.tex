@@ -1,0 +1,114 @@
+% Section 5: Numerical reproduction of remarks PDF eq (2.2) -- CENTRAL
+
+This is the central numerical content of the artifact. We reproduce
+equation~(2.2) of \cite{Sawin2026Remarks} as a regression test against
+the published source.
+
+\subsection{The published expression}
+
+Sawin et al.\ state immediately after Lemma~2.1
+\cite[\S2.1, eq.~(2.2)]{Sawin2026Remarks}:
+
+\begin{quote}\itshape
+Explicitly, the exponent in (2.1) can be taken to be
+\[
+  1 + \frac{\log(u \pi / (36 v))}{\log(36 / \delta^2)}
+   \approx 1 + 6.24 \cdot 10^{-38}
+\]
+where $v = r/2$, $\delta \geq 101^{-2 \lceil 18 r^3 / \pi \rceil}$,
+and $u = \lceil 18 r^3 / \pi \rceil \cdot r^{-2}$, with
+$r = 2 \cdot 3 \cdot 5 \cdot 7 \cdot 11 \cdot 13 \cdot 17$.
+\end{quote}
+
+Let $K = \lceil 18 r^3 / \pi \rceil$, so that $u = K / r^2$ and
+$\delta = 101^{-2K}$. Direct substitution gives
+\[
+  \frac{u \pi}{36 v} = \frac{(K / r^2) \cdot \pi}{36 \cdot (r/2)}
+                    = \frac{K \pi}{18 r^3},
+\]
+and the exponent excess above $1$ simplifies to
+\begin{equation}
+  \delta_{\text{excess}} = \frac{\log(K \pi / (18 r^3))}{\log 36 + 4 K \log 101}.
+  \label{eq:simplified}
+\end{equation}
+
+\subsection{Why \texttt{float64} fails}
+
+The numerator of \eqref{eq:simplified} is $\log(K \pi / (18 r^3))$.
+By definition of the ceiling, $K \geq 18 r^3 / \pi$, so the ratio
+$K \pi / (18 r^3)$ lies in the half-open interval
+\[
+  \left(1,\; 1 + \frac{\pi}{18 r^3}\right] .
+\]
+For $r = 510510$, $r^3 \approx 1.33 \cdot 10^{17}$, hence
+$\pi / (18 r^3) \approx 1.31 \cdot 10^{-18}$.
+
+The numerator is therefore $\log(1 + \varepsilon)$ for some
+$\varepsilon \in (0, 1.31 \cdot 10^{-18}]$. IEEE-754 \texttt{float64}
+has a 52-bit mantissa and machine epsilon $\approx 2.22 \cdot 10^{-16}$,
+so it cannot distinguish $1 + 1.3 \cdot 10^{-18}$ from $1$ in the first
+place. The naive evaluation rounds the ratio to exactly $1$, yields
+$\log 1 = 0$, and reports $\delta_{\text{excess}} = 0$.
+
+This is not a flaw in eq.~\eqref{eq:simplified}; it is a property of
+finite-precision arithmetic. Any honest evaluation must use a precision
+significantly above $1$ part in $10^{18}$.
+
+\subsection{Evaluation in \texttt{mpmath} at 200-bit precision}
+
+The artifact uses \texttt{mpmath} \cite{mpmath} with
+\texttt{mp.prec = 200} (about 60 decimal digits) to evaluate the
+quantities in eq.~\eqref{eq:simplified} exactly enough that the
+$1 + 10^{-18}$ separation survives. The function
+\texttt{evaluate\_sawin\_exponent\_bound} in
+\texttt{erdos\_ant.sawin\_multiquadratic} returns a
+\texttt{SawinDeltaEvaluation} dataclass containing $r$, $K$, $v$,
+$\log u$, and $\delta_{\text{excess}}$.
+
+\begin{verification}\label{ver:eq22_reproduction}
+Calling \texttt{evaluate\_sawin\_exponent\_bound()} returns
+\[
+  r = 510{,}510, \qquad
+  K = \lceil 18 \cdot 510510^3 / \pi \rceil \approx 7.62 \cdot 10^{17},
+\]
+and
+\[
+  \delta_{\text{excess}}
+  = 6.2391 \cdot 10^{-38}.
+\]
+The published value is $\approx 6.24 \cdot 10^{-38}$ (given to two
+significant figures in \cite{Sawin2026Remarks}). The relative error
+between the artifact's evaluation and the published value is
+\[
+  \frac{|6.2391 - 6.24|}{6.24} = 1.4 \cdot 10^{-4} = 0.014\%,
+\]
+fully consistent with two-significant-figure rounding in the source.
+Pinned in
+\texttt{tests/test\_sawin\_multiquadratic.py::%
+test\_sawin\_exponent\_bound\_matches\_remarks\_eq\_2\_2}.
+\end{verification}
+
+\subsection{What the verification establishes (and does not)}
+
+Verification~\ref{ver:eq22_reproduction} establishes that, given the
+inputs $T, S, L_T, K$ exactly as written in
+\cite[\S2.1]{Sawin2026Remarks}, the elementary closed-form expression
+eq.~\eqref{eq:simplified} evaluates to the value the source paper
+claims, to within published rounding.
+
+This does \emph{not} establish:
+\begin{itemize}[leftmargin=*]
+  \item that the closed-form expression is itself correct (that
+        depends on Lemma~2.1 and earlier algebra of \cite{Sawin2026Remarks},
+        which we do not re-derive);
+  \item that the underlying infinite Golod--Shafarevich tower exists
+        (Phase~3 only verifies the finite admissibility condition);
+  \item that $\delta_{\text{excess}} = 6.24 \cdot 10^{-38}$ is in any
+        sense optimal --- it is one explicit lower bound, not the best
+        possible.
+\end{itemize}
+
+What it does establish is that any future code change in the artifact
+that drifts away from the published value will fail the regression
+test at the $0.5$ relative-tolerance band hard-coded in the test
+(currently $0.014\%$, well below the $50\%$ tolerance the test uses).

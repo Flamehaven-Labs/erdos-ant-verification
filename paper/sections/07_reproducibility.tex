@@ -1,0 +1,67 @@
+% Section 7: Reproducibility
+
+\subsection{One-line reproduction}
+
+\begin{quote}\ttfamily
+git clone https://github.com/Flamehaven-Labs/erdos-ant-verification\\
+cd erdos-ant-verification\\
+pip install -e ".[dev]"\\
+python scripts/verify.py
+\end{quote}
+
+\noindent
+Expected terminal output:
+
+\begin{quote}\ttfamily
+Verdict: PASS\\
+Wrote: reports/verification\_result.json\\
+Wrote: reports/verification\_report.md
+\end{quote}
+
+\subsection{Pinned environment}
+
+\begin{tabular}{ll}
+\toprule
+Item & Value \\
+\midrule
+Repository & \url{https://github.com/Flamehaven-Labs/erdos-ant-verification} \\
+Version (paper) & v0.1.0 \\
+Commit hash & \texttt{<COMMIT\_HASH>} (filled in at release-tag time) \\
+Python & 3.11 and 3.12 (CI-verified) \\
+numpy & $\geq 1.26$ \\
+mpmath & $\geq 1.3$ \\
+Test count & 59 unit tests + 21 verify-script checks \\
+CI matrix & Ubuntu $\times$ Windows $\times$ Python 3.11 / 3.12 \\
+Licence & MIT \\
+DOI & \texttt{<ZENODO\_DOI>} (filled in at first Zenodo release) \\
+\bottomrule
+\end{tabular}
+
+\subsection{Independent third-party inspection}
+
+In addition to its own test suite, the artifact was scanned by three
+independent inspection tools, with the following results recorded at
+\texttt{reports/TRIPLE\_INSPECTION\_REPORT.md} in the repository:
+
+\begin{tabular}{lll}
+\toprule
+Tool & Result & Headline metric \\
+\midrule
+AI-SLOP-Detector v3.7.5 & \texttt{clean} (6/6 files) & weighted deficit $= 2.83$ (threshold $30$) \\
+SPAR Framework v0.5.0 & \texttt{ACCEPT} (Grade PASS) & score $100/100$, claim drift $= 0$ \\
+SIDRCE SaaS v1.1.15 & \texttt{CERTIFIED} & omega $= 0.9289$, trace chain verified \\
+\bottomrule
+\end{tabular}
+
+These cover structural-pattern review, claim-discipline review, and
+code-integrity certification respectively. None of them constitutes
+mathematical peer review; their relevance is bounded by the limits
+documented in \S\ref{sec:limits}.
+
+\subsection{Citation}
+
+A \texttt{CITATION.cff} file in the repository root provides citation
+metadata in the Citation File Format v1.2 standard, recognised by
+Zenodo, GitHub, and most citation managers. The recommended citation
+for a specific tagged release is the Zenodo DOI associated with that
+tag.

@@ -1,0 +1,68 @@
+% Section 1: Background and scope
+
+\subsection{The Erd\H{o}s unit-distance problem}
+
+For a finite set $P \subset \R^2$, let
+$\nu(P) = \#\{\{x, y\} \subset P : |x - y| = 1\}$
+and $\nu(n) = \max_{|P| = n} \nu(P)$. The planar unit-distance problem
+\cite{Erdos1946} concerns the asymptotic behaviour of $\nu(n)$. Erd\H{o}s
+proved $\nu(n) \geq n^{1 + \Omega(1/\log \log n)}$ via a square-grid
+construction and conjectured the matching upper bound
+$\nu(n) \leq n^{1 + C / \log \log n}$ for some absolute constant $C$.
+
+\subsection{The 2026 disproof}
+
+The conjecture was disproved in May 2026 by an internal reasoning model
+at OpenAI \cite{OpenAI2026Proof}, with a simplified construction and
+explicit numerical lower bound published the following day by Alon,
+Bloom, Gowers, Litt, Sawin, Shankar, Tsimerman, Wang, and Matchett Wood
+\cite{Sawin2026Remarks}. The combined result is:
+
+\medskip
+\noindent\textbf{Theorem 1.1 of \cite{Sawin2026Remarks}.}
+\textit{There exists an absolute constant $\delta > 0$ and infinitely many
+positive integers $n$ such that $\nu(n) \geq n^{1 + \delta}$.}
+
+\medskip
+The construction passes through a CM field $K_j = L_j(i)$, where the
+$L_j$ form an infinite tower of totally real fields of bounded root
+discriminant, supplied by the Golod--Shafarevich theorem
+\cite{GolodShafarevich1964}. Section~2 of \cite{Sawin2026Remarks}
+gives an explicit choice with
+$T = \{3, 5, 7, 11, 13, 17\}$, $S = \{101, \infty\}$, and
+$L_T = \Q(\sqrt{5}, \sqrt{13}, \sqrt{17}, \sqrt{21}, \sqrt{33})$,
+and computes (eq.~(2.2)) a rigorous numerical lower bound
+$\delta \geq \approx 6.24 \times 10^{-38}$.
+
+\subsection{What this artifact verifies}
+\label{sec:scope}
+
+This paper accompanies a Python package, \texttt{erdos-ant-verification},
+whose purpose is narrow and explicitly bounded:
+
+\begin{itemize}[leftmargin=*]
+  \item we \emph{do not} re-prove Theorem~1.1;
+  \item we \emph{do not} construct the infinite Golod--Shafarevich tower;
+  \item we \emph{do} re-implement the finite, explicitly checkable parts
+        of the construction in pure Python, with exact small-integer
+        arithmetic for the algebraic-number-theory layer and
+        \texttt{mpmath} at 200-bit precision for the numerical evaluation
+        of eq.~(2.2);
+  \item we \emph{do} pin the published numerical value
+        $\approx 6.24 \times 10^{-38}$ as a regression test that fails if
+        our code drifts from the published source.
+\end{itemize}
+
+The artifact is therefore neither a proof checker (it does not formalise
+the proof in a trusted kernel) nor an independent mathematical
+contribution (it produces no new theorem). It is a reproducibility
+artifact in the sense of, e.g., the ACM Artifact Evaluation guidelines:
+a citable, version-pinned, CI-verified executable that allows any
+third party to re-derive the published numerical value on their own
+hardware without relying on our reading of the source PDFs.
+
+The remainder of the paper describes the three implementation phases
+(\S\S\ref{sec:phase1}--\ref{sec:phase3}), the central numerical
+reproduction (\S\ref{sec:eq22}), the explicit limits
+(\S\ref{sec:limits}), and the reproducibility surface
+(\S\ref{sec:repro}).

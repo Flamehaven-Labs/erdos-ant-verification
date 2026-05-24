@@ -1,0 +1,66 @@
+# paper/
+
+LaTeX source of the accompanying verification paper.
+
+## Compile locally
+
+```bash
+# Requires: TeX Live (or MiKTeX), biber, latexmk
+cd paper
+latexmk -pdf main.tex
+# Output: main.pdf
+```
+
+## Compile via Overleaf
+
+Upload the `paper/` directory contents to a new Overleaf project. Set
+the main document to `main.tex` and the compiler to `pdfLaTeX` with
+`biber` for the bibliography.
+
+## Compile via CI
+
+Every push to `main` that touches `paper/**` triggers
+`.github/workflows/paper.yml`. The compiled PDF is uploaded as a
+workflow artifact named `erdos-ant-verification-paper`.
+
+## Honesty scan
+
+The CI workflow runs a `grep`-based scan that fails the build if any of
+the following appear:
+
+- `we prove`, `we have proved`, `we proof` (the paper does NOT prove
+  any new result; the "we computationally verify" formulation is used
+  instead).
+- `revolutionary`, `unprecedented`, `state-of-the-art` (banned
+  marketing language).
+
+## Structure
+
+```
+paper/
+├── main.tex                 Document skeleton + title + abstract
+├── references.bib           BibLaTeX bibliography
+├── sections/
+│   ├── 01_background.tex    Background and scope
+│   ├── 02_phase1.tex        h(K)=1 lattices
+│   ├── 03_phase2.tex        Q(sqrt(-5)) with genus theory
+│   ├── 04_phase3.tex        Sawin multi-quadratic finite parts
+│   ├── 05_eq22.tex          Numerical reproduction of eq (2.2) (central)
+│   ├── 06_limits.tex        Limits and non-claims
+│   ├── 07_reproducibility.tex   Reproducibility
+│   └── 08_acknowledgements.tex
+└── README.md                this file
+```
+
+## Filling in <COMMIT_HASH> and <ZENODO_DOI>
+
+`main.tex` abstract and `sections/07_reproducibility.tex` contain two
+placeholders:
+
+- `<COMMIT_HASH>` — fill in at release tag time with the git short hash
+  of the tagged commit, e.g. `46e55fb`.
+- `<ZENODO_DOI>` — fill in when Zenodo issues the DOI for the first
+  release (typically a few minutes after `git push --tags`).
+
+These two are the only intentional placeholders. Everything else in the
+paper is self-contained.

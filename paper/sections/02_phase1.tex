@@ -1,0 +1,70 @@
+% Section 2: Phase 1 -- faithful h(K)=1 lattices
+
+Phase~1 implements the trivial-class-number degenerate case of Lemma~2.2
+of \cite{OpenAI2026Proof}: an imaginary quadratic field $K = \Q(\sqrt{-d})$
+with class number $h(K) = 1$, where the ideal-class pigeonhole reduces to
+the identity. For these fields the ring of integers $\OK$ embeds
+standardly in $\R^2$ as a rank-$2$ lattice, and unit distances between
+lattice points can be counted exactly.
+
+\subsection{Coverage}
+
+We implement the three smallest $h = 1$ cases (the Baker--Heegner--Stark
+list \(1, 2, 3, 7, 11, 19, 43, 67, 163\) is encoded in the module-level
+constant \texttt{CLASS\_NUMBER\_ONE\_DISCRIMINANTS}; the first three are
+implemented):
+
+\begin{tabular}{lll}
+\toprule
+$d$ & $\OK$ & Standard embedding into $\R^2$ \\
+\midrule
+$1$ & $\Z[i]$ (Gaussian integers)     & $a + bi \mapsto (a, b)$ \\
+$2$ & $\Z[\sqrt{-2}]$                 & $a + b\sqrt{-2} \mapsto (a, b\sqrt{2})$ \\
+$3$ & $\Z[\omega]$, $\omega = \frac{-1 + \sqrt{-3}}{2}$ & $a + b\omega \mapsto (a - b/2,\; b\sqrt{3}/2)$ \\
+\bottomrule
+\end{tabular}
+
+\medskip
+For each $d$ and bound $b \geq 0$, the module enumerates all
+$(2b+1)^2$ lattice points with integer coefficients in $[-b, b]$
+and counts unit-distance pairs exactly via a numpy $O(n^2)$
+broadcast.
+
+\subsection{Verifications}
+
+\begin{verification}\label{ver:gauss_3x3}
+For $\Z[i]$ with $b = 1$ (the $3 \times 3$ Gaussian grid, $n = 9$),
+the artifact computes exactly $12$ unit-distance pairs: three rows of two
+horizontal edges plus three columns of two vertical edges. Pinned in
+\texttt{tests/test\_imaginary\_quadratic\_lattice.py::%
+test\_gaussian\_3x3\_grid\_has\_12\_unit\_distances}.
+\end{verification}
+
+\begin{verification}\label{ver:gauss_7x7}
+For $\Z[i]$ with $b = 3$ (the $7 \times 7$ Gaussian grid, $n = 49$),
+the artifact computes exactly $2 \cdot 7 \cdot 6 = 84$ unit-distance
+pairs. Pinned in \texttt{scripts/verify.py} as the assertion
+\texttt{phase1\_gaussian\_7x7\_grid\_has\_expected\_84\_pairs}.
+\end{verification}
+
+\begin{verification}\label{ver:eisenstein_dominance}
+For each $b \in \{1, 2, 3, 4\}$, the Eisenstein-lattice (triangular)
+unit-distance count strictly exceeds the Gaussian-lattice count at the
+same $b$. The triangular lattice has $6$ nearest neighbours per
+interior point versus the square lattice's $4$. Pinned in
+\texttt{test\_eisenstein\_unit\_distances\_exceed\_gaussian\_for\_same\_bound}.
+\end{verification}
+
+\subsection{Non-claims}
+
+Phase~1 does not improve the asymptotic Erd\H{o}s exponent. With
+$[K : \Q] = 2$, the construction is the classical square or triangular
+grid; in particular $\nu(n) \leq n^{1 + O(1/\log \log n)}$ holds and the
+$\delta > 0$ excess is not present. The asymptotic result strictly
+requires $[K : \Q] \to \infty$, which is the Phase~3 setting.
+
+Phase~1 is included in the artifact for two reasons: (i) it is a
+self-contained, exact reference against which the Phase~3 construction
+can be sanity-checked at low parameter values, and (ii) it documents
+the standard complex embedding of $\OK$ in $\R^2$ unambiguously, which
+is the substrate of every later step.

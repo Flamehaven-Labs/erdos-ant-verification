@@ -1,0 +1,139 @@
+# Citation file for erdos-ant-verification.
+#
+# Recognized by Zenodo (auto-generates DOI metadata on release), GitHub
+# (renders a "Cite this repository" sidebar button), and citation managers.
+#
+# Format: Citation File Format v1.2.0
+# Specification: https://citation-file-format.github.io/
+
+cff-version: 1.2.0
+message: >-
+  If you use this software in academic work, please cite it as below.
+  The artifact is an executable verification of a published mathematical
+  lower bound; please ALSO cite the primary mathematical sources listed
+  under `references`.
+
+type: software
+
+title: >-
+  erdos-ant-verification: An Executable Verification Artifact for the
+  Sawin et al. Lower Bound on the Erdős Unit-Distance Exponent
+
+abstract: >-
+  An open-source Python implementation that computationally verifies the
+  finite, checkable parts of the 2026 OpenAI/Sawin disproof of the Erdős
+  planar unit-distance conjecture. Reproduces equation (2.2) of the
+  remarks PDF (delta >= ~6.24e-38 for the explicit construction with
+  T = {3,5,7,11,13,17}, S = {101, infinity}, L_T = Q(sqrt 5, sqrt 13,
+  sqrt 17, sqrt 21, sqrt 33)) to within 0.014% relative error using
+  mpmath at 200-bit precision. The artifact does NOT contain a new
+  mathematical proof, does NOT construct the infinite Golod-Shafarevich
+  tower, and has NOT been peer-reviewed. It is intended as a citable
+  reproducibility artifact for the published numerical lower bound.
+
+authors:
+  - name: Flamehaven Labs
+    website: 'https://github.com/Flamehaven-Labs'
+
+version: 0.1.0
+date-released: '2026-05-24'
+
+url: 'https://github.com/Flamehaven-Labs/erdos-ant-verification'
+repository-code: 'https://github.com/Flamehaven-Labs/erdos-ant-verification'
+
+license: MIT
+
+keywords:
+  - erdos-unit-distance
+  - algebraic-number-theory
+  - golod-shafarevich
+  - class-field-tower
+  - discrete-geometry
+  - combinatorics
+  - reproducibility
+  - executable-verification
+  - mathematical-verification
+  - mpmath
+  - openai-research
+  - sawin-construction
+
+references:
+  - type: report
+    title: Planar Point Sets with Many Unit Distances
+    authors:
+      - name: OpenAI
+    year: 2026
+    url: 'https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-proof.pdf'
+    notes: >-
+      Primary mathematical source. Contains the AI-generated proof of
+      Theorem 1.1 disproving the Erdős unit-distance conjecture.
+
+  - type: report
+    title: Remarks on the Disproof of the Unit Distance Conjecture
+    authors:
+      - family-names: Alon
+        given-names: Noga
+      - family-names: Bloom
+        given-names: Thomas F.
+      - family-names: Gowers
+        given-names: W. T.
+      - family-names: Litt
+        given-names: Daniel
+      - family-names: Sawin
+        given-names: Will
+      - family-names: Shankar
+        given-names: Arul
+      - family-names: Tsimerman
+        given-names: Jacob
+      - family-names: Wang
+        given-names: Victor
+      - family-names: Matchett Wood
+        given-names: Melanie
+    year: 2026
+    url: 'https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-remarks.pdf'
+    notes: >-
+      Primary mathematical source. Contains the human-digested, simplified
+      construction including equation (2.2) which this artifact reproduces
+      numerically.
+
+  - type: article
+    title: On sets of distances of n points
+    authors:
+      - family-names: Erdős
+        given-names: Paul
+    year: 1946
+    journal: American Mathematical Monthly
+    volume: 53
+    issue: 5
+    start: 248
+    end: 250
+    notes: >-
+      Historical origin. Introduces the unit-distance problem and the
+      conjectured upper bound n^(1 + O(1/log log n)) that the 2026
+      disproof refutes.
+
+  - type: article
+    title: 'On the class field tower'
+    authors:
+      - family-names: Golod
+        given-names: E. S.
+      - family-names: Shafarevich
+        given-names: I. R.
+    year: 1964
+    notes: >-
+      Classical theorem. A finite pro-p group with d generators and r
+      relations satisfying r <= d^2/4 is infinite. Used in the existence
+      of the infinite class field tower (which this artifact does NOT
+      construct explicitly).
+
+  - type: book
+    title: 'Primes of the form x^2 + n y^2: Fermat, class field theory, and complex multiplication'
+    authors:
+      - family-names: Cox
+        given-names: David A.
+    year: 1989
+    publisher:
+      name: Wiley
+    notes: >-
+      Background for the Phase 2 module: genus theory description of
+      the Hilbert class field of Q(sqrt(-5)).

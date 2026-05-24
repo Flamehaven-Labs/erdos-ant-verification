@@ -1,0 +1,88 @@
+% Section 4: Phase 3 -- Sawin multi-quadratic construction (finite parts)
+
+Phase~3 implements the finite, explicitly checkable parts of the
+\emph{simplified} construction of Section~2.1 of
+\cite{Sawin2026Remarks}, which uses an unramified pro-$2$ tower over a
+multi-quadratic base field rather than the original GPT pro-$3$ tower
+over a cyclic cubic. The simplification is due to Sawin and yields the
+explicit numerical bound evaluated in \S\ref{sec:eq22}.
+
+\subsection{The Sawin parameters, verbatim}
+
+The construction fixes
+\begin{align*}
+  T   &= \{3,\, 5,\, 7,\, 11,\, 13,\, 17\}, \\
+  S   &= \{101,\, \infty\}, \\
+  L_T &= \Q(\sqrt{5},\, \sqrt{13},\, \sqrt{17},\, \sqrt{21},\, \sqrt{33}),
+\end{align*}
+with $[L_T : \Q] = 2^5 = 32$, and sets $K = L_T(i)$ as the CM field.
+
+These values appear verbatim in the artifact:
+\begin{itemize}[leftmargin=*]
+  \item \texttt{T\_SET = (3, 5, 7, 11, 13, 17)}
+  \item \texttt{S\_SET\_SPLIT = (101,)} (the infinite place is implicit)
+  \item \texttt{L\_T\_GENERATOR\_RADICANDS = (5, 13, 17, 21, 33)}
+  \item \texttt{SAWIN\_R\_PRODUCT = 2 \(\cdot\) 3 \(\cdot\) 5 \(\cdot\) 7 \(\cdot\) 11 \(\cdot\) 13 \(\cdot\) 17 = 510510}
+\end{itemize}
+and the test suite pins each constant against the published source.
+
+\subsection{Splitting of 101 in $L_T$}
+
+A rational prime $p$ splits completely in
+$\Q(\sqrt{d_1}) \cdot \Q(\sqrt{d_2}) \cdots \Q(\sqrt{d_s})$ if and only
+if it splits completely in each factor $\Q(\sqrt{d_i})$ (which, for
+linearly disjoint quadratic extensions, is the definition of
+completely splitting in the compositum). For odd
+$p \neq d_i$, splitting in $\Q(\sqrt{d_i})$ is equivalent to
+$\left(\frac{d_i}{p}\right) = 1$.
+
+\begin{verification}\label{ver:101_splits}
+The artifact evaluates the Jacobi symbol
+$\left(\frac{d_i}{101}\right)$ for each
+$d_i \in \{5, 13, 17, 21, 33\}$ and finds all five symbols equal to
+$+1$. Therefore $101$ splits completely in $L_T$. Pinned in
+\texttt{tests/test\_sawin\_multiquadratic.py::%
+test\_101\_splits\_completely\_in\_each\_Q\_sqrt\_d}.
+\end{verification}
+
+\subsection{Galois-rank counts and Golod--Shafarevich admissibility}
+
+Let $G = \Gal(\widetilde{\Q}_T / \Q)$ be the Galois group of the maximal
+pro-$2$ extension of $\Q$ unramified outside $T$. Because $T$ contains a
+prime that is $3 \pmod 4$ (e.g.\ $3$, $7$, or $11$), the $2$-rank of the
+maximal elementary abelian unramified quotient is $|T| - 1 = 5$,
+giving
+\[
+  d(G_T^\infty) = |T| - 1 = 5.
+\]
+Adjoining $S$ adds at most $|S| - 1 = 1$ Frobenius relations
+(Sawin's pro-$2$ analogue of the Hajir--Maire--Ramakrishna cut), so
+\[
+  r(G_T^S) \leq d(G_T^\infty) + |S| - 1 = 5 + 1 = 6.
+\]
+The Golod--Shafarevich admissibility condition for the tower to remain
+infinite is $r \leq d^2 / 4$; here
+\[
+  r(G_T^S) \leq 6 \leq \frac{(|T| - 1)^2}{4} = \frac{25}{4} = 6.25,
+\]
+which holds strictly. The tower is infinite.
+
+\begin{verification}\label{ver:gs_admissible}
+The artifact computes $d(G_T^\infty) = 5$, $r(G_T^S) \leq 6$, and the
+Golod--Shafarevich threshold $25/4 = 6.25$, and confirms
+$6 \leq 6.25$. Pinned in
+\texttt{test\_d\_G\_infty\_equals\_T\_minus\_1\_because\_T\_contains\_3\_mod\_4},
+\texttt{test\_r\_bound\_is\_six\_per\_remarks\_pdf}, and
+\texttt{test\_golod\_shafarevich\_inequality\_holds}.
+\end{verification}
+
+\subsection{Non-claims}
+
+Phase~3 does \emph{not} construct the infinite tower itself. The
+existence of the tower is a non-constructive consequence of the
+Golod--Shafarevich theorem \cite{GolodShafarevich1964} together with
+Sawin's pro-$2$ analogue of the Hajir--Maire cut
+\cite{HajirMaire2001,Sawin2026Remarks}; no finite computation can
+exhibit a closed-form description of $L_j$ for arbitrary $j$. Phase~3
+checks every step of the construction that \emph{is} amenable to finite
+computation, and stops at that boundary.

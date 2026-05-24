@@ -1,0 +1,76 @@
+% Section 6: Limits and explicit non-claims
+
+This section is placed before reproducibility deliberately. The shortest
+honest summary of this artifact is the list of things it does not do.
+
+\subsection{This artifact does NOT contain a new proof}
+
+Theorem~1.1 of \cite{OpenAI2026Proof,Sawin2026Remarks} is proved by
+those authors. The present paper does not re-derive Lemma~2.1,
+Lemma~2.2, Proposition~2.3, or any other intermediate result. Where the
+source papers say ``by the Golod--Shafarevich theorem'' or ``by the
+Hajir--Maire tower-cutting argument'', we likewise take those classical
+results as given.
+
+\subsection{This artifact does NOT construct the infinite tower}
+
+The existence of $L_j$ with $[L_j : \Q] \to \infty$ and bounded root
+discriminant is supplied by Golod--Shafarevich
+\cite{GolodShafarevich1964} together with the Hajir--Maire splitting
+technique \cite{HajirMaire2001} adapted to pro-$2$ in
+\cite{Sawin2026Remarks}. This is a non-constructive existence theorem.
+No finite computation can exhibit the entire infinite tower. Phase~3
+of the artifact stops at the boundary of computable
+admissibility.
+
+\subsection{This artifact has NOT been peer-reviewed}
+
+No external mathematician has reviewed this code base. Our confidence
+in the artifact rests on three independent signals:
+
+\begin{enumerate}[leftmargin=*]
+  \item the 59-test unit suite passes on CI (Ubuntu + Windows
+        $\times$ Python 3.11 / 3.12);
+  \item the central numerical reproduction matches the published
+        $\approx 6.24 \cdot 10^{-38}$ to $0.014\%$ relative error
+        (\S\ref{sec:eq22});
+  \item the source code is small (\(\approx\) 1\,000 LOC across four
+        modules) and intended to be readable by anyone who has read
+        \cite{Sawin2026Remarks} \S2.
+\end{enumerate}
+
+None of these substitutes for mathematician review. The artifact is
+offered as input to such review, not as a substitute.
+
+\subsection{Reported $0.014$ and $0.0318$ are NOT in either formal PDF}
+
+Secondary coverage (e.g.\ \cite{KalaiBlog2026}) reports numerical
+values $\delta \approx 0.014$ and $\delta \approx 0.0318$ in the
+informal contexts $n^{1.014}$ and $n^{1.0318}$. We verified by direct
+text extraction with \texttt{pypdf} that neither of these literal
+numerical values appears in either
+\cite{OpenAI2026Proof} or \cite{Sawin2026Remarks}. The only rigorous
+numerical lower bound that appears verbatim in either formal PDF is
+$\delta_{\text{excess}} \approx 6.24 \cdot 10^{-38}$ from eq.~(2.2) of
+\cite{Sawin2026Remarks}.
+
+The artifact's \texttt{SOURCE\_CLAIMS} registry encodes this
+three-way provenance explicitly:
+
+\begin{itemize}[leftmargin=*]
+  \item \texttt{openai\_index\_reported} ($\delta = 0.014$,
+        \texttt{verified\_numerical\_in\_formal\_pdf = False}),
+  \item \texttt{sawin\_rigorous\_lower\_bound}
+        ($\delta = 6.24 \cdot 10^{-38}$,
+        \texttt{verified\_numerical\_in\_formal\_pdf = True}),
+  \item \texttt{sawin\_refinement\_reported} ($\delta = 0.0318$,
+        \texttt{verified\_numerical\_in\_formal\_pdf = False}).
+\end{itemize}
+
+\subsection{This artifact does NOT improve the published bound}
+
+We made no attempt to optimise the choice of $T$, $S$, $L_T$ or the
+inner parameter $k$ to obtain a larger $\delta_{\text{excess}}$. The
+explicit choice of \cite[\S2.1]{Sawin2026Remarks} is what we encode and
+reproduce; the optimisation problem of finding $(T, S, k)$ with larger
+admissible $\delta$ remains open and is out of scope.

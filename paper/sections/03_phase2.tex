@@ -1,0 +1,61 @@
+% Section 3: Phase 2 -- Q(sqrt(-5)) with class group + genus theory
+
+Phase~2 implements the smallest non-trivial-class-number case
+$K = \Q(\sqrt{-5})$, $h(K) = 2$. The Lemma~2.2 pigeonhole of
+\cite{OpenAI2026Proof} becomes non-vacuous here: when an ideal product
+$A_\varepsilon = \prod_j P_j^{\varepsilon_j} (P_j')^{k - \varepsilon_j}$
+lands in the non-principal class, no element $\alpha_\varepsilon \in K^*$
+with $(\alpha_\varepsilon) = A_\varepsilon A_\eta^{-1}$ exists for
+arbitrary $\eta$ --- the pigeonhole must restrict to a single ideal
+class, and the bound $|U| \geq (k+1)^s / h(K)$ is sharp.
+
+\subsection{Classical facts encoded}
+
+\begin{itemize}[leftmargin=*]
+  \item $\OK = \Z[\sqrt{-5}]$ with discriminant $-20$
+        (\texttt{K\_DISCRIMINANT = -20}, \texttt{CLASS\_NUMBER = 2}).
+  \item The non-trivial ideal class is represented by
+        $\mathfrak{p}_2 = (2, 1 + \sqrt{-5})$, satisfying
+        $\mathfrak{p}_2^2 = (2)$.
+  \item By genus theory \cite[Theorem~6.1]{Cox1989}, the Hilbert class
+        field is the genus field $H = K(\sqrt{-1}) = \Q(i, \sqrt{5})$.
+  \item A rational prime $p$ (odd, $p \neq 5$) splits completely in $K$
+        iff $\left(\frac{-5}{p}\right) = 1$, equivalently
+        $p \bmod 20 \in \{1, 3, 7, 9\}$. Of these, $p \bmod 20 \in \{1, 9\}$
+        gives a principal prime (representable as $a^2 + 5b^2$), and
+        $p \bmod 20 \in \{3, 7\}$ gives a non-principal prime.
+\end{itemize}
+
+\subsection{Lemma~2.2 pigeonhole, explicit}
+
+The Phase~2 module \texttt{erdos\_ant.genus\_class\_field} exposes a
+\texttt{GenusClassFieldProbe} that, given a tuple of split rational
+primes, computes the ideal-class partition of the
+$\{0,1\}^s$ family of ideal products and reports
+$|U| \geq (k+1)^s / h(K)$.
+
+\begin{verification}\label{ver:lemma22_principal}
+For the choice $(p_1, p_2) = (29, 41)$ (both in the principal genus,
+$29 = 3^2 + 5 \cdot 2^2$, $41 = 6^2 + 5 \cdot 1^2$), all four candidate
+ideals $A_\varepsilon$ for $\varepsilon \in \{0,1\}^2$ are principal,
+and the Lemma~2.2 lower bound is
+$(1 + 1)^2 / 2 = 2$. Pinned in
+\texttt{tests/test\_genus\_class\_field.py::%
+test\_lemma\_22\_pigeonhole\_with\_two\_principal\_primes}.
+\end{verification}
+
+\begin{verification}\label{ver:lemma22_mixed}
+For the choice $(p_1, p_2) = (29, 3)$ (one principal, one
+non-principal), the four ideals partition $2 + 2$ between the two
+ideal classes, and the Lemma~2.2 lower bound is still $2$.
+Pinned in \texttt{test\_lemma\_22\_pigeonhole\_with\_mixed\_genus}.
+\end{verification}
+
+\subsection{Non-claims}
+
+Phase~2 fixes a single CM field of degree $2$ over $\Q$ and produces a
+finite pigeonhole demonstration. It does not produce a sequence of
+fields with $[K_j : \Q] \to \infty$, and does not generate the
+exponentially growing set $U$ that drives the asymptotic exponent
+excess. It does, however, instantiate the smallest concrete example
+where the pigeonhole step is genuinely non-trivial.
