@@ -8,6 +8,27 @@ Independent Python reproduction of the **2026 OpenAI/Sawin disproof of the Erdő
 [![Tests: 50+](https://img.shields.io/badge/tests-50%2B-brightgreen.svg)](tests/)
 [![Reproduction: 0.01%](https://img.shields.io/badge/eq(2.2)%20rel.%20err.-0.01%25-brightgreen.svg)](docs/REMARKS_PDF_REPRODUCTION.md)
 
+## Author and citation
+
+- **Project lead:** Yun Kwansub (Flamehaven Initiative)
+- **Maintained by:** [Flamehaven Initiative](https://github.com/Flamehaven-Labs)
+- **License:** MIT — see [LICENSE](LICENSE)
+- **Citation file:** [`CITATION.cff`](CITATION.cff) — recognised by Zenodo and the GitHub "Cite this repository" sidebar
+- **Accompanying paper:** [`paper/main.pdf`](paper/main.pdf) (compiled from [`paper/main.tex`](paper/main.tex))
+- **DOI:** issued by Zenodo on each tagged release — see [Releases](https://github.com/Flamehaven-Labs/erdos-ant-verification/releases)
+
+## Zenodo deposit contents
+
+When a tagged release is archived to Zenodo, the deposit contains the
+full source tarball at that tag. The most relevant files for a reader
+opening the Zenodo page are:
+
+1. **`paper/main.pdf`** — accompanying verification paper (~10 pages)
+2. **`README.md`** — this file (Zenodo renders it as the deposit description)
+3. **`CITATION.cff`** — formal citation metadata
+4. **`reports/TRIPLE_INSPECTION_REPORT.md`** — frozen output of three independent inspection tools (AI-SLOP-Detector, SPAR Framework, SIDRCE SaaS)
+5. Full source tree (`src/`, `tests/`, `scripts/`, `docs/`, `paper/`)
+
 ## Why This Exists
 
 - **Who it is for**: anyone who wants a citable, runnable reference implementation of the finite, explicitly checkable parts of the OpenAI/Sawin construction.

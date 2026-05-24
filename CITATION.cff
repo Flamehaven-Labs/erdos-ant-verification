@@ -32,7 +32,10 @@ abstract: >-
   reproducibility artifact for the published numerical lower bound.
 
 authors:
-  - name: Flamehaven Labs
+  - family-names: Yun
+    given-names: Kwansub
+    affiliation: Flamehaven Initiative
+  - name: Flamehaven Initiative
     website: 'https://github.com/Flamehaven-Labs'
 
 version: 0.1.1
