@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-05-24
+
+### Added
+
+- `CITATION.cff` — Citation File Format v1.2.0 metadata recognized by Zenodo and GitHub. Carries the artifact framing as `type: software` (executable verification artifact, not original research) with five primary mathematical references.
+- `paper/` — LaTeX source of the accompanying verification paper:
+  - `main.tex` using a custom `Verification` environment instead of `Theorem` (the paper does NOT claim a new mathematical result).
+  - 8 section files: Background, Phase 1/2/3, central eq (2.2) reproduction, Limits, Reproducibility, Acknowledgements.
+  - `references.bib` with 8 entries (OpenAI proof, Sawin remarks, Erdős 1946, Golod-Shafarevich, Cox, Hajir-Maire, mpmath, Kalai blog as secondary).
+  - `paper/README.md` documenting compile paths (local, Overleaf, CI).
+- `.github/workflows/paper.yml` — honesty-grep scan ("we prove", banned buzzwords) + latexmk PDF compile + workflow artifact upload.
+- `reports/` — frozen outputs from a three-tool inspection stack run against this artifact:
+  - `reports/slop_scan.json` — AI-SLOP-Detector v3.7.5 (clean, 6/6 files, weighted deficit 2.83).
+  - `reports/spar_review.py` + `spar_review_result.json` — SPAR Framework v0.5.0 (ACCEPT, score 100/100).
+  - `reports/sidrce_certification.yaml` — SIDRCE SaaS v1.1.15 (CERTIFIED, omega 0.9289, signed trace chain).
+  - `reports/TRIPLE_INSPECTION_REPORT.md` — summary of all three.
+
+### Changed
+
+- None. v0.1.0 source code is unchanged; v0.1.1 is purely additive (citation metadata + paper + inspection reports).
+
+### Not Claimed
+
+- Same as v0.1.0. The paper restates the non-claims explicitly in its own §6 "Limits and non-claims".
+
 ## [0.1.0] - 2026-05-24
 
 ### Added
