@@ -1,6 +1,6 @@
 # paper/
 
-LaTeX source of the accompanying verification paper.
+LaTeX source of the accompanying reproduction paper.
 
 ## Compile locally
 
@@ -29,8 +29,8 @@ The CI workflow runs a `grep`-based scan that fails the build if any of
 the following appear:
 
 - `we prove`, `we have proved`, `we proof` (the paper does NOT prove
-  any new result; the "we computationally verify" formulation is used
-  instead).
+  any new result; use "reproduce", "compute", or "pin against the
+  published source" instead).
 - `revolutionary`, `unprecedented`, `state-of-the-art` (banned
   marketing language).
 
@@ -66,3 +66,8 @@ tag or DOI, edit `paper/main.tex` (abstract footnote) and
 `paper/sections/07_reproducibility.tex` (reproducibility table) in the
 same commit that closes the new release; do not reintroduce placeholder
 syntax.
+
+The current paper source may identify itself as a draft when it contains
+unreleased wording or verifier-process corrections. Do not retag it as a
+numbered release until the corresponding code, report evidence, and DOI
+surface are frozen together.

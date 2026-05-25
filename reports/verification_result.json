@@ -1,7 +1,7 @@
 {
   "schema_id": "erdos_ant_verification.v1",
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-05-25T13:19:26.450945+00:00",
+  "generated_at_utc": "2026-05-25T14:31:04.328565+00:00",
   "verdict": "PASS",
   "checks": {
     "square_unit_pairs_is_4": true,
@@ -27,11 +27,11 @@
     "pytest_passed": true
   },
   "source_sha256_manifest": {
-    "src/erdos_ant/sawin_multiquadratic.py": "7733059f5d1c2bbc3ec484255ae2b007b0884f4a71870b60d39458bed5468f94",
-    "src/erdos_ant/algebraic_geometry.py": "0e0d08014be4593d34a02fae766393bdd665a4bc1d5e7ce8c707fda5ae83281c",
+    "src/erdos_ant/sawin_multiquadratic.py": "5f8ad4688129a332b807f4dbdfabd236ae18327e7c0fc52103198186cd44538d",
+    "src/erdos_ant/algebraic_geometry.py": "847769efc93a601de6931aae794910bd83e986f4217c0efc867350f2228f23c9",
     "src/erdos_ant/imaginary_quadratic_lattice.py": "db385ddd935108e83632bfbfdcadb471cda480d29fa3f054b7ea5c3687d9b785",
     "src/erdos_ant/genus_class_field.py": "246e768575601d48bc074128b4e2a6f025534c925e0f25389af3d5611db7e89a",
-    "src/erdos_ant/verify.py": "f65193a15e169a7e547a2b1513c1ab668531530f9fc95524868d9aa3426441d7"
+    "src/erdos_ant/verify.py": "401de26d28b9d54b6449d9ecda505f8d0f2500d8a34ebf933a92fcab34841551"
   },
   "observations": {
     "field_degree": 2,
@@ -66,7 +66,7 @@
           "primary_source_url": "https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-remarks.pdf",
           "formal_proof_pdf_url": "https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-remarks.pdf",
           "verified_numerical_in_formal_pdf": true,
-          "note": "Rigorous lower bound from remarks PDF eq (2.2): the exponent 1 + log(u*pi/(36*v)) / log(36/delta^2) evaluates to approximately 1 + 6.24e-38 for T = {3,5,7,11,13,17}, S = {101, inf}, k = ceil(18 r^3 / pi) - 1. This is the only numerical lower bound that appears verbatim in either formal PDF."
+          "note": "Rigorous lower bound from remarks PDF eq (2.2): the exponent 1 + log(u*pi/(36*v)) / log(36/delta^2) evaluates to exponent excess approximately 6.24e-38 for T = {3,5,7,11,13,17}, S = {101, inf}, k = ceil(18 r^3 / pi) - 1. This is the only numerical lower bound that appears verbatim in either formal PDF."
         },
         {
           "label": "sawin_refinement_reported",
@@ -207,7 +207,9 @@
         "k": 762316628416213961,
         "delta_minus_1": 6.239109643151817e-38,
         "exponent_excess_above_1": 6.239109643151817e-38,
-        "matches_remarks_eq_2_2": true
+        "matches_remarks_eq_2_2": true,
+        "published_value": 6.24e-38,
+        "relative_error_tolerance": 0.001
       },
       "claim_tier": "faithful_finite_part_of_sawin_construction",
       "not_claimed": [
@@ -232,7 +234,8 @@
       "k": 762316628416213961,
       "exponent_excess": 6.239109643151817e-38,
       "published_value": 6.24e-38,
-      "relative_error_vs_published": 0.00014268539233711807
+      "relative_error_vs_published": 0.00014268539233711807,
+      "relative_error_tolerance": 0.001
     },
     "source_claims_registry": [
       {

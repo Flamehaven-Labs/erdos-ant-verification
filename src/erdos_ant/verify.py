@@ -52,10 +52,12 @@ from erdos_ant.imaginary_quadratic_lattice import (
     gaussian_integer_grid,
 )
 from erdos_ant.sawin_multiquadratic import (
-    analyze as sawin_analyze,
+    EQ22_RELATIVE_ERROR_TOLERANCE,
+    PUBLISHED_EQ22_EXPONENT_EXCESS,
+    evaluate_sawin_exponent_bound,
 )
 from erdos_ant.sawin_multiquadratic import (
-    evaluate_sawin_exponent_bound,
+    analyze as sawin_analyze,
 )
 
 
@@ -197,7 +199,9 @@ def execute_verification(repo_root: Path | None = None) -> dict[str, object]:
         ),
         "sawin_rigorous_lower_bound_present_624e_minus_38": (
             sawin_rigorous_claim is not None
-            and abs(sawin_rigorous_claim.delta - 6.24e-38) / 6.24e-38 < 0.01
+            and abs(sawin_rigorous_claim.delta - PUBLISHED_EQ22_EXPONENT_EXCESS)
+            / PUBLISHED_EQ22_EXPONENT_EXCESS
+            < EQ22_RELATIVE_ERROR_TOLERANCE
         ),
         "proof_delta_formula_positive_for_reasonable_params": proof_delta_sample > 0,
         "phase1_gaussian_7x7_grid_has_expected_84_pairs": (
@@ -278,10 +282,12 @@ def execute_verification(repo_root: Path | None = None) -> dict[str, object]:
                 "r": sawin_eval.r,
                 "k": sawin_eval.k,
                 "exponent_excess": sawin_eval.exponent_excess,
-                "published_value": 6.24e-38,
+                "published_value": PUBLISHED_EQ22_EXPONENT_EXCESS,
                 "relative_error_vs_published": (
-                    abs(sawin_eval.exponent_excess - 6.24e-38) / 6.24e-38
+                    abs(sawin_eval.exponent_excess - PUBLISHED_EQ22_EXPONENT_EXCESS)
+                    / PUBLISHED_EQ22_EXPONENT_EXCESS
                 ),
+                "relative_error_tolerance": EQ22_RELATIVE_ERROR_TOLERANCE,
             },
             "source_claims_registry": [
                 {

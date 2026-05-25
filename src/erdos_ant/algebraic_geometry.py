@@ -103,7 +103,8 @@ SOURCE_CLAIMS: tuple[SourceClaim, ...] = (
         note=(
             "Rigorous lower bound from remarks PDF eq (2.2): the exponent "
             "1 + log(u*pi/(36*v)) / log(36/delta^2) evaluates to "
-            "approximately 1 + 6.24e-38 for T = {3,5,7,11,13,17}, "
+            "exponent excess approximately 6.24e-38 for "
+            "T = {3,5,7,11,13,17}, "
             "S = {101, inf}, k = ceil(18 r^3 / pi) - 1. This is the only "
             "numerical lower bound that appears verbatim in either formal PDF."
         ),

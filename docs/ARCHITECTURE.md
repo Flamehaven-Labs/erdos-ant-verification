@@ -94,3 +94,16 @@ published value `~ 6.24e-38` to 0.01% relative error.
 - **Peer review**: this artifact has not been reviewed by external
   mathematicians; correctness claims are limited to "the test suite
   passes" and "the eq (2.2) reproduction matches to 0.01%".
+
+## Verifier process boundary
+
+`erdos_ant.verify` is an orchestration entry point, not an additional
+mathematical layer. It recomputes the finite phase outputs, runs the
+unit-test suite in a subprocess, and records the result in the JSON /
+Markdown evidence files only when `--write-evidence` is passed.
+
+The internal pytest subprocess sets `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1`
+by default and records a 90-second timeout as an ordinary failed check.
+This keeps the verifier result tied to the repository test suite rather
+than to unrelated pytest plugins installed in the caller's Python
+environment.

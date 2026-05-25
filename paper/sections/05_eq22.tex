@@ -117,5 +117,6 @@ This does \emph{not} establish:
 
 What it does establish is that any future code change in the artifact
 that drifts away from the published value will fail the regression
-test at the $0.5$ relative-tolerance band hard-coded in the test
-(currently $0.014\%$, well below the $50\%$ tolerance the test uses).
+test at the $10^{-3}$ relative-tolerance band hard-coded in the test
+(currently $0.014\%$, below the tolerance but close enough to catch
+material drift).

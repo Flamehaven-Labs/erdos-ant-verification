@@ -106,9 +106,17 @@ python -c "from erdos_ant.sawin_multiquadratic import evaluate_sawin_exponent_bo
 # Full test suite (pins this value plus the rest of the construction)
 pytest -q
 
-# End-to-end verification with JSON + Markdown report
+# End-to-end verification, default frozen-report mode
 python scripts/verify.py
+
+# Refresh tracked JSON + Markdown evidence
+python scripts/verify.py --write-evidence
 ```
+
+The default verifier mode prints the verdict without touching tracked
+evidence files. Release maintainers use `--write-evidence` when they
+intend to refresh `reports/verification_result.json` and
+`reports/verification_report.md`.
 
 ## Pinned test for regression protection
 
@@ -117,9 +125,11 @@ The reproduction is pinned by
 which asserts that
 
 ```
-abs(exponent_excess - 6.24e-38) / 6.24e-38 < 0.5
+abs(exponent_excess - 6.24e-38) / 6.24e-38 < 1e-3
 ```
 
-(50% relative tolerance is more than enough to absorb the
-two-significant-figure rounding in the published value while still
-catching any actual regression in the construction code).
+The current tolerance is `1e-3`, matching the deviation-log policy that
+values below `1e-3` relative error are consistent with the
+two-significant-figure source value. The observed error is about
+`1.4e-4`, leaving margin for source rounding while still catching
+meaningful drift.

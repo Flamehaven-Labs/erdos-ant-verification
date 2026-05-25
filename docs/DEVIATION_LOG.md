@@ -45,14 +45,14 @@ significant figures, this row will be re-evaluated and may be promoted
 to either MATCH (within stated precision) or DEVIATION (numerical
 discrepancy requiring investigation).
 
-## Why two-significant-figure tolerance is correct
+## Why the eq (2.2) tolerance is strict enough
 
 The pinning test
 `tests/test_sawin_multiquadratic.py::test_sawin_exponent_bound_matches_remarks_eq_2_2`
-uses a 50% relative tolerance. This is intentionally loose enough to
-absorb the source's two-sig-fig rounding while still catching any
-genuine regression (a code change that pushed the value by 10x or more
-would fail the test immediately).
+uses a `1e-3` relative tolerance. This matches the ledger policy above:
+below `1e-3` is treated as consistent with the two-significant-figure
+source value, while anything larger requires investigation before
+release. The observed error is `1.4e-4`.
 
 ## How this log is maintained
 
@@ -65,6 +65,21 @@ would fail the test immediately).
   per release; they are implied stable.
 
 ## Per-release notes
+
+### Unreleased
+
+- Verification CLI hardened against user-environment pytest plugin
+  leakage: the internal pytest subprocess now defaults
+  `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1` and records a bounded timeout as a
+  failed check rather than waiting indefinitely.
+- Eq (2.2) pass/fail tolerance tightened from `0.5` relative error to
+  `1e-3`, matching the deviation-ledger policy and preventing a very
+  loose source-match check from passing as "reproduction".
+- No numerical claim changed. The tracked evidence files were refreshed
+  so the source SHA-256 manifest binds to the updated verifier module.
+- Paper/docs consistency pass: Phase 2 text now follows the corrected
+  v0.1.2 class-fiber partition `(29, 3) -> 0+4`, not the earlier `2+2`
+  description.
 
 ### v0.2.0 (2026-05-25)
 

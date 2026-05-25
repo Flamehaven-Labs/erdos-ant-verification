@@ -8,7 +8,9 @@ from __future__ import annotations
 import pytest
 
 from erdos_ant.sawin_multiquadratic import (
+    EQ22_RELATIVE_ERROR_TOLERANCE,
     L_T_GENERATOR_RADICANDS,
+    PUBLISHED_EQ22_EXPONENT_EXCESS,
     S_SET_SPLIT,
     SAWIN_R_PRODUCT,
     T_SET,
@@ -110,9 +112,11 @@ def test_golod_shafarevich_inequality_holds() -> None:
 def test_sawin_exponent_bound_matches_remarks_eq_2_2() -> None:
     # Remarks PDF eq (2.2): "the exponent ... approximately 1 + 6.24e-38".
     out = evaluate_sawin_exponent_bound()
-    # Allow 50% relative error: the PDF gives "approximately" to 2 sig figs.
-    relative_error = abs(out.exponent_excess - 6.24e-38) / 6.24e-38
-    assert relative_error < 0.5, (
+    relative_error = (
+        abs(out.exponent_excess - PUBLISHED_EQ22_EXPONENT_EXCESS)
+        / PUBLISHED_EQ22_EXPONENT_EXCESS
+    )
+    assert relative_error < EQ22_RELATIVE_ERROR_TOLERANCE, (
         f"Sawin exponent bound {out.exponent_excess:.3e} differs from "
         f"remarks PDF 6.24e-38 by relative error {relative_error:.3f}"
     )

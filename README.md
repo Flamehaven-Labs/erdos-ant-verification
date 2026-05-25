@@ -48,17 +48,20 @@ To regenerate the tracked evidence files (`reports/verification_result.json` and
 ## Verification path
 
 ```bash
-# 60+ unit tests
+# 60 unit tests
 pytest -q
 
 # lint
-ruff check src tests
+ruff check src tests scripts reports
 
 # end-to-end verifier (verdict via exit code)
 python -m erdos_ant.verify
 ```
 
-CI runs this exact sequence on Ubuntu × Windows × Python 3.11/3.12.
+The verifier runs its internal pytest subprocess with external pytest
+plugin autoloading disabled, so ordinary user-environment plugins do not
+change the verification result. CI runs the same checks on Ubuntu ×
+Windows × Python 3.11/3.12.
 
 ## Evidence
 
@@ -125,6 +128,7 @@ If a reader has seen the larger numbers `0.014` or `0.0318` attributed to "the O
 
 - [`docs/PROOF_ORIGIN.md`](docs/PROOF_ORIGIN.md) — what was proved (by the authors), what was not, primary sources.
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — module boundaries, claim / non-claim per layer.
+- [`docs/SOURCE_CODE_ALIGNMENT_AUDIT.md`](docs/SOURCE_CODE_ALIGNMENT_AUDIT.md) — source-PDF to code mapping, hardcoding audit, slop / spaghetti boundary.
 - [`docs/REMARKS_PDF_REPRODUCTION.md`](docs/REMARKS_PDF_REPRODUCTION.md) — the eq (2.2) reproduction in detail, why `mpmath` is required.
 - [`docs/DEVIATION_LOG.md`](docs/DEVIATION_LOG.md) — every place a number, command, or claim in the paper differs from a published source, and why.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md), [`SECURITY.md`](SECURITY.md), [`CHANGELOG.md`](CHANGELOG.md).

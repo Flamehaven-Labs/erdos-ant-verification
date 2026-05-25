@@ -13,21 +13,20 @@ This module implements the explicit example from the remarks PDF
 
 Key combinatorial facts proved in the remarks PDF:
 
-- d(G_T^{S}) = |T| - 1 = 5
+- d(G_T^{infinity}) = |T| - 1 = 5
   (the 2-rank of the maximal multi-quadratic field LT unramified outside T;
    one less than |T| because there are five `2-rank-contributing' squareroots
    sqrt(5), sqrt(13), sqrt(17), sqrt(21=3*7), sqrt(33=3*11). The doc
    formula d(G) = |T| - 1 holds whenever T contains a prime that is 3 mod 4,
    which it does here -- e.g. 3, 7, 11.)
 - r(G_T^{S}) <= d(G_{T}^{infty}) + |S| - 1 = 5 + 1 = 6
-- Golod-Shafarevich infinitude condition: r <= d^2 / 4
-    5 <= 25 / 4 = 6.25, so r = 6 satisfies r <= d^2/4 + ... -- specifically
-    the remarks PDF claim is r <= 6 <= d^2/4 + ... checked as
-    |T| - 1 + |S| - 1 = 6 <= (|T| - 1)^2 / 4 = 6.25.
+- Golod-Shafarevich infinitude condition: r <= d^2 / 4.
+  Here |T| - 1 + |S| - 1 = 6 <= (|T| - 1)^2 / 4 = 6.25.
 - 101 mod 20 = 1, so 101 = 1 mod 4 and splits completely in each Q(sqrt(d))
   with (d / 101) = 1 -- verified individually for the five squareroots.
-- The bound on the eventual exponent is given by remarks PDF eq (2.2):
-      delta >= 1 + 6.24 * 10^{-38}   (i.e. the *exponent* of n is approx 1+6.24e-38)
+- The eventual exponent is given by remarks PDF eq (2.2):
+      1 + 6.24 * 10^{-38}
+  so the exponent excess above 1 is approximately 6.24e-38.
   with r = 2 * 3 * 5 * 7 * 11 * 13 * 17 = 510510.
 
 This module does NOT actually construct the infinite tower (that is a
@@ -38,7 +37,7 @@ It implements the *finite, explicitly checkable* parts of the construction:
   2. Verify the 5 squareroots are independent (degree-32 over Q).
   3. Verify 101 splits completely in each Q(sqrt(d_i)).
   4. Verify the Golod-Shafarevich admissibility:
-        r(G_T^S) <= 6, d(G_T^S) = 5, r <= d^2/4 + something checked exactly.
+        r(G_T^S) <= 6, d(G_T^infinity) = 5, and 6 <= 5^2/4.
   5. Compute the explicit numerical lower bound on delta from eq (2.2)
      (which evaluates to approximately 6.24e-38).
 
@@ -59,6 +58,8 @@ L_T_GENERATOR_RADICANDS: tuple[int, ...] = (5, 13, 17, 21, 33)
 # Remarks PDF eq (2.2) numerical lower bound.
 # r in the formula is the product of T together with 2:
 SAWIN_R_PRODUCT = 2 * 3 * 5 * 7 * 11 * 13 * 17  # = 510510
+PUBLISHED_EQ22_EXPONENT_EXCESS = 6.24e-38
+EQ22_RELATIVE_ERROR_TOLERANCE = 1e-3
 
 
 @dataclass(frozen=True)
@@ -248,8 +249,12 @@ def analyze() -> dict[str, object]:
             "delta_minus_1": delta_eval.delta_minus_1,
             "exponent_excess_above_1": delta_eval.exponent_excess,
             "matches_remarks_eq_2_2": (
-                abs(delta_eval.exponent_excess - 6.24e-38) / 6.24e-38 < 0.5
+                abs(delta_eval.exponent_excess - PUBLISHED_EQ22_EXPONENT_EXCESS)
+                / PUBLISHED_EQ22_EXPONENT_EXCESS
+                < EQ22_RELATIVE_ERROR_TOLERANCE
             ),
+            "published_value": PUBLISHED_EQ22_EXPONENT_EXCESS,
+            "relative_error_tolerance": EQ22_RELATIVE_ERROR_TOLERANCE,
         },
         "claim_tier": "faithful_finite_part_of_sawin_construction",
         "not_claimed": [
