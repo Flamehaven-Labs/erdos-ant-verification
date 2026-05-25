@@ -1,14 +1,14 @@
 % main.tex
-% An Executable Verification Artifact for the Sawin et al. Lower Bound
-% on the Erdős Unit-Distance Exponent
+% An Executable Reproduction Artifact for Equation (2.2)
+% of the Erdős Unit-Distance Disproof Remarks Paper
 %
 % Compile:  latexmk -pdf main.tex   (uses biber for the bibliography)
 %
 % Style: deliberately close to the typographic conventions of
 % unit-distance-proof.pdf (OpenAI 2026), with the document TYPE marked
-% as an executable verification artifact rather than original research.
-% Theorem environments are replaced by "Verification" boxes; the paper
-% does not introduce any new mathematical result.
+% as a reproduction artifact rather than original research. Theorem
+% environments are replaced by "Reproduction" boxes; the paper does not
+% introduce any new mathematical result.
 
 \documentclass[11pt,a4paper]{article}
 
@@ -32,23 +32,26 @@
   linkcolor=black,
   citecolor=black,
   urlcolor=blue!50!black,
-  pdftitle={An Executable Verification Artifact for the Sawin et al. Lower Bound on the Erdős Unit-Distance Exponent},
-  pdfauthor={Yun Kwansub (Flamehaven Initiative)}
+  pdftitle={An Executable Reproduction Artifact for Equation (2.2) of the Erdős Unit-Distance Disproof Remarks Paper},
+  pdfauthor={Yun Kwansub}
 }
 
-% --- Verification environment (replaces \newtheorem{theorem}) ---------------
+% --- Reproduction environment (replaces \newtheorem{theorem}) ---------------
 % We deliberately do NOT define a Theorem environment in this paper:
-% nothing in this artifact constitutes a new theorem. The Verification
-% environment records claims that this artifact computationally checks
-% against the published source.
-\newtheoremstyle{verification}%
+% nothing in this artifact constitutes a new theorem. The Reproduction
+% environment records a specific numerical or combinatorial value that
+% this artifact computes and pins against the published source.
+\newtheoremstyle{reproduction}%
   {1.2em}{1.2em}%        % top/bottom spacing
   {\itshape}{}%          % body / indent
   {\bfseries}{.}%        % heading / punctuation
   {.5em}%                % space after head
   {}                     % default head spec
-\theoremstyle{verification}
-\newtheorem{verification}{Verification}[section]
+\theoremstyle{reproduction}
+\newtheorem{reproduction}{Reproduction}[section]
+% Backward-compatible alias so existing \begin{verification} blocks render.
+\let\verification\reproduction
+\let\endverification\endreproduction
 
 % Macros
 % Breakable monospace identifier (long test / function / path names with
@@ -68,51 +71,61 @@
 
 % --- Title block ------------------------------------------------------------
 \title{%
-  An Executable Verification Artifact for the\\
-  Sawin et al.\ Lower Bound on the\\
-  Erd\H{o}s Unit-Distance Exponent}
+  An Executable Reproduction Artifact for\\
+  Equation (2.2) of the Erd\H{o}s Unit-Distance\\
+  Disproof Remarks Paper}
 \author{%
   Yun Kwansub%
-  \thanks{Project lead, Flamehaven Initiative.
-    Code distribution:
-    \href{https://github.com/Flamehaven-Labs}{github.com/Flamehaven-Labs}.}\\[0.25em]
-  \textit{Flamehaven Initiative}%
+  \thanks{Independent author. Code distribution:
+    \href{https://github.com/Flamehaven-Labs/erdos-ant-verification}{github.com/Flamehaven-Labs/erdos-ant-verification}.}%
 }
-\date{Version 0.1.4 --- 2026-05-25}
+\date{Version 0.2.0 --- 2026-05-25}
 
 % --- Document --------------------------------------------------------------
 \begin{document}
 \maketitle
 
 \begin{abstract}
-We present \texttt{erdos-ant-verification}, an open-source Python implementation
-that computationally reproduces the finite, explicitly checkable parts of the
-2026 OpenAI/Sawin disproof of the Erd\H{o}s planar unit-distance conjecture
-\cite{OpenAI2026Proof,Sawin2026Remarks}. The central result is a numerical match
-to equation~(2.2) of the remarks paper \cite{Sawin2026Remarks}: for the explicit
-construction with $T = \{3, 5, 7, 11, 13, 17\}$, $S = \{101, \infty\}$, and
-$L_T = \Q(\sqrt{5}, \sqrt{13}, \sqrt{17}, \sqrt{21}, \sqrt{33})$, we compute the
-exponent excess to be $6.2391 \times 10^{-38}$, agreeing with the published
-value $\approx 6.24 \times 10^{-38}$ to within $0.014\%$ relative error.
+We present \texttt{erdos-ant-verification}, an open-source Python package
+that re-derives, in pure NumPy and \texttt{mpmath}, the finite and
+numerically explicit parts of the 2026 disproof of the Erd\H{o}s planar
+unit-distance conjecture announced by an OpenAI reasoning model
+\cite{OpenAI2026Proof} and written up by Alon, Bloom, Gowers, Litt,
+Sawin, Shankar, Tsimerman, Wang, and Matchett Wood
+\cite{Sawin2026Remarks}. The central object is equation~(2.2) of the
+remarks paper: for the explicit choice
+$T = \{3, 5, 7, 11, 13, 17\}$, $S = \{101, \infty\}$, and
+$L_T = \Q(\sqrt{5}, \sqrt{13}, \sqrt{17}, \sqrt{21}, \sqrt{33})$,
+that equation states a rigorous numerical lower bound
+$\delta_{\text{excess}} \geq \approx 6.24 \times 10^{-38}$ on the excess
+above the classical Erd\H{o}s exponent. Our \texttt{mpmath} evaluation
+at $200$ bits of precision returns $6.2391 \times 10^{-38}$, matching
+the published two-significant-figure value to $1.4 \times 10^{-4}$
+relative error.
 
-This artifact does \emph{not} contain a new mathematical proof, does \emph{not}
-construct the infinite Golod--Shafarevich tower required for the asymptotic
-result, and has \emph{not} been peer-reviewed. It is intended as a citable,
-CI-verified reproducibility artifact for the published numerical lower bound,
-not as an independent contribution to discrete geometry. The artifact is
-available at
-\url{https://github.com/Flamehaven-Labs/erdos-ant-verification}
-under the MIT licence.
+We make no other mathematical claim. The artifact does \emph{not}
+re-prove Theorem~1.1 of \cite{Sawin2026Remarks}, does \emph{not}
+construct the infinite Golod--Shafarevich tower whose existence is
+quoted as an input to that theorem, and does \emph{not} address any
+separately published sharpening of the bound (in particular, it does
+\emph{not} reproduce or verify the explicit value
+$\delta \approx 0.014$ that appears in Sawin's separate explicit-lower-bound preprint or in informal coverage of the result).
+The intended audience is anyone who, having read \S2 of
+\cite{Sawin2026Remarks}, wants a citable, CI-tested Python
+implementation of its eq.~(2.2) on which they can run their own
+sensitivity checks. The package is distributed under the MIT licence
+at \url{https://github.com/Flamehaven-Labs/erdos-ant-verification}.
 
 \noindent\textbf{Reproduction.}
-\verb|pip install erdos-ant-verification && python -m erdos_ant.verify|
-runs the unit tests and prints the verdict; the same command with
-\verb|--write-evidence| also refreshes the tracked JSON certificate at
-\path{reports/verification_result.json}. Pinned to commit
-\texttt{c8fe529}\footnote{The v0.1.3 release-tag commit, which is the
-first paper-bearing release of this artifact.} and Zenodo
-\href{https://doi.org/10.5281/zenodo.20377950}{10.5281/zenodo.20377950}\footnote{DOI of \texttt{v0.1.3}, the first paper-bearing release. The predecessor source-only release
-\texttt{v0.1.1} carries DOI \href{https://doi.org/10.5281/zenodo.20366884}{10.5281/zenodo.20366884}. The intermediate release \texttt{v0.1.2} was a pre-PDF snapshot held open by external audit. This document is \texttt{v0.1.4}, an in-text-placeholder cleanup patch over v0.1.3.}.
+After cloning the repository,
+\verb|pip install -e .[dev]| followed by
+\verb|python -m erdos_ant.verify| runs the test suite and prints the
+verdict; the same command with \verb|--write-evidence| also refreshes
+the tracked JSON certificate at
+\path{reports/verification_result.json}. The frozen evidence for this
+paper corresponds to commit \texttt{c8fe529} (release tag
+\texttt{v0.1.3}) with Zenodo DOI
+\href{https://doi.org/10.5281/zenodo.20377950}{10.5281/zenodo.20377950}.\footnote{The earlier source-only release \texttt{v0.1.1} carries DOI \href{https://doi.org/10.5281/zenodo.20366884}{10.5281/zenodo.20366884}. The intermediate \texttt{v0.1.2} was a pre-PDF snapshot, and \texttt{v0.1.3}/\texttt{v0.1.4} bundled the first compiled paper. This document is \texttt{v0.2.0}, a documentation-only revision that tightens scope wording and removes terminology specific to the author's internal tooling; the underlying code, tests, and numerical claim are unchanged.}
 \end{abstract}
 
 \clearpage

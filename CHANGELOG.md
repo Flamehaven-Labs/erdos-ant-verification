@@ -5,6 +5,71 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-05-25 (positioning + jargon overhaul)
+
+Documentation-only minor release. **No source-code change** and **no
+change to any numerical claim**: the verifier still returns PASS with
+21/21 checks, the eq (2.2) exponent excess is still `6.2391e-38`, and
+the relative error against the published value is still `1.4e-4`. The
+60-test unit suite is unchanged. This release tightens the positioning
+language to what an external mathematician audit found defensible and
+removes terminology specific to the author's internal tooling.
+
+### Changed (0.2.0)
+
+- **Paper title** (`paper/main.tex`, `CITATION.cff`, `pyproject.toml`):
+  `An Executable Verification Artifact for the Sawin et al. Lower Bound
+  on the Erdős Unit-Distance Exponent` → `An Executable Reproduction
+  Artifact for Equation (2.2) of the Erdős Unit-Distance Disproof
+  Remarks Paper`. The new title (i) avoids "verification", which to a
+  mathematics reader connotes formal proof verification (Lean / Coq
+  kernels), and (ii) avoids "Sawin et al. lower bound", which now
+  collides with Sawin's separately published explicit-lower-bound
+  preprint (`δ ≈ 0.014`) — a different and out-of-scope result.
+- **Theorem-style environment renamed** `verification` → `reproduction`
+  in the paper, with a backward-compatible `\let\verification\reproduction`
+  alias so existing `\begin{verification}` blocks still render.
+- **README rewritten further**: hero paragraph rebound to eq (2.2);
+  new section "What this artifact verifies, and what it only cites"
+  with a four-row table separating (i) Theorem 1.1 itself, (ii) eq (2.2)
+  numerical value (the only claim this artifact reproduces), (iii)
+  Sawin's later explicit `δ ≈ 0.014`, and (iv) informal community
+  optimisations.
+- **Test count corrected to the actual `60`** everywhere. Previous
+  states said `59` (paper §6.3 and `TRIPLE_INSPECTION_REPORT.md`) or
+  `60+` (README and badge); pytest collects exactly `60` tests, so
+  every reference is now the exact number.
+- **"Independent inspection" wording softened** in paper §7.3, the
+  `TRIPLE_INSPECTION_REPORT.md`, and the README documentation list:
+  the three automated scanners are now explicitly framed as one
+  in-house (AI-SLOP-Detector) plus two external (SPAR, SIDRCE), with
+  the note that none of them performs mathematical peer review.
+- **Acknowledgements rewritten** to remove internal-tooling vocabulary
+  (`Flamehaven-TOE`, `TOE-TEST cell`, `Generative Discovery Charter`)
+  that was meaningful inside the author's own workflow but read as
+  unexplained jargon to an external mathematics reader. The
+  acknowledgement of the automated scanners is preserved but framed as
+  recorded scanner output, not as third-party endorsement.
+- **Abstract** explicitly notes that this artifact does *not*
+  reproduce or verify Sawin's separately published explicit lower
+  bound `δ ≈ 0.014`, and does *not* address informal `0.014` /
+  `0.0318` figures in secondary coverage. The bound this artifact
+  reproduces is exactly the verbatim `6.24 × 10⁻³⁸` of remarks PDF
+  eq (2.2), and nothing larger.
+
+### Audit log (0.2.0)
+
+External two-round audit verdict on v0.1.x was "ACCEPT (code) / HOLD
+(publication-surface positioning)". This release closes the four
+positioning items the second audit flagged: title scope, "Sawin et
+al. lower bound" → eq (2.2) binding, "three independent" → measured
+wording, and test-count inconsistency. The reviewer's fifth
+suggestion (a "what we verify vs what we only cite" table) is added
+to the README. The reviewer's sixth suggestion (GitHub About text
+revision) is a UI-level edit on `github.com/Flamehaven-Labs/erdos-ant-verification`
+that does not affect this commit; the suggested replacement matches
+the new `pyproject.toml` `description` field.
+
 ## [0.1.4] - 2026-05-25 (placeholder fill-in)
 
 Patch release over v0.1.3. No source-code, claim, or numerical change;

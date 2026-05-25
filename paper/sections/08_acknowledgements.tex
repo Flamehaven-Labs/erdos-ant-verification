@@ -1,26 +1,28 @@
 % Section 8: Acknowledgements
 
-We thank the OpenAI internal reasoning model whose 2026 output is the
-subject of this artifact, and the authors of the remarks paper
-\cite{Sawin2026Remarks} for the simplified construction whose explicit
-numerical bound we reproduce: Noga Alon, Thomas F.~Bloom, W.~T.~Gowers,
-Daniel Litt, Will Sawin, Arul Shankar, Jacob Tsimerman, Victor Wang,
-and Melanie Matchett Wood.
+We thank the OpenAI reasoning model whose May 2026 output prompted
+this reproduction effort, and the authors of the companion remarks
+paper \cite{Sawin2026Remarks} --- Noga Alon, Thomas F.~Bloom,
+W.~T.~Gowers, Daniel Litt, Will Sawin, Arul Shankar, Jacob Tsimerman,
+Victor Wang, and Melanie Matchett Wood --- for the explicit choice of
+parameters in their \S2 that made a finite numerical reproduction
+tractable in the first place.
 
 We thank Farshid Hajir, Christian Maire, and Ravi Ramakrishna for the
-class-field-tower-cutting technique referenced throughout the
-construction, and David A.~Cox for the textbook treatment of genus
-theory that underlies the Phase~2 module.
+class-field tower-cutting technique \cite{HajirMaire2001} that is
+invoked, but not re-derived, in this artifact's Phase~3; and David
+A.~Cox, whose textbook treatment of genus theory underlies Phase~2.
 
-This artifact was developed inside the Flamehaven-TOE TOE-TEST cell
-``Integrating Algebraic Number Theory Breakthroughs (Erd\H{o}s--OpenAI)''
-and extracted to a standalone repository so that the verification
-surface could be independently installed, run, and cited without
-inheriting any Flamehaven-TOE governance layer. The Flamehaven-TOE
-Generative Discovery Charter informs the result-tagging discipline
-visible in the artifact's per-phase \texttt{result\_tags} fields.
+This artifact was developed and released by the author independently.
+The automated scanners listed in \S\ref{sec:repro}
+(AI-SLOP-Detector, SPAR Framework, SIDRCE) were run as part of the
+release process; their outputs are included in
+\path{reports/TRIPLE_INSPECTION_REPORT.md} as recorded scanner output,
+not as third-party endorsement. AI-SLOP-Detector is maintained by the
+same author as this artifact.
 
-Inspection runs against the artifact's source were performed using the
-open-source Flamehaven audit stack: AI-SLOP-Detector, SPAR Framework,
-and SIDRCE SaaS. The findings are recorded in
-\texttt{reports/TRIPLE\_INSPECTION\_REPORT.md}.
+We are grateful to the anonymous external reviewer whose two-round
+audit on the v0.1.x line drove the typography fixes, scope-tightening
+language, and explicit separation between this artifact's numerical
+reproduction and Sawin's separately published explicit lower bound,
+all of which are incorporated in the v0.2.0 manuscript.

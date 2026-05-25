@@ -25,22 +25,25 @@ admissibility.
 
 \subsection{This artifact has NOT been peer-reviewed}
 
-No external mathematician has reviewed this code base. Our confidence
-in the artifact rests on three independent signals:
+No external mathematician has reviewed this code base. The grounds on
+which a reader might choose to take the artifact's output at face value
+reduce to the following three internal checks --- none of which is a
+substitute for peer review:
 
 \begin{enumerate}[leftmargin=*]
-  \item the 59-test unit suite passes on CI (Ubuntu + Windows
+  \item the $60$-test unit suite passes on CI (Ubuntu + Windows
         $\times$ Python 3.11 / 3.12);
-  \item the central numerical reproduction matches the published
-        $\approx 6.24 \cdot 10^{-38}$ to $0.014\%$ relative error
-        (\S\ref{sec:eq22});
-  \item the source code is small (\(\approx\) 1\,000 LOC across four
-        modules) and intended to be readable by anyone who has read
-        \cite{Sawin2026Remarks} \S2.
+  \item the central numerical reproduction in \S\ref{sec:eq22} matches
+        the published value $\approx 6.24 \cdot 10^{-38}$ to a relative
+        error of $1.4 \cdot 10^{-4}$, consistent with the
+        two-significant-figure rounding in the source;
+  \item the source is small (\(\approx\) 1\,000 lines across four
+        modules) and intended to be readable cover-to-cover by anyone
+        who has read \S2 of \cite{Sawin2026Remarks}.
 \end{enumerate}
 
-None of these substitutes for mathematician review. The artifact is
-offered as input to such review, not as a substitute.
+We treat the artifact as input to mathematician review, not as a
+substitute for it.
 
 \subsection{Reported $0.014$ and $0.0318$ are NOT in either formal PDF}
 
@@ -54,18 +57,23 @@ numerical lower bound that appears verbatim in either formal PDF is
 $\delta_{\text{excess}} \approx 6.24 \cdot 10^{-38}$ from eq.~(2.2) of
 \cite{Sawin2026Remarks}.
 
-The artifact's \texttt{SOURCE\_CLAIMS} registry encodes this
-three-way provenance explicitly:
+The artifact records this three-way provenance in a small registry
+of tagged \texttt{SOURCE\_CLAIMS} entries:
 
 \begin{itemize}[leftmargin=*]
-  \item \texttt{openai\_index\_reported} ($\delta = 0.014$,
-        \texttt{verified\_numerical\_in\_formal\_pdf = False}),
-  \item \texttt{sawin\_rigorous\_lower\_bound}
-        ($\delta = 6.24 \cdot 10^{-38}$,
-        \texttt{verified\_numerical\_in\_formal\_pdf = True}),
-  \item \texttt{sawin\_refinement\_reported} ($\delta = 0.0318$,
-        \texttt{verified\_numerical\_in\_formal\_pdf = False}).
+  \item \tname{openai_index_reported} ($\delta = 0.014$), flagged as
+        not literally present in either formal PDF;
+  \item \tname{sawin_rigorous_lower_bound}
+        ($\delta = 6.24 \cdot 10^{-38}$), flagged as the only
+        numerical bound appearing verbatim in
+        \cite{Sawin2026Remarks};
+  \item \tname{sawin_refinement_reported} ($\delta = 0.0318$),
+        flagged as not literally present in either formal PDF.
 \end{itemize}
+
+Reproducing $0.014$ or $0.0318$ would require a different artifact
+working from a different (and in the first case unpublished) source;
+that is outside the scope claimed here.
 
 \subsection{This artifact does NOT improve the published bound}
 

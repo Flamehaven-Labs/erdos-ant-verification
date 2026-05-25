@@ -34,35 +34,42 @@ $L_T = \Q(\sqrt{5}, \sqrt{13}, \sqrt{17}, \sqrt{21}, \sqrt{33})$,
 and computes (eq.~(2.2)) a rigorous numerical lower bound
 $\delta \geq \approx 6.24 \times 10^{-38}$.
 
-\subsection{What this artifact verifies}
+\subsection{What this artifact reproduces}
 \label{sec:scope}
 
 This paper accompanies a Python package, \texttt{erdos-ant-verification},
-whose purpose is narrow and explicitly bounded:
+whose scope is deliberately narrow:
 
 \begin{itemize}[leftmargin=*]
-  \item we \emph{do not} re-prove Theorem~1.1;
-  \item we \emph{do not} construct the infinite Golod--Shafarevich tower;
-  \item we \emph{do} re-implement the finite, explicitly checkable parts
-        of the construction in pure Python, with exact small-integer
-        arithmetic for the algebraic-number-theory layer and
-        \texttt{mpmath} at 200-bit precision for the numerical evaluation
-        of eq.~(2.2);
-  \item we \emph{do} pin the published numerical value
-        $\approx 6.24 \times 10^{-38}$ as a regression test that fails if
-        our code drifts from the published source.
+  \item we \emph{do not} re-prove Theorem~1.1 of
+        \cite{Sawin2026Remarks};
+  \item we \emph{do not} construct the infinite Golod--Shafarevich tower
+        whose existence is invoked in the proof;
+  \item we \emph{do not} verify any separately published sharpening of
+        eq.~(2.2), including but not limited to Sawin's
+        explicit-lower-bound preprint and any informal value such as
+        $\delta \approx 0.014$ circulating in secondary coverage;
+  \item we \emph{do} re-implement, in pure Python, the finite and
+        explicitly computable steps of the eq.~(2.2) construction:
+        small-integer arithmetic for the algebraic-number-theory layer
+        and \texttt{mpmath} at $200$-bit precision for the final
+        numerical evaluation;
+  \item we \emph{do} pin the published value
+        $\delta_{\text{excess}} \approx 6.24 \times 10^{-38}$ as a
+        regression test that fails if our code drifts from the source.
 \end{itemize}
 
-The artifact is therefore neither a proof checker (it does not formalise
-the proof in a trusted kernel) nor an independent mathematical
-contribution (it produces no new theorem). It is a reproducibility
-artifact in the sense of, e.g., the ACM Artifact Evaluation guidelines:
-a citable, version-pinned, CI-verified executable that allows any
-third party to re-derive the published numerical value on their own
-hardware without relying on our reading of the source PDFs.
+The artifact is therefore neither a formal proof checker (it does not
+discharge proofs through a trusted logical kernel such as Lean or Coq)
+nor an independent mathematical contribution (it produces no new
+theorem and no improved bound). It is a reproducibility artifact in
+the spirit of an ACM Artifact Evaluation submission: a citable,
+version-pinned, CI-tested executable that lets a third party re-derive
+the published numerical value on their own hardware, without trusting
+our reading of the source PDFs.
 
 The remainder of the paper describes the three implementation phases
 (\S\S\ref{sec:phase1}--\ref{sec:phase3}), the central numerical
-reproduction (\S\ref{sec:eq22}), the explicit limits
+reproduction of eq.~(2.2) (\S\ref{sec:eq22}), the explicit limits
 (\S\ref{sec:limits}), and the reproducibility surface
 (\S\ref{sec:repro}).

@@ -39,7 +39,7 @@ Commit hash (v0.1.3 release tag) & \texttt{c8fe529} \\
 Python & 3.11 and 3.12 (CI-verified) \\
 numpy & $\geq 1.26$ \\
 mpmath & $\geq 1.3$ \\
-Test count & 60+ unit tests + 21 verify-script checks \\
+Test count & $60$ unit tests $+$ $21$ verifier checks \\
 CI matrix & Ubuntu $\times$ Windows $\times$ Python 3.11 / 3.12 \\
 Licence & MIT \\
 DOI (predecessor v0.1.1, source-only) & \href{https://doi.org/10.5281/zenodo.20366884}{10.5281/zenodo.20366884} \\
@@ -47,26 +47,31 @@ DOI (v0.1.3, first paper-bearing) & \href{https://doi.org/10.5281/zenodo.2037795
 \bottomrule
 \end{tabular}
 
-\subsection{Independent third-party inspection}
+\subsection{Supplementary automated scanners}
 
-In addition to its own test suite, the artifact was scanned by three
-independent inspection tools, with the following results recorded at
-\texttt{reports/TRIPLE\_INSPECTION\_REPORT.md} in the repository:
+In addition to its own test suite the source tree was run through
+three automated scanners; their outputs are recorded at
+\path{reports/TRIPLE_INSPECTION_REPORT.md} in the repository. We list
+them here for transparency and explicitly \emph{not} as third-party
+endorsement: one of the three (AI-SLOP-Detector) is maintained by the
+same author as this artifact.
 
-\begin{tabular}{lll}
+\begin{tabular}{llll}
 \toprule
-Tool & Result & Headline metric \\
+Scanner & Affiliation & Result & Headline metric \\
 \midrule
-AI-SLOP-Detector v3.7.5 & \texttt{clean} (6/6 files) & weighted deficit $= 2.83$ (threshold $30$) \\
-SPAR Framework v0.5.0 & \texttt{ACCEPT} (Grade PASS) & score $100/100$, claim drift $= 0$ \\
-SIDRCE SaaS v1.1.15 & \texttt{CERTIFIED} & omega $= 0.9289$, trace chain verified \\
+AI-SLOP-Detector v3.7.5 & in-house & \texttt{clean} (6/6 files) & weighted deficit $= 2.83$ (threshold $30$) \\
+SPAR Framework v0.5.0 & external & \texttt{ACCEPT} & score $100/100$, claim drift $= 0$ \\
+SIDRCE SaaS v1.1.15 & external & \texttt{CERTIFIED} & $\Omega = 0.9289$, trace chain verified \\
 \bottomrule
 \end{tabular}
 
-These cover structural-pattern review, claim-discipline review, and
-code-integrity certification respectively. None of them constitutes
-mathematical peer review; their relevance is bounded by the limits
-documented in \S\ref{sec:limits}.
+None of these tools performs mathematical peer review. Their scope is
+restricted to source-level pattern checks (structural slop, claim /
+documentation drift, code integrity); the substantive correctness of
+the eq.~(2.2) reproduction is not within their remit. See
+\S\ref{sec:limits} for the bound on what these scanners can and cannot
+attest to.
 
 \subsection{Citation}
 

@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "erdos-ant-verification"
-version = "0.1.4"
-description = "Independent reproducibility artifact for the OpenAI/Sawin disproof of the Erdos planar unit-distance conjecture."
+version = "0.2.0"
+description = "Executable reproduction of equation (2.2) in the 2026 Erdos unit-distance disproof remarks paper; finite numerical checks only."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }

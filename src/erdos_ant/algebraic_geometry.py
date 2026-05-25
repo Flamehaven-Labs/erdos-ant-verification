@@ -380,9 +380,9 @@ estimate_unit_distance_delta = local_density_exponent_probe
 #   3. exp(-x) for non-rational x avoids rational-multiple-of-pi alignment
 #      in the cos/sin mixer below.
 #
-# This binding is a Generative Discovery Charter "deterministic seed"
-# (docs/GENERATIVE_DISCOVERY_CHARTER.md section "Phase 1: Discovery Engine"
-# required output evidence). Downstream sweeps may override.
+# This binding is a deterministic seed for downstream sweeps; the
+# value is fixed so that repeated runs are bit-stable. Downstream
+# sweeps may override.
 CHI2_BOUNDARY_TWICE_OVER = 0.13533528323661270  # exp(-2), residual/tol = 2.00
 CHI2_BOUNDARY_X178 = 0.16864817604483140  # exp(-1.78), residual/tol ~= 1.886
 

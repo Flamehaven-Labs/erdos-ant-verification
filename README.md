@@ -4,25 +4,25 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20377950.svg)](https://doi.org/10.5281/zenodo.20377950)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](https://www.python.org/downloads/)
-[![Tests: 60+](https://img.shields.io/badge/tests-60%2B-brightgreen.svg)](tests/)
+[![Tests: 60](https://img.shields.io/badge/tests-60-brightgreen.svg)](tests/)
 [![Reproduction: 0.014%](https://img.shields.io/badge/eq(2.2)%20rel.%20err.-0.014%25-brightgreen.svg)](docs/REMARKS_PDF_REPRODUCTION.md)
 
-Independent Python reproduction of the finite, numerically checkable parts of the 2026 disproof of the Erdős planar unit-distance conjecture by Alon, Bloom, Gowers, Litt, Sawin, Shankar, Tsimerman, Wang, and Wood. Verified to 0.014% relative error against equation (2.2) of the remarks PDF.
+Executable reproduction of **equation (2.2)** in the 2026 Erdős unit-distance disproof remarks paper by Alon, Bloom, Gowers, Litt, Sawin, Shankar, Tsimerman, Wang, and Matchett Wood. Pure Python (NumPy + `mpmath` at 200-bit precision), MIT-licensed. Matches the published value `δ_excess ≈ 6.24 × 10⁻³⁸` to `1.4 × 10⁻⁴` relative error. **Not** a new proof, **not** a verification of any sharpened bound (e.g., Sawin's separately published `δ ≈ 0.014`), **not** peer-reviewed.
 
-## What This Is
+## What this is
 
-In 2026, an OpenAI assistant identified a construction that disproves the planar unit-distance conjecture of Erdős. The result was announced on the [OpenAI index page](https://openai.com/index/model-disproves-discrete-geometry-conjecture/) and written up in two PDFs (linked under [Primary sources](#primary-sources)). The underlying mathematics is the work of nine named authors.
+In May 2026, a reasoning model from OpenAI produced a construction that refutes the planar unit-distance conjecture of Erdős. The result was announced on the [OpenAI index page](https://openai.com/index/model-disproves-discrete-geometry-conjecture/) and written up in two PDFs (linked under [Primary sources](#primary-sources)). The substantive mathematics is the work of the nine human authors named above.
 
-The proof contains a numerical lower bound — equation (2.2) of the remarks PDF — that asserts an explicit, finite-precision excess `δ ≈ 6.24 × 10⁻³⁸` above the classical Erdős exponent for a specific multi-quadratic construction. The number is small enough that a naive `float64` evaluation collapses to zero by catastrophic cancellation. The published proof is correct but ships no code.
+The remarks paper contains a single rigorous numerical lower bound — equation (2.2) — that, for the explicit choice `T = {3, 5, 7, 11, 13, 17}`, `S = {101, ∞}`, `L_T = Q(√5, √13, √17, √21, √33)`, gives an exponent excess `δ_excess ≈ 6.24 × 10⁻³⁸` over the classical Erdős exponent. The number is small enough that a naive `float64` evaluation of eq (2.2) collapses to zero by catastrophic cancellation. The published proof is correct but ships no executable evaluation of that number.
 
 This repository:
 
-- re-derives eq (2.2) in `mpmath` at 200-bit precision and matches the published number to within `1.4 × 10⁻⁴` (0.014%) relative error;
-- checks every step of the construction that is amenable to finite computation (Phase 1: small `h(K)=1` lattices; Phase 2: `Q(√-5)` genus theory; Phase 3: Sawin multi-quadratic, finite parts);
-- stops at the boundary of the cited Golod–Shafarevich infinitude — the artifact verifies admissibility, not the infinite tower itself;
-- ships 60+ unit tests, a CI matrix across Linux and Windows, and frozen per-source-file SHA-256 evidence.
+- re-derives eq (2.2) in `mpmath` at 200-bit precision and matches the published two-significant-figure value to `1.4 × 10⁻⁴` relative error;
+- implements every step of the finite, explicitly computable portion of the construction (Phase 1: imaginary quadratic lattices with `h(K) = 1`; Phase 2: `Q(√-5)` Lemma 2.2 pigeonhole via genus theory; Phase 3: Sawin multi-quadratic setup, finite parts);
+- stops at the boundary of the cited Golod–Shafarevich infinitude — the artifact checks the admissibility inequality only; the tower's existence is taken as given from \cite{GolodShafarevich1964};
+- ships 60 unit tests, 21 verifier checks, a CI matrix across Linux × Windows × Python 3.11/3.12, and frozen per-source-file SHA-256 evidence.
 
-It is intended as a citable, runnable reference for the numerical content of the disproof — not as an independent mathematical contribution.
+The intended reader is anyone who, having read §2 of the remarks paper, wants a citable, runnable Python implementation of eq (2.2) on which they can run their own sensitivity checks. It is not a substitute for the published proof, and it is not a peer review of it.
 
 ## Quick Start
 
@@ -66,7 +66,7 @@ The reproduced quantity is the exponent excess `δ` in equation (2.2) of the rem
 
 | | |
 |---|---|
-| Test count | 60+ unit tests + 21 verifier checks, all green on CI |
+| Test count | 60 unit tests + 21 verifier checks, all green on CI |
 | Numerical reproduction | `6.2391e-38` computed vs `≈ 6.24e-38` published — **0.014% relative error** |
 | Precision needed | `mpmath` at 200-bit (float64 collapses the result to 0 via catastrophic cancellation) |
 | Source manifest | per-file SHA-256 in [`reports/verification_result.json`](reports/verification_result.json) under `source_sha256_manifest` |
@@ -83,9 +83,18 @@ print(f"{e.exponent_excess:.4e}")
 # 6.2391e-38
 ```
 
-## A note on secondary coverage
+## What this artifact verifies, and what it only cites
 
-The figures `0.014` and `0.0318` that have circulated in secondary coverage of the result do **not** appear verbatim in either formal PDF. The only verbatim numerical lower bound in the remarks PDF is `≈ 6.24 × 10⁻³⁸`, which is what this artifact reproduces. If a reader has seen the larger numbers attributed to this result, they were not stated in the formal source.
+There are several distinct numerical and mathematical claims associated with the 2026 disproof. They are not interchangeable, and this repository covers only one of them:
+
+| Claim | Source | This artifact … |
+|---|---|---|
+| Erdős unit-distance conjecture is false (∃ `δ > 0`, Theorem 1.1) | OpenAI 2026 proof PDF and remarks PDF | **cites only** — does not formalise or re-derive the proof |
+| `δ_excess ≈ 6.24 × 10⁻³⁸` for the explicit `(T, S, L_T)` of remarks §2 (eq 2.2) | Remarks PDF §2.1 | **reproduces** numerically to `1.4 × 10⁻⁴` relative error |
+| Sawin's later explicit lower bound `δ ≈ 0.014` | Sawin, "An explicit lower bound for the unit distance problem" ([arXiv:2605.20579](https://arxiv.org/abs/2605.20579)) | **does not verify** — different source, different construction, out of scope here |
+| Various sharper `δ` from community optimisation (forums, blogs, secondary coverage) | informal | **does not verify** — values not present verbatim in either formal PDF |
+
+If a reader has seen the larger numbers `0.014` or `0.0318` attributed to "the OpenAI/Sawin result", they were not stated verbatim in the formal proof or remarks PDF. The `6.24 × 10⁻³⁸` figure is the only rigorous numerical lower bound in those two documents, and it is the only claim this artifact pins.
 
 ## What it does (by phase)
 
@@ -119,7 +128,7 @@ The figures `0.014` and `0.0318` that have circulated in secondary coverage of t
 - [`docs/REMARKS_PDF_REPRODUCTION.md`](docs/REMARKS_PDF_REPRODUCTION.md) — the eq (2.2) reproduction in detail, why `mpmath` is required.
 - [`docs/DEVIATION_LOG.md`](docs/DEVIATION_LOG.md) — every place a number, command, or claim in the paper differs from a published source, and why.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md), [`SECURITY.md`](SECURITY.md), [`CHANGELOG.md`](CHANGELOG.md).
-- [`reports/TRIPLE_INSPECTION_REPORT.md`](reports/TRIPLE_INSPECTION_REPORT.md) — output of three scanners that were run against this repository. **Note on independence:** one of them (AI-SLOP-Detector) is maintained by the same author as this repository; the other two (SPAR Framework, SIDRCE SaaS) are external. The report is included as recorded scanner output, not as a third-party endorsement.
+- [`reports/TRIPLE_INSPECTION_REPORT.md`](reports/TRIPLE_INSPECTION_REPORT.md) — output of three automated source-level scanners (one in-house: AI-SLOP-Detector; two external: SPAR Framework, SIDRCE). Included for transparency, not as third-party endorsement; none of the three performs mathematical peer review.
 
 ## Primary sources
 
@@ -136,16 +145,17 @@ DOI is issued by Zenodo on each tagged release; see [Releases](https://github.co
 ```bibtex
 @software{erdos_ant_verification,
   author  = {Yun, Kwansub},
-  title   = {erdos-ant-verification: An Executable Verification Artifact
-             for the 2026 Disproof of the Erd\H{o}s Unit-Distance Conjecture},
-  version = {0.1.3},
+  title   = {erdos-ant-verification: An Executable Reproduction Artifact
+             for Equation (2.2) of the Erd\H{o}s Unit-Distance
+             Disproof Remarks Paper},
+  version = {0.2.0},
   year    = {2026},
   doi     = {10.5281/zenodo.20377950},
   url     = {https://github.com/Flamehaven-Labs/erdos-ant-verification}
 }
 ```
 
-The companion paper (LaTeX source in [`paper/main.tex`](paper/main.tex), compiled PDF bundled in the tag commit and attached as a release asset starting with `v0.1.3`) cites the same key. **Citing this software is not a substitute for citing the primary mathematical sources above** — please cite both.
+The companion paper (LaTeX source in [`paper/main.tex`](paper/main.tex), compiled PDF bundled in the tag commit and attached as a release asset) cites the same key. **Citing this software is not a substitute for citing the primary mathematical sources above** — please cite both.
 
 ## License
 

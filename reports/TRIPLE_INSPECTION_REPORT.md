@@ -12,7 +12,14 @@
 | **SPAR Framework** | `ACCEPT` (Grade: PASS) | score 100/100, claim_drift = 0 | PASS |
 | **SIDRCE SaaS** | `CERTIFIED` | omega = 0.9289 (S+) | PASS |
 
-All three independent inspection tools pass.
+All three scanners pass.
+
+**Note on independence.** Of the three scanners, AI-SLOP-Detector is
+maintained by the same author as this artifact (in-house); SPAR
+Framework and SIDRCE are external. None of the three performs
+mathematical peer review — they cover source-level pattern checks
+(structural slop, claim/documentation drift, code integrity) only.
+This report is recorded scanner output, not third-party endorsement.
 
 ---
 
@@ -95,7 +102,7 @@ All three tools converge on:
 ## Interpretation and limits
 
 - These three inspections cover **structural quality**, **claim discipline**, and **code-integrity certification**.
-- None of them verify the **underlying mathematical content** of the construction (that responsibility rests with the published OpenAI/Sawin PDFs, the 59-test unit suite, and the 0.01% numerical reproduction of remarks PDF eq (2.2)).
+- None of them verify the **underlying mathematical content** of the construction (that responsibility rests with the published remarks PDF and its authors, the 60-test unit suite, and the `1.4e-4` relative-error reproduction of eq (2.2)).
 - None of them constitute **peer review** by external mathematicians.
 
 The triple-clean result is consistent with the artifact's stated scope: an independent reproducibility artifact that produces verifiable numerical match to a published lower bound, with no mathematical claims beyond what the source PDFs establish.

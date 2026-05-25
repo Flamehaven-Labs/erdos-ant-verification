@@ -15,7 +15,7 @@ numerical claim.
   treated as "matches source within reasonable rounding". Anything
   larger is investigated before release.
 
-## Current ledger (artifact version 0.1.4)
+## Current ledger (artifact version 0.2.0)
 
 | Item | Source | Computed | Relative error | Status |
 |---|---|---|---|---|
@@ -65,6 +65,22 @@ would fail the test immediately).
   per release; they are implied stable.
 
 ## Per-release notes
+
+### v0.2.0 (2026-05-25)
+
+- No source-code or numerical-claim change versus v0.1.4.
+- Documentation-only positioning pass: paper title, abstract, §1.3
+  scope, §6.3 peer-review note, §7.3 scanner framing, §8
+  acknowledgements, and the README all reworded to bind the artifact
+  scope to eq (2.2) of \cite{Sawin2026Remarks} specifically, and to
+  state explicitly that the artifact does not reproduce Sawin's
+  separately published explicit lower bound or any informal figure in
+  secondary coverage.
+- Test count corrected from "59" / "60+" to the actual `60`
+  everywhere.
+- "Three independent inspection tools" reworded to "three automated
+  scanners (one in-house, two external)".
+- All ledger entries above remain bit-for-bit identical to v0.1.4.
 
 ### v0.1.4 (2026-05-25)
 

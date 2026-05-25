@@ -161,9 +161,9 @@ class ImaginaryQuadraticLattice:
                 "[K : Q] = 2 only; the asymptotic result requires [K : Q] -> infinity.",
             ],
             "paper_reference": "Proposition 2.2 with h(K) = 1 (degenerate case)",
-            # Generative Discovery Charter result_tags
-            # (docs/GENERATIVE_DISCOVERY_CHARTER.md, "Implementation
-            # Implications" section).
+            # Per-phase result tags: a small machine-readable
+            # provenance block (tier, evidence level, claim type) for
+            # downstream consumers and the verifier.
             "result_tags": {
                 "tier": "validated_numeric_proxy",
                 "evidence_level": "exact_finite_enumeration",

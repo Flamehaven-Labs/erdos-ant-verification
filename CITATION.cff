@@ -19,20 +19,25 @@ message: >-
 type: software
 
 title: >-
-  erdos-ant-verification: An Executable Verification Artifact for the
-  Sawin et al. Lower Bound on the Erdős Unit-Distance Exponent
+  erdos-ant-verification: An Executable Reproduction Artifact for
+  Equation (2.2) of the Erdős Unit-Distance Disproof Remarks Paper
 
 abstract: >-
-  An open-source Python implementation that computationally verifies the
-  finite, checkable parts of the 2026 OpenAI/Sawin disproof of the Erdős
-  planar unit-distance conjecture. Reproduces equation (2.2) of the
-  remarks PDF (delta >= ~6.24e-38 for the explicit construction with
-  T = {3,5,7,11,13,17}, S = {101, infinity}, L_T = Q(sqrt 5, sqrt 13,
-  sqrt 17, sqrt 21, sqrt 33)) to within 0.014% relative error using
-  mpmath at 200-bit precision. The artifact does NOT contain a new
-  mathematical proof, does NOT construct the infinite Golod-Shafarevich
-  tower, and has NOT been peer-reviewed. It is intended as a citable
-  reproducibility artifact for the published numerical lower bound.
+  An open-source Python implementation that re-derives equation (2.2)
+  of the 2026 Erdős unit-distance disproof remarks paper (Alon, Bloom,
+  Gowers, Litt, Sawin, Shankar, Tsimerman, Wang, Matchett Wood) for the
+  explicit construction T = {3,5,7,11,13,17}, S = {101, infinity},
+  L_T = Q(sqrt 5, sqrt 13, sqrt 17, sqrt 21, sqrt 33), and returns
+  delta_excess = 6.2391e-38, matching the published two-significant-figure
+  value 6.24e-38 to 1.4e-4 relative error. Uses mpmath at 200-bit
+  precision because the result collapses to zero in float64. The
+  artifact does NOT contain a new mathematical proof, does NOT
+  construct the infinite Golod-Shafarevich tower whose existence is
+  invoked in the proof, does NOT reproduce any sharpened bound such as
+  Sawin's separately published delta ~ 0.014, and has NOT been
+  peer-reviewed. It is a citable, CI-tested reproducibility artifact
+  for the single numerical lower bound stated verbatim in the remarks
+  paper.
 
 authors:
   - family-names: Yun
@@ -41,7 +46,7 @@ authors:
   - name: Flamehaven Initiative
     website: 'https://github.com/Flamehaven-Labs'
 
-version: 0.1.4
+version: 0.2.0
 date-released: '2026-05-25'
 
 doi: 10.5281/zenodo.20377950

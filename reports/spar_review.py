@@ -66,7 +66,7 @@ def main() -> None:
             check_id="C_pytest_passed",
             label="pytest_passed",
             status="PASS" if checks["pytest_passed"] else "FAIL",
-            detail="Full unit test suite passes (59 tests).",
+            detail="Full unit test suite passes (60 tests).",
             basis="subject_derived",
         ),
         CheckResult(

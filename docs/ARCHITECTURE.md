@@ -36,11 +36,11 @@ src/erdos_ant/
 | Phase 2 | Q(sqrt(-5)) has h = 2; its HCF is Q(i, sqrt 5) by genus theory; Lemma 2.2 pigeonhole works in h > 1 case. | Does not construct an infinite tower; `K` fixed. |
 | Phase 3 | The finite, explicitly checkable parts of the Sawin construction (splitting of 101 in `L_T`, Galois-rank counts, GS admissibility, eq (2.2) numerical value). | Does not construct the infinite pro-2 tower; existence is Hajir-Maire. |
 
-## Charter-style result_tags
+## Per-phase result_tags
 
-Every `analyze()` method emits a `result_tags` dict with the following
-keys (modeled after the `Flamehaven-TOE` Generative Discovery Charter,
-adapted to a standalone setting):
+Every `analyze()` method emits a small `result_tags` dict that
+records, in machine-readable form, what kind of evidence the phase
+contributes. The keys are:
 
 - `tier`: `validated_numeric_proxy` (we verify finite, checkable parts).
 - `evidence_level`: e.g. `exact_finite_enumeration`,
