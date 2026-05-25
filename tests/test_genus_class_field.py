@@ -109,10 +109,11 @@ def test_lemma_22_pigeonhole_with_two_principal_primes() -> None:
     assert out.s == 2
     assert out.k == 1
     assert out.candidate_count == 4  # (k+1)^s = 4
-    # Both primes are principal-class; every product is principal.
+    # In Cl(K) of order 2, [P_j] = [cP_j], so eps choice does not change
+    # the class. With both primes principal, all 4 candidates are
+    # principal. The Lemma 2.2 lower bound (k+1)^s / h(K) = 2 is met.
     assert out.principal_class_fiber_size == 4
     assert out.non_principal_class_fiber_size == 0
-    # Predicted lower bound is (k+1)^s / h(K) = 2.
     assert out.predicted_lower_bound == 2
 
 
@@ -120,10 +121,25 @@ def test_lemma_22_pigeonhole_with_mixed_genus() -> None:
     # 29 is principal (a^2 + 5 b^2), 3 is non-principal (2 p form).
     probe = GenusClassFieldProbe(split_primes=(29, 3))
     out = probe.lemma_22_pigeonhole()
-    # Class group is Z/2Z; products partition evenly.
     assert out.candidate_count == 4
-    assert out.principal_class_fiber_size + out.non_principal_class_fiber_size == 4
-    # Pigeonhole lower bound is still 2.
+    # In Cl(K) of order 2 the eps choice does not change the class, so all
+    # 4 candidates land in the SAME class, determined by the parity of
+    # non-principal primes. (29 principal, 3 non-principal) -> total class
+    # = 1 -> all 4 candidates are non-principal.
+    assert out.non_principal_class_fiber_size == 4
+    assert out.principal_class_fiber_size == 0
+    # The Lemma 2.2 lower bound (k+1)^s / h(K) = 2 is still met by the
+    # populated (non-principal) fiber.
+    assert out.predicted_lower_bound == 2
+
+
+def test_lemma_22_pigeonhole_with_two_non_principal_primes() -> None:
+    # 3 and 7 are both non-principal genus (mod 20 in {3, 7}).
+    probe = GenusClassFieldProbe(split_primes=(3, 7))
+    out = probe.lemma_22_pigeonhole()
+    # Total class = 1 + 1 = 0 mod 2, so all 4 candidates are principal.
+    assert out.principal_class_fiber_size == 4
+    assert out.non_principal_class_fiber_size == 0
     assert out.predicted_lower_bound == 2
 
 

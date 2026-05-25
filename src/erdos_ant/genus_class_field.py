@@ -178,58 +178,67 @@ class GenusClassFieldProbe:
     def lemma_22_pigeonhole(self) -> IdealClassAssignment:
         """Demonstrate Lemma 2.2 with k_j = 1 for all selected split primes.
 
-        For each split prime p the rational ideal (p) factors as P * P' with
-        P != P'. Take all 2^s products of the form
-            A_eps = prod_j P_j^{eps_j} (P_j')^{1 - eps_j}
-        for eps in {0, 1}^s and pigeonhole them by ideal class.
+        For each split prime ``p`` the rational ideal ``(p)`` factors as
+        ``P * cP`` with ``P != cP`` (where ``c`` denotes complex
+        conjugation). Take all ``2^s`` products of the form
 
-        We use the genus-theoretic representability test
-        (two_squares_with_5) to detect whether each P_j is principal: it is
-        iff p_j is represented as a^2 + 5 b^2 (principal genus, mod 20 in
-        {1, 9}). Otherwise P_j is in the non-principal class.
+            A_eps = prod_j P_j^{eps_j} (cP_j)^{1 - eps_j}
+
+        for ``eps in {0, 1}^s`` and pigeonhole them by ideal class.
+
+        For ``K = Q(sqrt(-5))`` the class group ``Cl(K)`` has order 2,
+        and the principal-genus test (representability as ``a^2 + 5 b^2``)
+        identifies the class of each ``P_j``: principal if representable,
+        non-principal otherwise.
+
+        Important: because ``Cl(K)`` has order 2, every element is its own
+        inverse. Combined with the fact that ``[P_j] * [cP_j] = [(p_j)]``
+        is principal (so ``[cP_j] = [P_j]^{-1} = [P_j]``), the choice of
+        ``eps_j`` does NOT change the ideal class of ``A_eps``:
+
+            [A_eps] = sum_j (eps_j * [P_j] + (1 - eps_j) * [cP_j])
+                    = sum_j [P_j]   (independent of eps).
+
+        Hence all ``2^s`` candidates land in the SAME class, determined by
+        the parity of the count of non-principal primes in ``split_primes``.
+
+        This is the correct behavior of the pigeonhole for ``h = 2`` and
+        ``k_j = 1``. For ``h >= 3`` the partition would be non-trivial; an
+        extension to ``h >= 3`` (e.g. ``K = Q(sqrt(-23))`` with ``h = 3``)
+        is out of scope for this artifact (see module docstring).
         """
 
         s = len(self.split_primes)
         k = 1
         candidate_count = (k + 1) ** s
-        principal_class_count = 0
-        non_principal_class_count = 0
 
         prime_classes = []  # 0 = principal, 1 = non-principal
         for p in self.split_primes:
             rep = two_squares_with_5(p)
             prime_classes.append(0 if rep is not None else 1)
 
-        for eps in range(candidate_count):
-            # Compute ideal class as sum of contributions mod 2 (the class
-            # group Cl(K) ~= Z/2Z so addition mod 2 is the group law).
-            cls = 0
-            for j in range(s):
-                bit = (eps >> j) & 1
-                # eps_j = 1 contributes class(P_j), eps_j = 0 contributes
-                # class(P_j') = -class(P_j) = class(P_j) (since the group
-                # has exponent 2). So the total class is sum of bits times
-                # prime_class -- but BOTH P_j and P_j' have the same class
-                # in an order-2 group, so eps_j choice does not change cls.
-                # The contribution that DOES change cls is the product of
-                # primes whose ideal class is non-principal.
-                cls = (cls + bit * prime_classes[j]) % 2
-            if cls == 0:
-                principal_class_count += 1
-            else:
-                non_principal_class_count += 1
+        # In Cl(K) of order 2, [P_j] = [cP_j] (both are the unique order-2
+        # element when (p_j) is non-principal, both are trivial otherwise).
+        # The class of A_eps is therefore independent of eps and equals
+        # sum_j [P_j] mod h(K). All 2^s candidates land in this single
+        # class.
+        total_class = sum(prime_classes) % CLASS_NUMBER
+
+        if total_class == 0:
+            principal_class_count = candidate_count
+            non_principal_class_count = 0
+        else:
+            principal_class_count = 0
+            non_principal_class_count = candidate_count
 
         # Lemma 2.2 lower bound: |U| >= (k+1)^s / h(K).
         predicted = candidate_count // CLASS_NUMBER
-        # Norm-one elements correspond to ratios of ideals in the principal
-        # fiber: for each pair (eps, eta) with eps != eta both principal,
-        # alpha_eps / alpha_eta gives u with |u| = 1 and u distinct.
-        if principal_class_count >= 1:
-            # Conservatively count: at least principal_class_count - 1
-            # distinct norm-one elements (one is the identity).
-            norm_one = max(0, principal_class_count - 1)
-        else:
-            norm_one = 0
+
+        # The populated fiber has ``candidate_count`` ideals; ratios
+        # ``alpha_eps / alpha_eta`` with ``eps != eta`` give distinct
+        # norm-one elements (excluding the identity ratio).
+        populated = max(principal_class_count, non_principal_class_count)
+        norm_one = max(0, populated - 1)
 
         return IdealClassAssignment(
             s=s,

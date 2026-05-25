@@ -38,8 +38,8 @@ authors:
   - name: Flamehaven Initiative
     website: 'https://github.com/Flamehaven-Labs'
 
-version: 0.1.1
-date-released: '2026-05-24'
+version: 0.1.2
+date-released: '2026-05-25'
 
 url: 'https://github.com/Flamehaven-Labs/erdos-ant-verification'
 repository-code: 'https://github.com/Flamehaven-Labs/erdos-ant-verification'

@@ -1,0 +1,995 @@
+{
+  "project_path": ".",
+  "total_files": 6,
+  "deficit_files": 0,
+  "clean_files": 6,
+  "avg_deficit_score": 2.2880784051842835,
+  "weighted_deficit_score": 2.8333021205440962,
+  "avg_ldr": 1.0,
+  "avg_inflation": 0.0396551724137931,
+  "avg_ddc": 1.0,
+  "overall_status": "clean",
+  "structural_coherence": 0.7427,
+  "coherence_level": "vr_structural",
+  "file_results": [
+    {
+      "file_path": "D:\\Sanctum\\Flamehaven-Labs\\erdos-ant-verification\\scripts\\fetch_pdfs.py",
+      "ldr": {
+        "total_lines": 55,
+        "logic_lines": 55,
+        "empty_lines": 0,
+        "ldr_score": 1.0,
+        "grade": "S++",
+        "is_abc_interface": false,
+        "is_type_stub": false,
+        "is_packaging_init": false
+      },
+      "inflation": {
+        "jargon_count": 0,
+        "avg_complexity": 2.0,
+        "inflation_score": 0.0,
+        "status": "PASS",
+        "jargon_found": [],
+        "jargon_details": [],
+        "justified_jargon": [],
+        "is_config_file": false
+      },
+      "ddc": {
+        "imported": [
+          "pathlib",
+          "pypdf",
+          "sys",
+          "urllib"
+        ],
+        "actually_used": [
+          "pathlib",
+          "pypdf",
+          "sys",
+          "urllib"
+        ],
+        "unused": [],
+        "fake_imports": [],
+        "type_checking_imports": [
+          "__future__"
+        ],
+        "usage_ratio": 1.0,
+        "grade": "EXCELLENT"
+      },
+      "deficit_score": 0.0,
+      "status": "clean",
+      "warnings": [],
+      "pattern_issues": [],
+      "docstring_inflation": {
+        "total_docstrings": 0,
+        "inflated_count": 0,
+        "avg_inflation_ratio": 0.0,
+        "max_inflation_ratio": 0.0,
+        "total_docstring_lines": 9,
+        "total_implementation_lines": 41,
+        "overall_ratio": 0.21951219512195122,
+        "status": "PASS",
+        "details": []
+      },
+      "hallucination_deps": {
+        "total_hallucinated": 0,
+        "category_usage": [],
+        "hallucinated_deps": [],
+        "worst_category": "none",
+        "status": "PASS"
+      },
+      "context_jargon": {
+        "total_jargon": 0,
+        "justified_jargon": 0,
+        "unjustified_jargon": 0,
+        "evidence_details": [],
+        "worst_offenders": [],
+        "justification_ratio": 1.0,
+        "status": "PASS"
+      },
+      "dcf": {
+        "Module": 0.003745318352059925,
+        "Expr": 0.04119850187265917,
+        "ImportFrom": 0.00749063670411985,
+        "Import": 0.011235955056179775,
+        "Assign": 0.02247191011235955,
+        "FunctionDef": 0.011235955056179775,
+        "If": 0.003745318352059925,
+        "Constant": 0.09737827715355805,
+        "alias": 0.018726591760299626,
+        "Name": 0.20224719101123595,
+        "Subscript": 0.003745318352059925,
+        "BinOp": 0.011235955056179775,
+        "Dict": 0.003745318352059925,
+        "arguments": 0.011235955056179775,
+        "With": 0.003745318352059925,
+        "Try": 0.003745318352059925,
+        "Return": 0.00749063670411985,
+        "For": 0.003745318352059925,
+        "Compare": 0.003745318352059925,
+        "Raise": 0.003745318352059925,
+        "Store": 0.04119850187265917,
+        "Attribute": 0.06741573033707865,
+        "Load": 0.23595505617977527,
+        "Div": 0.011235955056179775,
+        "arg": 0.011235955056179775,
+        "Call": 0.0898876404494382,
+        "withitem": 0.003745318352059925,
+        "ExceptHandler": 0.003745318352059925,
+        "Tuple": 0.003745318352059925,
+        "Eq": 0.003745318352059925,
+        "JoinedStr": 0.011235955056179775,
+        "keyword": 0.0149812734082397,
+        "FormattedValue": 0.018726591760299626,
+        "GeneratorExp": 0.003745318352059925,
+        "comprehension": 0.003745318352059925
+      }
+    },
+    {
+      "file_path": "D:\\Sanctum\\Flamehaven-Labs\\erdos-ant-verification\\scripts\\verify.py",
+      "ldr": {
+        "total_lines": 242,
+        "logic_lines": 242,
+        "empty_lines": 0,
+        "ldr_score": 1.0,
+        "grade": "S++",
+        "is_abc_interface": false,
+        "is_type_stub": false,
+        "is_packaging_init": false
+      },
+      "inflation": {
+        "jargon_count": 0,
+        "avg_complexity": 5.0,
+        "inflation_score": 0.0,
+        "status": "PASS",
+        "jargon_found": [],
+        "jargon_details": [],
+        "justified_jargon": [],
+        "is_config_file": false
+      },
+      "ddc": {
+        "imported": [
+          "datetime",
+          "erdos_ant",
+          "json",
+          "numpy",
+          "pathlib",
+          "subprocess",
+          "sys"
+        ],
+        "actually_used": [
+          "datetime",
+          "erdos_ant",
+          "json",
+          "numpy",
+          "pathlib",
+          "subprocess",
+          "sys"
+        ],
+        "unused": [],
+        "fake_imports": [],
+        "type_checking_imports": [
+          "__future__"
+        ],
+        "usage_ratio": 1.0,
+        "grade": "EXCELLENT"
+      },
+      "deficit_score": 5.0,
+      "status": "clean",
+      "warnings": [
+        "PATTERNS: 1 high-severity issues found"
+      ],
+      "pattern_issues": [
+        {
+          "pattern_id": "god_function",
+          "severity": "high",
+          "axis": "style",
+          "file": "D:\\Sanctum\\Flamehaven-Labs\\erdos-ant-verification\\scripts\\verify.py",
+          "line": 41,
+          "column": 0,
+          "message": "God function 'execute_verification': 161 logic lines (limit 50), complexity=12 (limit 10)",
+          "code": null,
+          "suggestion": "Break into smaller single-responsibility functions. Each function should do one thing and fit on one screen."
+        }
+      ],
+      "docstring_inflation": {
+        "total_docstrings": 0,
+        "inflated_count": 0,
+        "avg_inflation_ratio": 0.0,
+        "max_inflation_ratio": 0.0,
+        "total_docstring_lines": 6,
+        "total_implementation_lines": 225,
+        "overall_ratio": 0.02666666666666667,
+        "status": "PASS",
+        "details": []
+      },
+      "hallucination_deps": {
+        "total_hallucinated": 0,
+        "category_usage": [
+          {
+            "category": "ml",
+            "imported": [
+              "numpy"
+            ],
+            "used": [
+              "numpy"
+            ],
+            "unused": [],
+            "usage_ratio": 1.0
+          },
+          {
+            "category": "serialization",
+            "imported": [
+              "json"
+            ],
+            "used": [
+              "json"
+            ],
+            "unused": [],
+            "usage_ratio": 1.0
+          }
+        ],
+        "hallucinated_deps": [],
+        "worst_category": "none",
+        "status": "PASS"
+      },
+      "context_jargon": {
+        "total_jargon": 0,
+        "justified_jargon": 0,
+        "unjustified_jargon": 0,
+        "evidence_details": [],
+        "worst_offenders": [],
+        "justification_ratio": 1.0,
+        "status": "PASS"
+      },
+      "dcf": {
+        "Module": 0.0009182736455463728,
+        "Expr": 0.0073461891643709825,
+        "ImportFrom": 0.006427915518824609,
+        "Import": 0.0036730945821854912,
+        "Assign": 0.030303030303030304,
+        "FunctionDef": 0.0036730945821854912,
+        "If": 0.0009182736455463728,
+        "Constant": 0.19100091827364554,
+        "alias": 0.02203856749311295,
+        "Name": 0.17355371900826447,
+        "Subscript": 0.03397612488521579,
+        "BinOp": 0.010101010101010102,
+        "arguments": 0.0036730945821854912,
+        "Return": 0.0027548209366391185,
+        "Compare": 0.02938475665748393,
+        "Raise": 0.0009182736455463728,
+        "Store": 0.03581267217630854,
+        "Attribute": 0.0440771349862259,
+        "Load": 0.22773186409550045,
+        "Div": 0.004591368227731864,
+        "List": 0.005509641873278237,
+        "Call": 0.047750229568411386,
+        "Dict": 0.006427915518824609,
+        "Tuple": 0.006427915518824609,
+        "arg": 0.0009182736455463728,
+        "JoinedStr": 0.0073461891643709825,
+        "IfExp": 0.0027548209366391185,
+        "Eq": 0.008264462809917356,
+        "keyword": 0.02295684113865932,
+        "BoolOp": 0.004591368227731864,
+        "GeneratorExp": 0.0009182736455463728,
+        "FormattedValue": 0.015610651974288337,
+        "UnaryOp": 0.0018365472910927456,
+        "NotEq": 0.0009182736455463728,
+        "Is": 0.006427915518824609,
+        "And": 0.004591368227731864,
+        "Gt": 0.0027548209366391185,
+        "ListComp": 0.0009182736455463728,
+        "Add": 0.0009182736455463728,
+        "comprehension": 0.0018365472910927456,
+        "USub": 0.0018365472910927456,
+        "IsNot": 0.006427915518824609,
+        "Lt": 0.0027548209366391185,
+        "In": 0.0018365472910927456,
+        "Sub": 0.004591368227731864
+      }
+    },
+    {
+      "file_path": "D:\\Sanctum\\Flamehaven-Labs\\erdos-ant-verification\\src\\erdos_ant\\algebraic_geometry.py",
+      "ldr": {
+        "total_lines": 348,
+        "logic_lines": 348,
+        "empty_lines": 0,
+        "ldr_score": 1.0,
+        "grade": "S++",
+        "is_abc_interface": false,
+        "is_type_stub": false,
+        "is_packaging_init": false
+      },
+      "inflation": {
+        "jargon_count": 0,
+        "avg_complexity": 3.4285714285714284,
+        "inflation_score": 0.0,
+        "status": "PASS",
+        "jargon_found": [],
+        "jargon_details": [],
+        "justified_jargon": [],
+        "is_config_file": false
+      },
+      "ddc": {
+        "imported": [
+          "dataclasses",
+          "math",
+          "numpy"
+        ],
+        "actually_used": [
+          "dataclasses",
+          "math",
+          "numpy"
+        ],
+        "unused": [],
+        "fake_imports": [],
+        "type_checking_imports": [
+          "__future__",
+          "typing"
+        ],
+        "usage_ratio": 1.0,
+        "grade": "EXCELLENT"
+      },
+      "deficit_score": 5.0,
+      "status": "clean",
+      "warnings": [
+        "PATTERNS: 1 high-severity issues found"
+      ],
+      "pattern_issues": [
+        {
+          "pattern_id": "function_clone_cluster",
+          "severity": "high",
+          "axis": "structure",
+          "file": "D:\\Sanctum\\Flamehaven-Labs\\erdos-ant-verification\\src\\erdos_ant\\algebraic_geometry.py",
+          "line": 1,
+          "column": 0,
+          "message": "4 structurally similar functions detected (AST JSD < 0.05): count_near_unit_pairs, __post_init__, __post_init__, __post_init__. Review for unnecessary decomposition.",
+          "code": null,
+          "suggestion": "If these functions represent a fragmented complex operation, consider consolidating or using a data-driven dispatch table."
+        }
+      ],
+      "docstring_inflation": {
+        "total_docstrings": 5,
+        "inflated_count": 4,
+        "avg_inflation_ratio": 1.3217391304347825,
+        "max_inflation_ratio": 2.5,
+        "total_docstring_lines": 51,
+        "total_implementation_lines": 367,
+        "overall_ratio": 0.13896457765667575,
+        "status": "WARNING",
+        "details": [
+          {
+            "name": "local_density_exponent_probe",
+            "type": "function",
+            "line": 329,
+            "docstring_lines": 10,
+            "implementation_lines": 4,
+            "inflation_ratio": 2.5,
+            "severity": "critical",
+            "docstring_preview": "Compute (exponent, delta) from a single finite observation.  Solves k = n^(1 + delta) for the local "
+          },
+          {
+            "name": "SourceClaim",
+            "type": "class",
+            "line": 35,
+            "docstring_lines": 12,
+            "implementation_lines": 8,
+            "inflation_ratio": 1.5,
+            "severity": "warning",
+            "docstring_preview": "Audit record for an external published delta claim.  Stored as metadata only. A local probe must nev"
+          },
+          {
+            "name": "calculate_density_metrics",
+            "type": "function",
+            "line": 447,
+            "docstring_lines": 1,
+            "implementation_lines": 1,
+            "inflation_ratio": 1.0,
+            "severity": "warning",
+            "docstring_preview": "Backward-compatible dictionary surface for reports and dashboards."
+          },
+          {
+            "name": "is_admissible",
+            "type": "function",
+            "line": 464,
+            "docstring_lines": 1,
+            "implementation_lines": 1,
+            "inflation_ratio": 1.0,
+            "severity": "warning",
+            "docstring_preview": "Return True when r < d^2 / 4, the standard infinite-tower proxy."
+          },
+          {
+            "name": "ProofDeltaFormula",
+            "type": "class",
+            "line": 133,
+            "docstring_lines": 14,
+            "implementation_lines": 23,
+            "inflation_ratio": 0.6086956521739131,
+            "severity": "info",
+            "docstring_preview": "The closed-form delta from Theorem 2.3 of unit-distance-proof.pdf.  Combining Proposition 2.2 (numbe"
+          }
+        ]
+      },
+      "hallucination_deps": {
+        "total_hallucinated": 0,
+        "category_usage": [
+          {
+            "category": "ml",
+            "imported": [
+              "numpy"
+            ],
+            "used": [
+              "numpy"
+            ],
+            "unused": [],
+            "usage_ratio": 1.0
+          }
+        ],
+        "hallucinated_deps": [],
+        "worst_category": "none",
+        "status": "PASS"
+      },
+      "context_jargon": {
+        "total_jargon": 0,
+        "justified_jargon": 0,
+        "unjustified_jargon": 0,
+        "evidence_details": [],
+        "worst_offenders": [],
+        "justification_ratio": 1.0,
+        "status": "PASS"
+      },
+      "dcf": {
+        "Module": 0.0006027727546714888,
+        "Expr": 0.012658227848101266,
+        "ImportFrom": 0.0024110910186859553,
+        "Import": 0.0006027727546714888,
+        "Assign": 0.020494273658830622,
+        "ClassDef": 0.004219409282700422,
+        "AnnAssign": 0.022905364677516575,
+        "FunctionDef": 0.008438818565400843,
+        "Constant": 0.10307414104882459,
+        "alias": 0.004822182037371911,
+        "Name": 0.22784810126582278,
+        "Call": 0.04460518384569018,
+        "Subscript": 0.011452682338758288,
+        "Tuple": 0.012055455093429777,
+        "arguments": 0.008438818565400843,
+        "For": 0.0030138637733574444,
+        "Return": 0.009644364074743821,
+        "BinOp": 0.02652200120554551,
+        "Attribute": 0.04219409282700422,
+        "If": 0.011452682338758288,
+        "Store": 0.05244122965641953,
+        "keyword": 0.02652200120554551,
+        "Load": 0.2423146473779385,
+        "arg": 0.014466546112115732,
+        "BitOr": 0.0006027727546714888,
+        "BoolOp": 0.0030138637733574444,
+        "Raise": 0.008438818565400843,
+        "Compare": 0.01567209162145871,
+        "ListComp": 0.0012055455093429777,
+        "Dict": 0.0012055455093429777,
+        "Or": 0.0030138637733574444,
+        "LtE": 0.0054249547920434,
+        "Lt": 0.006027727546714889,
+        "Sub": 0.004219409282700422,
+        "Div": 0.004219409282700422,
+        "List": 0.0012055455093429777,
+        "Mult": 0.011452682338758288,
+        "Eq": 0.0024110910186859553,
+        "UnaryOp": 0.0018083182640144665,
+        "NotEq": 0.0018083182640144665,
+        "comprehension": 0.0012055455093429777,
+        "AugAssign": 0.0012055455093429777,
+        "USub": 0.0018083182640144665,
+        "JoinedStr": 0.0006027727546714888,
+        "Add": 0.003616636528028933,
+        "Pow": 0.0030138637733574444,
+        "Slice": 0.0024110910186859553,
+        "FormattedValue": 0.0006027727546714888,
+        "Mod": 0.0006027727546714888
+      }
+    },
+    {
+      "file_path": "D:\\Sanctum\\Flamehaven-Labs\\erdos-ant-verification\\src\\erdos_ant\\genus_class_field.py",
+      "ldr": {
+        "total_lines": 226,
+        "logic_lines": 226,
+        "empty_lines": 0,
+        "ldr_score": 1.0,
+        "grade": "S++",
+        "is_abc_interface": false,
+        "is_type_stub": false,
+        "is_packaging_init": false
+      },
+      "inflation": {
+        "jargon_count": 0,
+        "avg_complexity": 2.933333333333333,
+        "inflation_score": 0.0,
+        "status": "PASS",
+        "jargon_found": [],
+        "jargon_details": [],
+        "justified_jargon": [],
+        "is_config_file": false
+      },
+      "ddc": {
+        "imported": [
+          "dataclasses",
+          "math"
+        ],
+        "actually_used": [
+          "dataclasses",
+          "math"
+        ],
+        "unused": [],
+        "fake_imports": [],
+        "type_checking_imports": [
+          "__future__"
+        ],
+        "usage_ratio": 1.0,
+        "grade": "EXCELLENT"
+      },
+      "deficit_score": 0.0,
+      "status": "clean",
+      "warnings": [],
+      "pattern_issues": [],
+      "docstring_inflation": {
+        "total_docstrings": 2,
+        "inflated_count": 0,
+        "avg_inflation_ratio": 0.6904761904761905,
+        "max_inflation_ratio": 0.7142857142857143,
+        "total_docstring_lines": 52,
+        "total_implementation_lines": 202,
+        "overall_ratio": 0.25742574257425743,
+        "status": "PASS",
+        "details": [
+          {
+            "name": "splits_completely_in_K",
+            "type": "function",
+            "line": 78,
+            "docstring_lines": 5,
+            "implementation_lines": 7,
+            "inflation_ratio": 0.7142857142857143,
+            "severity": "info",
+            "docstring_preview": "True iff the rational prime p splits in O_K = Z[sqrt(-5)].  Criterion: p odd, p != 5, and (-5 / p) ="
+          },
+          {
+            "name": "two_squares_with_5",
+            "type": "function",
+            "line": 109,
+            "docstring_lines": 8,
+            "implementation_lines": 12,
+            "inflation_ratio": 0.6666666666666666,
+            "severity": "info",
+            "docstring_preview": "Return (a, b) with p = a^2 + 5 b^2 if it exists, else None.  For p splitting completely in Q(sqrt(-5"
+          }
+        ]
+      },
+      "hallucination_deps": {
+        "total_hallucinated": 0,
+        "category_usage": [],
+        "hallucinated_deps": [],
+        "worst_category": "none",
+        "status": "PASS"
+      },
+      "context_jargon": {
+        "total_jargon": 0,
+        "justified_jargon": 0,
+        "unjustified_jargon": 0,
+        "evidence_details": [],
+        "worst_offenders": [],
+        "justification_ratio": 1.0,
+        "status": "PASS"
+      },
+      "dcf": {
+        "Module": 0.0010787486515641855,
+        "Expr": 0.011866235167206042,
+        "ImportFrom": 0.003236245954692557,
+        "Assign": 0.023732470334412083,
+        "ClassDef": 0.003236245954692557,
+        "FunctionDef": 0.012944983818770227,
+        "Constant": 0.12944983818770225,
+        "alias": 0.003236245954692557,
+        "Name": 0.21898597626752966,
+        "UnaryOp": 0.004314994606256742,
+        "AnnAssign": 0.011866235167206042,
+        "Call": 0.037756202804746494,
+        "arguments": 0.012944983818770227,
+        "If": 0.017259978425026967,
+        "Return": 0.021574973031283712,
+        "For": 0.007551240560949299,
+        "BinOp": 0.036677454153182305,
+        "While": 0.0010787486515641855,
+        "Subscript": 0.007551240560949299,
+        "Store": 0.04638619201725998,
+        "USub": 0.002157497303128371,
+        "keyword": 0.012944983818770227,
+        "arg": 0.012944983818770227,
+        "Compare": 0.017259978425026967,
+        "Load": 0.2243797195253506,
+        "BitOr": 0.0010787486515641855,
+        "Raise": 0.003236245954692557,
+        "List": 0.003236245954692557,
+        "AugAssign": 0.003236245954692557,
+        "Lt": 0.008629989212513484,
+        "In": 0.002157497303128371,
+        "Tuple": 0.008629989212513484,
+        "Not": 0.002157497303128371,
+        "Eq": 0.004314994606256742,
+        "Add": 0.011866235167206042,
+        "Break": 0.0010787486515641855,
+        "Attribute": 0.032362459546925564,
+        "Dict": 0.003236245954692557,
+        "Mod": 0.004314994606256742,
+        "Sub": 0.003236245954692557,
+        "Pow": 0.0010787486515641855,
+        "FloorDiv": 0.0010787486515641855,
+        "GtE": 0.0010787486515641855,
+        "Mult": 0.014023732470334413,
+        "IfExp": 0.0010787486515641855,
+        "Div": 0.0010787486515641855,
+        "JoinedStr": 0.0010787486515641855,
+        "BitAnd": 0.0010787486515641855,
+        "FormattedValue": 0.0010787486515641855,
+        "IsNot": 0.0010787486515641855,
+        "RShift": 0.0010787486515641855
+      }
+    },
+    {
+      "file_path": "D:\\Sanctum\\Flamehaven-Labs\\erdos-ant-verification\\src\\erdos_ant\\imaginary_quadratic_lattice.py",
+      "ldr": {
+        "total_lines": 145,
+        "logic_lines": 145,
+        "empty_lines": 0,
+        "ldr_score": 1.0,
+        "grade": "S++",
+        "is_abc_interface": false,
+        "is_type_stub": false,
+        "is_packaging_init": false
+      },
+      "inflation": {
+        "jargon_count": 3,
+        "avg_complexity": 2.5,
+        "inflation_score": 0.2379310344827586,
+        "status": "PASS",
+        "jargon_found": [
+          "embedding",
+          "embedding",
+          "embedding"
+        ],
+        "jargon_details": [
+          {
+            "word": "embedding",
+            "line": 12,
+            "category": "ai_ml",
+            "justified": false
+          },
+          {
+            "word": "embedding",
+            "line": 59,
+            "category": "ai_ml",
+            "justified": false
+          },
+          {
+            "word": "embedding",
+            "line": 88,
+            "category": "ai_ml",
+            "justified": false
+          }
+        ],
+        "justified_jargon": [],
+        "is_config_file": false
+      },
+      "ddc": {
+        "imported": [
+          "dataclasses",
+          "math",
+          "numpy"
+        ],
+        "actually_used": [
+          "dataclasses",
+          "math",
+          "numpy"
+        ],
+        "unused": [],
+        "fake_imports": [],
+        "type_checking_imports": [
+          "__future__",
+          "typing"
+        ],
+        "usage_ratio": 1.0,
+        "grade": "EXCELLENT"
+      },
+      "deficit_score": 3.7284704311057015,
+      "status": "clean",
+      "warnings": [],
+      "pattern_issues": [],
+      "docstring_inflation": {
+        "total_docstrings": 3,
+        "inflated_count": 3,
+        "avg_inflation_ratio": 1.0,
+        "max_inflation_ratio": 1.0,
+        "total_docstring_lines": 31,
+        "total_implementation_lines": 113,
+        "overall_ratio": 0.2743362831858407,
+        "status": "WARNING",
+        "details": [
+          {
+            "name": "gaussian_integer_grid",
+            "type": "function",
+            "line": 178,
+            "docstring_lines": 1,
+            "implementation_lines": 1,
+            "inflation_ratio": 1.0,
+            "severity": "warning",
+            "docstring_preview": "Factory: Z[i] lattice with coefficients in [-bound, bound]."
+          },
+          {
+            "name": "eisenstein_integer_lattice",
+            "type": "function",
+            "line": 184,
+            "docstring_lines": 1,
+            "implementation_lines": 1,
+            "inflation_ratio": 1.0,
+            "severity": "warning",
+            "docstring_preview": "Factory: Z[omega] (Eisenstein integers, triangular lattice)."
+          },
+          {
+            "name": "quadratic_minus_two_lattice",
+            "type": "function",
+            "line": 190,
+            "docstring_lines": 1,
+            "implementation_lines": 1,
+            "inflation_ratio": 1.0,
+            "severity": "warning",
+            "docstring_preview": "Factory: Z[sqrt(-2)] rectangular lattice."
+          }
+        ]
+      },
+      "hallucination_deps": {
+        "total_hallucinated": 0,
+        "category_usage": [
+          {
+            "category": "ml",
+            "imported": [
+              "numpy"
+            ],
+            "used": [
+              "numpy"
+            ],
+            "unused": [],
+            "usage_ratio": 1.0
+          }
+        ],
+        "hallucinated_deps": [],
+        "worst_category": "none",
+        "status": "PASS"
+      },
+      "context_jargon": {
+        "total_jargon": 0,
+        "justified_jargon": 0,
+        "unjustified_jargon": 0,
+        "evidence_details": [],
+        "worst_offenders": [],
+        "justification_ratio": 1.0,
+        "status": "PASS"
+      },
+      "dcf": {
+        "Module": 0.0013175230566534915,
+        "Expr": 0.011857707509881422,
+        "ImportFrom": 0.006587615283267457,
+        "Import": 0.0013175230566534915,
+        "AnnAssign": 0.003952569169960474,
+        "Assign": 0.026350461133069828,
+        "ClassDef": 0.0013175230566534915,
+        "FunctionDef": 0.011857707509881422,
+        "Constant": 0.14624505928853754,
+        "alias": 0.007905138339920948,
+        "Name": 0.18708827404479578,
+        "Subscript": 0.017127799736495388,
+        "Tuple": 0.028985507246376812,
+        "Call": 0.04479578392621871,
+        "arguments": 0.011857707509881422,
+        "Return": 0.017127799736495388,
+        "Store": 0.03557312252964427,
+        "Load": 0.24110671936758893,
+        "If": 0.013175230566534914,
+        "Assert": 0.0013175230566534915,
+        "Attribute": 0.04084321475625823,
+        "keyword": 0.014492753623188406,
+        "arg": 0.014492753623188406,
+        "Compare": 0.017127799736495388,
+        "Raise": 0.005270092226613966,
+        "BinOp": 0.022397891963109356,
+        "BoolOp": 0.0013175230566534915,
+        "Dict": 0.002635046113306983,
+        "NotIn": 0.0013175230566534915,
+        "Lt": 0.003952569169960474,
+        "Eq": 0.006587615283267457,
+        "Add": 0.006587615283267457,
+        "UnaryOp": 0.006587615283267457,
+        "LtE": 0.002635046113306983,
+        "Sub": 0.003952569169960474,
+        "And": 0.0013175230566534915,
+        "List": 0.002635046113306983,
+        "JoinedStr": 0.0013175230566534915,
+        "Mult": 0.007905138339920948,
+        "USub": 0.006587615283267457,
+        "GtE": 0.0013175230566534915,
+        "Gt": 0.0013175230566534915,
+        "Div": 0.002635046113306983,
+        "FormattedValue": 0.0013175230566534915,
+        "Slice": 0.005270092226613966,
+        "Pow": 0.0013175230566534915
+      }
+    },
+    {
+      "file_path": "D:\\Sanctum\\Flamehaven-Labs\\erdos-ant-verification\\src\\erdos_ant\\sawin_multiquadratic.py",
+      "ldr": {
+        "total_lines": 216,
+        "logic_lines": 216,
+        "empty_lines": 0,
+        "ldr_score": 1.0,
+        "grade": "S++",
+        "is_abc_interface": false,
+        "is_type_stub": false,
+        "is_packaging_init": false
+      },
+      "inflation": {
+        "jargon_count": 0,
+        "avg_complexity": 2.875,
+        "inflation_score": 0.0,
+        "status": "PASS",
+        "jargon_found": [],
+        "jargon_details": [],
+        "justified_jargon": [],
+        "is_config_file": false
+      },
+      "ddc": {
+        "imported": [
+          "dataclasses",
+          "mpmath"
+        ],
+        "actually_used": [
+          "dataclasses",
+          "mpmath"
+        ],
+        "unused": [],
+        "fake_imports": [],
+        "type_checking_imports": [
+          "__future__"
+        ],
+        "usage_ratio": 1.0,
+        "grade": "EXCELLENT"
+      },
+      "deficit_score": 0.0,
+      "status": "clean",
+      "warnings": [],
+      "pattern_issues": [],
+      "docstring_inflation": {
+        "total_docstrings": 4,
+        "inflated_count": 1,
+        "avg_inflation_ratio": 0.7964285714285715,
+        "max_inflation_ratio": 1.0,
+        "total_docstring_lines": 82,
+        "total_implementation_lines": 213,
+        "overall_ratio": 0.38497652582159625,
+        "status": "PASS",
+        "details": [
+          {
+            "name": "evaluate_sawin_exponent_bound",
+            "type": "function",
+            "line": 171,
+            "docstring_lines": 20,
+            "implementation_lines": 20,
+            "inflation_ratio": 1.0,
+            "severity": "warning",
+            "docstring_preview": "Evaluate remarks PDF eq (2.2).  With r = 2 * prod(T) = 510510, choose K = ceil(18 r^3 / pi) (the rem"
+          },
+          {
+            "name": "splits_completely_in_L_T",
+            "type": "function",
+            "line": 122,
+            "docstring_lines": 4,
+            "implementation_lines": 5,
+            "inflation_ratio": 0.8,
+            "severity": "info",
+            "docstring_preview": "101 splits completely in each Q(sqrt(d)) for d in L_T radicands.  Splitting in a compositum L_T = pr"
+          },
+          {
+            "name": "galois_rank_report",
+            "type": "function",
+            "line": 136,
+            "docstring_lines": 11,
+            "implementation_lines": 14,
+            "inflation_ratio": 0.7857142857142857,
+            "severity": "info",
+            "docstring_preview": "Compute d(G_T^infty) and r(G_T^S) bounds for the Sawin tower.  Remarks PDF section 2.1: d(G_T^infty)"
+          },
+          {
+            "name": "splits_completely_in_Q_sqrt_d",
+            "type": "function",
+            "line": 109,
+            "docstring_lines": 3,
+            "implementation_lines": 5,
+            "inflation_ratio": 0.6,
+            "severity": "info",
+            "docstring_preview": "True iff the odd rational prime p splits in Q(sqrt(d)).  Criterion (for p coprime to d, p odd): (d /"
+          }
+        ]
+      },
+      "hallucination_deps": {
+        "total_hallucinated": 0,
+        "category_usage": [],
+        "hallucinated_deps": [],
+        "worst_category": "none",
+        "status": "PASS"
+      },
+      "context_jargon": {
+        "total_jargon": 0,
+        "justified_jargon": 0,
+        "unjustified_jargon": 0,
+        "evidence_details": [],
+        "worst_offenders": [],
+        "justification_ratio": 1.0,
+        "status": "PASS"
+      },
+      "dcf": {
+        "Module": 0.001177856301531213,
+        "Expr": 0.01060070671378092,
+        "ImportFrom": 0.002355712603062426,
+        "AnnAssign": 0.0176678445229682,
+        "Assign": 0.03180212014134275,
+        "ClassDef": 0.002355712603062426,
+        "FunctionDef": 0.007067137809187279,
+        "Constant": 0.14840989399293286,
+        "alias": 0.0035335689045936395,
+        "Name": 0.22025912838633688,
+        "Subscript": 0.008244994110718492,
+        "Tuple": 0.014134275618374558,
+        "BinOp": 0.04711425206124853,
+        "Call": 0.03415783274440518,
+        "arguments": 0.007067137809187279,
+        "If": 0.008244994110718492,
+        "While": 0.002355712603062426,
+        "Return": 0.011778563015312132,
+        "For": 0.001177856301531213,
+        "Import": 0.001177856301531213,
+        "Store": 0.05535924617196702,
+        "Load": 0.21083627797408716,
+        "Mult": 0.014134275618374558,
+        "keyword": 0.016489988221436984,
+        "arg": 0.004711425206124852,
+        "BoolOp": 0.0035335689045936395,
+        "Raise": 0.001177856301531213,
+        "Compare": 0.0176678445229682,
+        "IfExp": 0.001177856301531213,
+        "Attribute": 0.02237926972909305,
+        "Dict": 0.004711425206124852,
+        "Or": 0.002355712603062426,
+        "Mod": 0.01060070671378092,
+        "NotEq": 0.001177856301531213,
+        "AugAssign": 0.001177856301531213,
+        "Eq": 0.011778563015312132,
+        "UnaryOp": 0.0035335689045936395,
+        "GeneratorExp": 0.001177856301531213,
+        "Add": 0.004711425206124852,
+        "Div": 0.008244994110718492,
+        "LtE": 0.002355712603062426,
+        "List": 0.001177856301531213,
+        "FloorDiv": 0.001177856301531213,
+        "And": 0.001177856301531213,
+        "Not": 0.001177856301531213,
+        "comprehension": 0.001177856301531213,
+        "Sub": 0.004711425206124852,
+        "Pow": 0.004711425206124852,
+        "In": 0.001177856301531213,
+        "USub": 0.002355712603062426,
+        "Lt": 0.001177856301531213
+      }
+    }
+  ],
+  "js_file_results": [],
+  "go_file_results": []
+}

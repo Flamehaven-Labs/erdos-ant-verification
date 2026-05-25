@@ -154,9 +154,10 @@ def galois_rank_report() -> GaloisRankReport:
     abs_S = len(S_SET_SPLIT) + 1
     r_bound = d_G_infty + (abs_S - 1)  # remarks PDF: r(G_T^S) <= r(G_T^inf) + |S| - 1
     gs_threshold = (d_G_infty * d_G_infty) / 4.0
-    admissible = r_bound <= gs_threshold + 1.0
-    # +1 slack accounts for the documented r = 6, threshold = 6.25
-    # (the strict inequality 6 <= 6.25 holds).
+    # Strict Golod-Shafarevich admissibility: r(G) <= d(G)^2 / 4. For the
+    # documented Sawin parameters this gives 6 <= 6.25, which is strict
+    # and needs no slack.
+    admissible = r_bound <= gs_threshold
 
     return GaloisRankReport(
         T=T_SET,

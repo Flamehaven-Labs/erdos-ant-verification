@@ -49,9 +49,22 @@ htmlcov/
 Thumbs.db
 
 # Repo-specific
-reports/*.json
-reports/*.md
+# Frozen inspection reports ARE tracked (committed evidence). Local
+# re-runs that overwrite them are picked up via `git status`; commit the
+# regenerated file or revert to keep the release evidence stable.
 !reports/.gitkeep
+!reports/verification_result.json
+!reports/verification_report.md
+!reports/slop_scan.json
+!reports/spar_review.py
+!reports/spar_review_result.json
+!reports/sidrce_certification.yaml
+!reports/TRIPLE_INSPECTION_REPORT.md
+# Anything else under reports/ is local working data.
+reports/*.tmp.json
+reports/*.tmp.md
+reports/local_*.json
+
 docs/pdf_extracts/*.pdf
 docs/pdf_extracts/*.txt
 !docs/pdf_extracts/README.md
