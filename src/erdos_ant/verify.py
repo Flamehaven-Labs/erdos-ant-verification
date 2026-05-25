@@ -98,8 +98,11 @@ def _run_pytest(repo_root: Path) -> dict[str, object]:
         capture_output=True,
         check=False,
     )
+    # The recorded "command" string uses the canonical "python" placeholder
+    # rather than sys.executable, so the recorded value is environment
+    # independent (the actual subprocess still runs with sys.executable).
     return {
-        "command": " ".join(cmd),
+        "command": "python -m pytest -q tests",
         "returncode": proc.returncode,
         "stdout": proc.stdout.strip(),
         "stderr": proc.stderr.strip(),
@@ -228,7 +231,10 @@ def execute_verification(repo_root: Path | None = None) -> dict[str, object]:
         "schema_id": "erdos_ant_verification.v1",
         "schema_version": "1.0.0",
         "generated_at_utc": datetime.now(UTC).isoformat(),
-        "repo_root": str(repo_root),
+        # repo_root is intentionally omitted from the report payload so that
+        # the file is environment-independent (the SHA-256 manifest below
+        # binds the result to the source state using repository-relative
+        # paths, which are stable across Windows/Linux/macOS).
         "verdict": "PASS" if all(checks.values()) else "REVIEW_REQUIRED",
         "checks": checks,
         "source_sha256_manifest": sha_manifest,
@@ -297,7 +303,6 @@ def write_report(result: dict[str, object], repo_root: Path) -> tuple[Path, Path
 
 **Verdict:** `{result["verdict"]}`
 **Generated:** `{result["generated_at_utc"]}`
-**Repo:** `{result["repo_root"]}`
 
 ## Checks
 

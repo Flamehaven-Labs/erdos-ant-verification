@@ -1,8 +1,7 @@
 # erdos-ant-verification report
 
 **Verdict:** `PASS`
-**Generated:** `2026-05-25T04:37:47.246562+00:00`
-**Repo:** `D:\Sanctum\Flamehaven-Labs\erdos-ant-verification`
+**Generated:** `2026-05-25T04:45:32.096106+00:00`
 
 ## Checks
 
@@ -46,12 +45,12 @@
 | `src/erdos_ant/algebraic_geometry.py` | `bb4114da77bf727c99dbcf2237724abfb8faf74c87eec85b400ad2350a46a55e` |
 | `src/erdos_ant/imaginary_quadratic_lattice.py` | `fe93dc8a8ef8dcece0769546b3517bca5d601144d98b9437ff091783f41062fe` |
 | `src/erdos_ant/genus_class_field.py` | `246e768575601d48bc074128b4e2a6f025534c925e0f25389af3d5611db7e89a` |
-| `src/erdos_ant/verify.py` | `f495cb2091881a20a58d2b633c48b61db78f0786848f1e9df51a51d7746ed803` |
+| `src/erdos_ant/verify.py` | `464cf299d409ca2a809e8ffd252153e48ba289a3fe219159777eb5500192f00d` |
 
 ## Pytest
 
 ```text
-D:\Sanctum\venv\Scripts\python.exe -m pytest -q tests
+python -m pytest -q tests
 returncode=0
 ............................................................             [100%]
 ```
