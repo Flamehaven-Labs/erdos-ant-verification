@@ -20,7 +20,6 @@
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{microtype}
 \usepackage{enumitem}
-\usepackage{seqsplit}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{booktabs}
@@ -52,11 +51,13 @@
 \newtheorem{verification}{Verification}[section]
 
 % Macros
-% Breakable monospace identifier (long test/function names with underscores).
-% \seqsplit makes every character a break opportunity, preventing overflow
-% into the right margin. Argument is taken verbatim — write \tname{foo_bar},
-% not \tname{foo\_bar}.
-\newcommand{\tname}[1]{{\ttfamily\seqsplit{#1}}}
+% Breakable monospace identifier (long test / function / path names with
+% underscores). Built on \DeclareUrlCommand from the url package (already
+% loaded transitively by hyperref): the argument is taken verbatim, so
+% underscores need no backslash-escape, and line breaks are permitted
+% after _, /, ., :, -, ( and ).  Write \tname{foo_bar}, not \tname{foo\_bar}.
+\DeclareUrlCommand{\tname}{\urlstyle{tt}%
+  \def\UrlBreaks{\do\.\do\/\do\_\do\-\do\:\do\(\do\)}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\C}{\mathbb{C}}
