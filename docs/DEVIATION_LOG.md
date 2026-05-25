@@ -15,7 +15,7 @@ numerical claim.
   treated as "matches source within reasonable rounding". Anything
   larger is investigated before release.
 
-## Current ledger (artifact version 0.2.3)
+## Current ledger (artifact version 0.2.4)
 
 | Item | Source | Computed | Relative error | Status |
 |---|---|---|---|---|
@@ -65,6 +65,14 @@ release. The observed error is `1.4e-4`.
   per release; they are implied stable.
 
 ## Per-release notes
+
+### v0.2.4 (2026-05-25)
+
+- Paper-bearing patch over v0.2.3. Adds the compiled `paper/main.pdf`
+  built from the v0.2.3 paper sources, and fills in the v0.2.3 Zenodo
+  DOI (`10.5281/zenodo.20382963`) into `CITATION.cff`, `README.md`,
+  and the README citation block.
+- No source code, test count, or numerical claim changed versus v0.2.3.
 
 ### v0.2.3 (2026-05-25)
 

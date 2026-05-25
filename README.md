@@ -1,7 +1,7 @@
 # OpenAI Erdős Unit-Distance Disproof: Eq. (2.2) Executable Reproduction
 
 [![CI](https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction/actions/workflows/ci.yml/badge.svg)](https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction/actions/workflows/ci.yml)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20377950.svg)](https://doi.org/10.5281/zenodo.20377950)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20382963.svg)](https://doi.org/10.5281/zenodo.20382963)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](https://www.python.org/downloads/)
 [![Tests: 60](https://img.shields.io/badge/tests-60-brightgreen.svg)](tests/)
@@ -144,7 +144,7 @@ If a reader has seen the larger numbers `0.014` or `0.0318` attributed to "the O
 
 Preferred citation metadata lives in [`CITATION.cff`](CITATION.cff) (recognised by Zenodo and by the GitHub "Cite this repository" sidebar).
 
-DOI is issued by Zenodo on each tagged release; see [Releases](https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction/releases). Latest paper-bearing DOI: [10.5281/zenodo.20377950](https://doi.org/10.5281/zenodo.20377950) (v0.1.3). Predecessor source-only DOI: [10.5281/zenodo.20366884](https://doi.org/10.5281/zenodo.20366884) (v0.1.1).
+DOI is issued by Zenodo on each tagged release; see [Releases](https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction/releases). Latest DOI: [10.5281/zenodo.20382963](https://doi.org/10.5281/zenodo.20382963) (v0.2.3, source-only). Earlier paper-bearing DOI: [10.5281/zenodo.20377950](https://doi.org/10.5281/zenodo.20377950) (v0.1.3). Predecessor source-only DOI: [10.5281/zenodo.20366884](https://doi.org/10.5281/zenodo.20366884) (v0.1.1).
 
 ```bibtex
 @software{erdos_ant_verification,
@@ -152,9 +152,9 @@ DOI is issued by Zenodo on each tagged release; see [Releases](https://github.co
   title   = {openai-erdos-eq22-reproduction: Executable Reproduction
              of Equation (2.2) in the OpenAI Erd\H{o}s Unit-Distance
              Disproof Remarks},
-  version = {0.2.3},
+  version = {0.2.4},
   year    = {2026},
-  doi     = {10.5281/zenodo.20377950},
+  doi     = {10.5281/zenodo.20382963},
   url     = {https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction}
 }
 ```

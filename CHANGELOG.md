@@ -5,6 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.4] - 2026-05-25 (paper-bearing patch + DOI fill-in)
+
+Patch release over v0.2.3. No source code, no test count, and no
+numerical claim change. This release exists to:
+
+- bundle the compiled `paper/main.pdf` (built from v0.2.3 sources via
+  the CI Paper workflow) into the tag commit, mirroring the
+  v0.1.3 / v0.1.4 paper-bearing pattern;
+- fill in the v0.2.3 Zenodo DOI now that it has been issued.
+
+### Changed (0.2.4)
+
+- `paper/main.pdf`: added the compiled PDF for the v0.2.3 paper
+  revision (Reproduction theorem environment, eq.~(2.2) binding,
+  tabularx pinned-environment table, 200-bit precision-budget
+  rationale, supplementary-checks framing, removed anonymous-external-
+  reviewer line). The PDF reflects the paper source at commit
+  `bac48ff` (the v0.2.3 tag commit).
+- `CITATION.cff`: bump `version` to `0.2.4`; update `doi` field to the
+  v0.2.3 DOI [10.5281/zenodo.20382963](https://doi.org/10.5281/zenodo.20382963).
+- `README.md`: DOI badge and citation block updated to point at the
+  v0.2.3 DOI; bibtex block bumped to `version = {0.2.4}`.
+- `pyproject.toml`: bump version to `0.2.4`.
+
+### Audit log (0.2.4)
+
+The v0.2.3 release was source-only at the tag (commit `bac48ff`);
+v0.2.4 closes the paper-bearing surface by bundling the compiled PDF
+into a follow-up tag, exactly as v0.1.3 did over the v0.1.2 source-only
+snapshot. The PDF inside `paper/main.pdf` is the v0.2.3 paper
+(`\date{Version 0.2.3 --- 2026-05-25}`); the v0.2.4 manuscript version
+is intentionally unchanged because no paper source moved.
+
 ## [0.2.3] - 2026-05-25 (paper readability + jargon cleanup)
 
 Patch release over v0.2.2. No numerical claim and no test-count change

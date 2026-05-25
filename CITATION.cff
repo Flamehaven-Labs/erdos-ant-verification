@@ -46,10 +46,10 @@ authors:
   - name: Flamehaven Initiative
     website: 'https://github.com/Flamehaven-Labs'
 
-version: 0.2.3
+version: 0.2.4
 date-released: '2026-05-25'
 
-doi: 10.5281/zenodo.20377950
+doi: 10.5281/zenodo.20382963
 
 url: 'https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction'
 repository-code: 'https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction'
