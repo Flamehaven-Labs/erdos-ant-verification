@@ -56,18 +56,12 @@ paper/
 
 ## Release-time substitutions
 
-As of v0.1.4 there are no `<COMMIT_HASH>` or `<ZENODO_DOI>` placeholders
-left in the paper sources — both are filled in with the v0.1.3 release
-values:
-
-- Commit hash: `c8fe529` (v0.1.3 release tag)
-- Zenodo DOI: [10.5281/zenodo.20377950](https://doi.org/10.5281/zenodo.20377950) (v0.1.3 deposit)
-
-For future paper-bearing releases that need to refer to a new release
-tag or DOI, edit `paper/main.tex` (abstract footnote) and
-`paper/sections/07_reproducibility.tex` (reproducibility table) in the
-same commit that closes the new release; do not reintroduce placeholder
-syntax.
+As of v0.2.5 the paper sources contain no inline per-release DOI or
+commit-hash references. Per-release metadata (Zenodo DOI, release
+date, commit hash) is maintained exclusively in `CITATION.cff` at the
+repository root and on the GitHub Releases page. This removes the
+chicken-and-egg drift between Zenodo issuance and PDF rebuild that
+required the v0.1.3 / v0.1.4 fill-in patch cycle.
 
 Do not retag a paper source as a numbered release until the
 corresponding code, report evidence, and CI-produced PDF artifact are

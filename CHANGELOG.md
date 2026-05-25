@@ -5,6 +5,45 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.5] - 2026-05-25 (drop inline DOI from PDF)
+
+Patch release over v0.2.4. No source code, no test count, and no
+numerical claim change. This release removes the recurring
+inline-DOI drift surface from the paper PDF.
+
+### Changed (0.2.5)
+
+- `paper/main.tex`: the abstract's "Reproduction" footnote no longer
+  enumerates per-release Zenodo DOIs and commit hashes. Instead it
+  points the reader at `CITATION.cff` and the GitHub Releases page,
+  which are the canonical metadata surfaces recognised by Zenodo and
+  GitHub.
+- `paper/sections/07_reproducibility.tex`: the pinned-environment table
+  no longer carries per-release DOI rows or a Tagged-revisions line.
+  The version row now reads `v0.2.5`; per-release DOIs are routed to
+  `CITATION.cff`.
+- `paper/README.md`: replaced the v0.1.4-era release-time-substitution
+  note with the explicit v0.2.5 policy that paper sources contain no
+  inline per-release DOIs or commit-hashes.
+- `pyproject.toml`, `CITATION.cff`, `README.md` (bibtex block): bump
+  version to `0.2.5`.
+
+### Rationale (0.2.5)
+
+The v0.1.3 / v0.1.4 fill-in cycle and the v0.2.3 / v0.2.4 fill-in cycle
+both demonstrated the same structural defect: every new tagged release
+that gets a Zenodo DOI requires a follow-up patch to amend the paper's
+inline DOI listing. That created a chicken-and-egg between Zenodo
+issuance and PDF rebuild, and a slow accumulation of OUTDATED
+per-release entries inside successive paper revisions. By removing the
+per-release DOI surface from the PDF and routing it to `CITATION.cff`
+(the canonical citation metadata file), the paper text stays stable
+across patch releases and the DOI ledger lives in one place.
+
+The paper-toe-template at `D:\Sanctum\Flamehaven-TOE\paper-toe-template`
+already adopts this convention; the templated `paper/main.tex.j2` has
+no inline DOI block.
+
 ## [0.2.4] - 2026-05-25 (paper-bearing patch + DOI fill-in)
 
 Patch release over v0.2.3. No source code, no test count, and no

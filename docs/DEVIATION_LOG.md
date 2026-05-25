@@ -15,7 +15,7 @@ numerical claim.
   treated as "matches source within reasonable rounding". Anything
   larger is investigated before release.
 
-## Current ledger (artifact version 0.2.4)
+## Current ledger (artifact version 0.2.5)
 
 | Item | Source | Computed | Relative error | Status |
 |---|---|---|---|---|
@@ -65,6 +65,17 @@ release. The observed error is `1.4e-4`.
   per release; they are implied stable.
 
 ## Per-release notes
+
+### v0.2.5 (2026-05-25)
+
+- Drop inline per-release DOI / commit-hash references from
+  `paper/main.tex` (abstract footnote) and
+  `paper/sections/07_reproducibility.tex` (pinned-environment table).
+  DOI metadata now lives exclusively in `CITATION.cff` and on the
+  GitHub Releases page.
+- No source code, test count, or numerical claim changed versus v0.2.4.
+- Eliminates the recurring DOI-fill-in patch cycle (v0.1.3 -> v0.1.4
+  and v0.2.3 -> v0.2.4 were both motivated by this drift).
 
 ### v0.2.4 (2026-05-25)
 
