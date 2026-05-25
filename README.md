@@ -128,12 +128,11 @@ If a reader has seen the larger numbers `0.014` or `0.0318` attributed to "the O
 
 - [`docs/PROOF_ORIGIN.md`](docs/PROOF_ORIGIN.md) — what was proved (by the authors), what was not, primary sources.
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — module boundaries, claim / non-claim per layer.
-- [`docs/SOURCE_CODE_ALIGNMENT_AUDIT.md`](docs/SOURCE_CODE_ALIGNMENT_AUDIT.md) — source-PDF to code mapping, hardcoding audit, slop / spaghetti boundary.
+- [`docs/SOURCE_CODE_ALIGNMENT_AUDIT.md`](docs/SOURCE_CODE_ALIGNMENT_AUDIT.md) — source-PDF to code mapping, hardcoding audit, and maintainability boundary.
 - [`docs/PAPER_SCIENTIFIC_READINESS_AUDIT.md`](docs/PAPER_SCIENTIFIC_READINESS_AUDIT.md) — paper content suitability, bibliography scope, and CI/CD PDF production boundary.
 - [`docs/REMARKS_PDF_REPRODUCTION.md`](docs/REMARKS_PDF_REPRODUCTION.md) — the eq (2.2) reproduction in detail, why `mpmath` is required.
 - [`docs/DEVIATION_LOG.md`](docs/DEVIATION_LOG.md) — every place a number, command, or claim in the paper differs from a published source, and why.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md), [`SECURITY.md`](SECURITY.md), [`CHANGELOG.md`](CHANGELOG.md).
-- [`reports/TRIPLE_INSPECTION_REPORT.md`](reports/TRIPLE_INSPECTION_REPORT.md) — output of three automated source-level scanners (one in-house: AI-SLOP-Detector; two external: SPAR Framework, SIDRCE). Included for transparency, not as third-party endorsement; none of the three performs mathematical peer review.
 
 ## Primary sources
 
@@ -153,7 +152,7 @@ DOI is issued by Zenodo on each tagged release; see [Releases](https://github.co
   title   = {openai-erdos-eq22-reproduction: Executable Reproduction
              of Equation (2.2) in the OpenAI Erd\H{o}s Unit-Distance
              Disproof Remarks},
-  version = {0.2.2},
+  version = {0.2.3},
   year    = {2026},
   doi     = {10.5281/zenodo.20377950},
   url     = {https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction}

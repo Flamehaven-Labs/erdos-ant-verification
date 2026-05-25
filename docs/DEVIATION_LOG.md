@@ -15,7 +15,7 @@ numerical claim.
   treated as "matches source within reasonable rounding". Anything
   larger is investigated before release.
 
-## Current ledger (artifact version 0.2.2)
+## Current ledger (artifact version 0.2.3)
 
 | Item | Source | Computed | Relative error | Status |
 |---|---|---|---|---|
@@ -66,6 +66,18 @@ release. The observed error is `1.4e-4`.
 
 ## Per-release notes
 
+### v0.2.3 (2026-05-25)
+
+- Paper/readability release only. The abstract reproduction instructions
+  were shortened, the pinned-environment table was made line-wrappable,
+  and the public paper now frames supplementary checks as local
+  author-operated engineering evidence only.
+- Added a precision-budget explanation for the 200-bit mpmath setting,
+  clarified the `1e-3` tolerance versus observed `1.4e-4` relative error,
+  and softened the finite Golod-Shafarevich admissibility wording.
+- No numerical claim, code path, test count, or source-PDF mapping
+  changed versus v0.2.2.
+
 ### v0.2.2 (2026-05-25)
 
 - Public naming alignment only. Repository/package metadata now uses
@@ -95,7 +107,7 @@ release. The observed error is `1.4e-4`.
 
 - No source-code or numerical-claim change versus v0.1.4.
 - Documentation-only positioning pass: paper title, abstract, §1.3
-  scope, §6.3 peer-review note, §7.3 scanner framing, §8
+  scope, §6.3 peer-review note, §7.3 release-check framing, §8
   acknowledgements, and the README all reworded to bind the artifact
   scope to eq (2.2) of \cite{Sawin2026Remarks} specifically, and to
   state explicitly that the artifact does not reproduce Sawin's
@@ -103,8 +115,8 @@ release. The observed error is `1.4e-4`.
   secondary coverage.
 - Test count corrected from "59" / "60+" to the actual `60`
   everywhere.
-- "Three independent inspection tools" reworded to "three automated
-  scanners (one in-house, two external)".
+- "Three independent inspection tools" reworded to recorded local
+  release checks.
 - All ledger entries above remain bit-for-bit identical to v0.1.4.
 
 ### v0.1.4 (2026-05-25)
@@ -133,7 +145,7 @@ release. The observed error is `1.4e-4`.
   (`(29, 41) -> 4+0`, `(29, 3) -> 0+4` instead of `2+2`).
 - Sawin admissibility test changed from `<= gs_threshold + 1.0` to
   `<= gs_threshold`. For the documented parameters the admissibility
-  verdict did not change (`6 <= 6.25` still holds strictly).
+  verdict did not change (`6 <= 6.25`, margin `0.25`).
 
 ### v0.1.1 (2026-05-24)
 

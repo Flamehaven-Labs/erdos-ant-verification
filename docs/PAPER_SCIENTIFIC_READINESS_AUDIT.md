@@ -20,7 +20,7 @@ That positioning is consistent across:
 - the finite Phase 1 / 2 / 3 descriptions;
 - the central eq. (2.2) reproduction in `sections/05_eq22.tex`;
 - the explicit non-claims in `sections/06_limits.tex`;
-- the reproducibility table and scanner framing in
+- the reproducibility table and release-check framing in
   `sections/07_reproducibility.tex`.
 
 ## Content Integrity

@@ -26,15 +26,21 @@ tracked files
 \path{reports/verification_result.json} and
 \path{reports/verification_report.md}.
 
+The line \texttt{Checks: 21/21 passed} refers to the verifier's
+top-level checklist. One of those checks is a subprocess execution of
+the $60$-test pytest suite with external pytest plugin autoloading
+disabled; running \texttt{pytest -q} directly executes the same unit
+tests outside the verifier wrapper.
+
 \subsection{Pinned environment}
 
-\begin{tabular}{ll}
+\begin{tabularx}{\textwidth}{@{}p{0.30\textwidth}X@{}}
 \toprule
 Item & Value \\
 \midrule
 Repository & \url{https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction} \\
-Version (paper source) & v0.2.2 \\
-Tagged paper revisions & v0.1.3 (first paper-bearing), v0.1.4 (placeholder fill-in), v0.2.0 (positioning pass), v0.2.1 (source-alignment audit), v0.2.2 (public naming alignment) \\
+Version (paper source) & v0.2.3 \\
+Tagged paper revisions & v0.1.3 (first paper-bearing); v0.1.4 (placeholder fill-in); v0.2.0 (positioning pass); v0.2.1 (source-alignment audit); v0.2.2 (public naming alignment); v0.2.3 (PDF readability and public-source framing) \\
 Commit hash (v0.1.3 release tag) & \texttt{c8fe529} \\
 Python & 3.11 and 3.12 (CI-verified) \\
 numpy & $\geq 1.26$ \\
@@ -45,33 +51,17 @@ Licence & MIT \\
 DOI (predecessor v0.1.1, source-only) & \href{https://doi.org/10.5281/zenodo.20366884}{10.5281/zenodo.20366884} \\
 DOI (v0.1.3, first paper-bearing) & \href{https://doi.org/10.5281/zenodo.20377950}{10.5281/zenodo.20377950} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 
-\subsection{Supplementary automated scanners}
+\subsection{Supplementary local checks}
 
-In addition to its own test suite the source tree was run through
-three automated scanners; their outputs are recorded at
-\path{reports/TRIPLE_INSPECTION_REPORT.md} in the repository. We list
-them here for transparency and explicitly \emph{not} as third-party
-endorsement: one of the three (AI-SLOP-Detector) is maintained by the
-same author as this artifact.
-
-\begin{tabular}{llll}
-\toprule
-Scanner & Affiliation & Result & Headline metric \\
-\midrule
-AI-SLOP-Detector v3.7.5 & in-house & \texttt{clean} (6/6 files) & weighted deficit $= 2.83$ (threshold $30$) \\
-SPAR Framework v0.5.0 & external & \texttt{ACCEPT} & score $100/100$, claim drift $= 0$ \\
-SIDRCE SaaS v1.1.15 & external & \texttt{CERTIFIED} & $\Omega = 0.9289$, trace chain verified \\
-\bottomrule
-\end{tabular}
-
-None of these tools performs mathematical peer review. Their scope is
-restricted to source-level pattern checks (structural slop, claim /
-documentation drift, code integrity); the substantive correctness of
-the eq.~(2.2) reproduction is not within their remit. See
-\S\ref{sec:limits} for the bound on what these scanners can and cannot
-attest to.
+In addition to the unit suite and verifier, the release process keeps
+author-operated local source-level checks for claim framing,
+traceability, and repository hygiene. Those checks are recorded as
+engineering evidence only. They are not independent review, are not
+mathematical peer review, and are not used as a premise for the
+correctness of the eq.~(2.2) reproduction. See \S\ref{sec:limits} for
+the bound on what local release checks can and cannot attest to.
 
 \subsection{Citation}
 

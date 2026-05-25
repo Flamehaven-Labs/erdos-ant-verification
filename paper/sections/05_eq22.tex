@@ -45,9 +45,13 @@ $\pi / (18 r^3) \approx 1.31 \cdot 10^{-18}$.
 
 The numerator is therefore $\log(1 + \varepsilon)$ for some
 $\varepsilon \in (0, 1.31 \cdot 10^{-18}]$. IEEE-754 \texttt{float64}
-has a 52-bit mantissa and machine epsilon $\approx 2.22 \cdot 10^{-16}$,
-so it cannot distinguish $1 + 1.3 \cdot 10^{-18}$ from $1$ in the first
-place. The naive evaluation rounds the ratio to exactly $1$, yields
+has a 52-bit mantissa and machine epsilon $\approx 2.22 \cdot 10^{-16}$.
+The computation also forms $K\pi$ with
+$K \approx 7.62 \cdot 10^{17}$ before dividing by $18r^3$ to obtain a
+ratio extremely close to $1$. At ordinary double precision the
+near-one ratio is rounded at a scale larger than the
+$10^{-18}$ separation, so the cancellation happens before the logarithm:
+the naive evaluation rounds the ratio to exactly $1$, yields
 $\log 1 = 0$, and reports $\delta_{\text{excess}} = 0$.
 
 This is not a flaw in eq.~\eqref{eq:simplified}; it is a property of
@@ -64,6 +68,14 @@ $1 + 10^{-18}$ separation survives. The function
 \texttt{erdos\_ant.sawin\_multiquadratic} returns a
 \texttt{SawinDeltaEvaluation} dataclass containing $r$, $K$, $v$,
 $\log u$, and $\delta_{\text{excess}}$.
+
+The $200$-bit precision is a conservative budget, not an unexplained
+output target. Resolving a $1.31 \cdot 10^{-18}$ numerator separation
+requires about $\log_2(1/(1.31 \cdot 10^{-18})) \approx 59.4$ bits just
+to see the signal; keeping the relative error in that small numerator
+below the $10^{-3}$ regression threshold adds about $10$ guard bits.
+The chosen $200$ bits leave a large deterministic margin over this
+rough $70$-bit lower bound while remaining fast enough for CI.
 
 \begin{verification}\label{ver:eq22_reproduction}
 Calling \tname{evaluate_sawin_exponent_bound()}
@@ -117,6 +129,6 @@ This does \emph{not} establish:
 
 What it does establish is that any future code change in the artifact
 that drifts away from the published value will fail the regression
-test at the $10^{-3}$ relative-tolerance band hard-coded in the test
-(currently $0.014\%$, below the tolerance but close enough to catch
-material drift).
+test at the $10^{-3}$ relative-tolerance band hard-coded in the test.
+The observed relative error is $1.4 \cdot 10^{-4}$, i.e.\ $0.014\%$;
+the threshold is $10^{-3}$, i.e.\ $0.1\%$.

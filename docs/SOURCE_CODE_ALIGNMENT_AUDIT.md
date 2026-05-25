@@ -55,9 +55,10 @@ This is an acceptable source-target pattern for a reproduction artifact:
 the published number is used to judge drift, not to generate the
 computed output.
 
-## Slop / Spaghetti Audit
+## Maintainability Audit
 
-The code is not spaghetti in the current finite reproduction surface:
+The current finite reproduction surface is intentionally small and
+module-scoped:
 
 - Phase-specific modules have narrow ownership:
   `imaginary_quadratic_lattice.py`, `genus_class_field.py`,

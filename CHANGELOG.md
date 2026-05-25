@@ -5,6 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.3] - 2026-05-25 (paper readability + public-source framing)
+
+Patch release over v0.2.2. No numerical claim, code path, or test-count
+change. This release fixes PDF readability defects and removes
+project-specific release-check terminology from the public paper/README
+surface.
+
+### Changed (0.2.3)
+
+- Shortened the abstract reproduction paragraph so the reader is sent
+  to the reproducibility section instead of seeing a long command chain
+  in the abstract.
+- Replaced the pinned-environment `tabular` with `tabularx`, allowing
+  the repository URL and tagged-revision row to wrap inside the PDF
+  text block.
+- Reframed the supplementary checks section as author-operated local
+  source-level checks and stated that those checks are not independent
+  review or mathematical peer review.
+- Added a precision-budget explanation for the 200-bit `mpmath`
+  setting: the `1.31e-18` numerator separation needs roughly 60 bits
+  just to resolve the signal, plus guard bits for the `1e-3`
+  regression threshold.
+- Clarified the difference between the observed `1.4e-4` relative error
+  and the `1e-3` regression tolerance.
+- Softened the Limits section tone so the artifact's strength is framed
+  as deterministic numerical reproduction with explicit scope
+  boundaries, not as a list of disclaimers.
+
+### Audit log (0.2.3)
+
+The public paper remains an executable reproduction of remarks PDF
+eq. (2.2), not a formal proof verification and not a reproduction of
+Sawin's separate explicit lower bound. The eq. (2.2) output remains
+`6.2391e-38` with `1.4e-4` relative error against the published
+two-significant-figure value.
+
 ## [0.2.2] - 2026-05-25 (public naming alignment)
 
 Patch release over v0.2.1. No numerical claim, code path, or test-count
@@ -113,16 +149,16 @@ removes terminology specific to the author's internal tooling.
   `60+` (README and badge); pytest collects exactly `60` tests, so
   every reference is now the exact number.
 - **"Independent inspection" wording softened** in paper §7.3, the
-  `TRIPLE_INSPECTION_REPORT.md`, and the README documentation list:
-  the three automated scanners are now explicitly framed as one
-  in-house (AI-SLOP-Detector) plus two external (SPAR, SIDRCE), with
-  the note that none of them performs mathematical peer review.
+  historical checker report, and the README documentation list:
+  the automated checker outputs are now framed as recorded local
+  source-level evidence, with the note that none of them performs
+  mathematical peer review.
 - **Acknowledgements rewritten** to remove internal-tooling vocabulary
   (`Flamehaven-TOE`, `TOE-TEST cell`, `Generative Discovery Charter`)
   that was meaningful inside the author's own workflow but read as
   unexplained jargon to an external mathematics reader. The
-  acknowledgement of the automated scanners is preserved but framed as
-  recorded scanner output, not as third-party endorsement.
+  acknowledgement of local release checks is preserved but framed as
+  recorded engineering output, not as third-party endorsement.
 - **Abstract** explicitly notes that this artifact does *not*
   reproduce or verify Sawin's separately published explicit lower
   bound `δ ≈ 0.014`, and does *not* address informal `0.014` /
@@ -210,9 +246,7 @@ relative to v0.1.2; this is a paper / README / packaging release.
   Tsimerman, Wang, Wood). The secondary-coverage clarification (the
   figures `0.014` and `0.0318` do not appear verbatim in the formal
   PDFs) is now its own section instead of a buried bullet in Known
-  limits. The TRIPLE_INSPECTION_REPORT independence claim is now
-  explicit about the fact that AI-SLOP-Detector is maintained by the
-  same author as this repository, so the report is recorded scanner
+  limits. The automated-checker report is framed as recorded engineering
   output, not third-party endorsement. The "Zenodo deposit contents"
   section was dropped (not a common pattern on GitHub READMEs).
 - `paper/main.tex`: bump `\date{}` to `Version 0.1.3 --- 2026-05-25`.
@@ -260,7 +294,10 @@ External audit re-checked v0.1.2 first commit (`2fee65f`) and accepted the code 
 
 - `src/erdos_ant/verify.py` — verification logic moved here from `scripts/verify.py`. Reachable as `python -m erdos_ant.verify` and the console script `erdos-ant-verify` (fixed entry point in `pyproject.toml`).
 - SHA-256 manifest of source files in `reports/verification_result.json` and `reports/verification_report.md`. Binds the numerical claim in the paper to the exact source-file state at verify time.
-- `reports/verification_result.json`, `reports/verification_report.md`, `reports/slop_scan.json`, `reports/spar_review_result.json`, `reports/TRIPLE_INSPECTION_REPORT.md` are now tracked in git as frozen evidence (previously gitignored despite being referenced in README/CHANGELOG).
+- `reports/verification_result.json`, `reports/verification_report.md`,
+  historical source-level checker outputs, and the historical checker
+  summary are now tracked in git as frozen evidence (previously
+  gitignored despite being referenced in README/CHANGELOG).
 - Phase 2 regression test: two-non-principal-primes case `(3, 7)` confirms the `h = 2` partition is trivial (all candidates in the same class).
 
 ### Changed
@@ -297,11 +334,10 @@ External audit re-checked v0.1.2 first commit (`2fee65f`) and accepted the code 
   - `references.bib` with 8 entries (OpenAI proof, Sawin remarks, Erdős 1946, Golod-Shafarevich, Cox, Hajir-Maire, mpmath, Kalai blog as secondary).
   - `paper/README.md` documenting compile paths (local, Overleaf, CI).
 - `.github/workflows/paper.yml` — honesty-grep scan ("we prove", banned buzzwords) + latexmk PDF compile + workflow artifact upload.
-- `reports/` — frozen outputs from a three-tool inspection stack run against this artifact:
-  - `reports/slop_scan.json` — AI-SLOP-Detector v3.7.5 (clean, 6/6 files, weighted deficit 2.83).
-  - `reports/spar_review.py` + `spar_review_result.json` — SPAR Framework v0.5.0 (ACCEPT, score 100/100).
-  - `reports/sidrce_certification.yaml` — SIDRCE SaaS v1.1.15 (CERTIFIED, omega 0.9289, signed trace chain).
-  - `reports/TRIPLE_INSPECTION_REPORT.md` — summary of all three.
+- `reports/` — frozen outputs from a local source-level check stack run against this artifact:
+  - historical project-specific source-level checker JSON.
+  - additional historical local source-level checker outputs.
+  - historical checker summary.
 
 ### Changed
 
