@@ -8,10 +8,13 @@
 
 cff-version: 1.2.0
 message: >-
-  If you use this software in academic work, please cite it as below.
-  The artifact is an executable verification of a published mathematical
-  lower bound; please ALSO cite the primary mathematical sources listed
-  under `references`.
+  This artifact is an executable verification of a published numerical
+  lower bound on the Erdős planar unit-distance exponent. It is not an
+  independent mathematical contribution. When citing it in academic
+  work, please cite BOTH this software record AND the primary
+  mathematical sources (OpenAI 2026; Alon, Bloom, Gowers, Litt, Sawin,
+  Shankar, Tsimerman, Wang, Wood 2026). Full source list is in the
+  repository README under "Primary sources".
 
 type: software
 
