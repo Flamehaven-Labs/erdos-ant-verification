@@ -66,9 +66,9 @@ $1 + 10^{-18}$ separation survives. The function
 $\log u$, and $\delta_{\text{excess}}$.
 
 \begin{verification}\label{ver:eq22_reproduction}
-Calling \texttt{evaluate\_sawin\_exponent\_bound()}
-\textit{(source: \texttt{src/erdos\_ant/sawin\_multiquadratic.py},
-function \texttt{evaluate\_sawin\_exponent\_bound})} returns
+Calling \tname{evaluate_sawin_exponent_bound()}
+\textit{(source: \tname{src/erdos_ant/sawin_multiquadratic.py},
+function \tname{evaluate_sawin_exponent_bound})} returns
 \[
   r = 510{,}510, \qquad
   K = \lceil 18 \cdot 510510^3 / \pi \rceil \approx 7.62 \cdot 10^{17},
@@ -85,15 +85,14 @@ between the artifact's evaluation and the published value is
   \frac{|6.2391 - 6.24|}{6.24} = 1.4 \cdot 10^{-4} = 0.014\%,
 \]
 fully consistent with two-significant-figure rounding in the source
-(see also \texttt{docs/DEVIATION\_LOG.md} for the full deviation
+(see also \tname{docs/DEVIATION_LOG.md} for the full deviation
 ledger).
 Pinned in
-\texttt{tests/test\_sawin\_multiquadratic.py::%
-test\_sawin\_exponent\_bound\_matches\_remarks\_eq\_2\_2}.
+\tname{tests/test_sawin_multiquadratic.py::test_sawin_exponent_bound_matches_remarks_eq_2_2}.
 The per-source-file SHA-256 manifest under which this number was
 computed appears in
-\texttt{reports/verification\_result.json} field
-\texttt{source\_sha256\_manifest}.
+\tname{reports/verification_result.json} field
+\tname{source_sha256_manifest}.
 \end{verification}
 
 \subsection{What the verification establishes (and does not)}

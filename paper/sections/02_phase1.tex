@@ -36,8 +36,7 @@ broadcast.
 For $\Z[i]$ with $b = 1$ (the $3 \times 3$ Gaussian grid, $n = 9$),
 the artifact computes exactly $12$ unit-distance pairs: three rows of two
 horizontal edges plus three columns of two vertical edges. Pinned in
-\texttt{tests/test\_imaginary\_quadratic\_lattice.py::%
-test\_gaussian\_3x3\_grid\_has\_12\_unit\_distances}.
+\tname{tests/test_imaginary_quadratic_lattice.py::test_gaussian_3x3_grid_has_12_unit_distances}.
 \end{verification}
 
 \begin{verification}\label{ver:gauss_7x7}
@@ -45,10 +44,10 @@ For $\Z[i]$ with $b = 3$ (the $7 \times 7$ Gaussian grid, $n = 49$),
 the artifact computes exactly $2 \cdot 7 \cdot 6 = 84$ unit-distance
 pairs.
 \textit{Source:
-\texttt{src/erdos\_ant/imaginary\_quadratic\_lattice.py},
-class \texttt{ImaginaryQuadraticLattice.count\_unit\_distance\_pairs}.}
-Pinned in \texttt{src/erdos\_ant/verify.py} as the assertion
-\texttt{phase1\_gaussian\_7x7\_grid\_has\_expected\_84\_pairs}.
+\tname{src/erdos_ant/imaginary_quadratic_lattice.py},
+class \tname{ImaginaryQuadraticLattice.count_unit_distance_pairs}.}
+Pinned in \tname{src/erdos_ant/verify.py} as the assertion
+\tname{phase1_gaussian_7x7_grid_has_expected_84_pairs}.
 \end{verification}
 
 \begin{verification}\label{ver:eisenstein_dominance}
@@ -56,7 +55,7 @@ For each $b \in \{1, 2, 3, 4\}$, the Eisenstein-lattice (triangular)
 unit-distance count strictly exceeds the Gaussian-lattice count at the
 same $b$. The triangular lattice has $6$ nearest neighbours per
 interior point versus the square lattice's $4$. Pinned in
-\texttt{test\_eisenstein\_unit\_distances\_exceed\_gaussian\_for\_same\_bound}.
+\tname{test_eisenstein_unit_distances_exceed_gaussian_for_same_bound}.
 \end{verification}
 
 \subsection{Non-claims}

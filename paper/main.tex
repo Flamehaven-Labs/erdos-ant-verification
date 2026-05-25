@@ -20,6 +20,7 @@
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{microtype}
 \usepackage{enumitem}
+\usepackage{seqsplit}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{booktabs}
@@ -51,6 +52,11 @@
 \newtheorem{verification}{Verification}[section]
 
 % Macros
+% Breakable monospace identifier (long test/function names with underscores).
+% \seqsplit makes every character a break opportunity, preventing overflow
+% into the right margin. Argument is taken verbatim — write \tname{foo_bar},
+% not \tname{foo\_bar}.
+\newcommand{\tname}[1]{{\ttfamily\seqsplit{#1}}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\C}{\mathbb{C}}
@@ -109,7 +115,9 @@ release \texttt{v0.1.2}. The predecessor source-only release
 \texttt{v0.1.1} carries DOI \href{https://doi.org/10.5281/zenodo.20366884}{10.5281/zenodo.20366884}.}.
 \end{abstract}
 
+\clearpage
 \tableofcontents
+\clearpage
 
 % ---------------------------------------------------------------------------
 \section{Background and scope}
