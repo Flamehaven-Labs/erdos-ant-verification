@@ -52,15 +52,17 @@ paper/
 └── README.md                this file
 ```
 
-## Filling in <COMMIT_HASH> and <ZENODO_DOI>
+## Release-time substitutions
 
-`main.tex` abstract and `sections/07_reproducibility.tex` contain two
-placeholders:
+As of v0.1.4 there are no `<COMMIT_HASH>` or `<ZENODO_DOI>` placeholders
+left in the paper sources — both are filled in with the v0.1.3 release
+values:
 
-- `<COMMIT_HASH>` — fill in at release tag time with the git short hash
-  of the tagged commit, e.g. `46e55fb`.
-- `<ZENODO_DOI>` — fill in when Zenodo issues the DOI for the first
-  release (typically a few minutes after `git push --tags`).
+- Commit hash: `c8fe529` (v0.1.3 release tag)
+- Zenodo DOI: [10.5281/zenodo.20377950](https://doi.org/10.5281/zenodo.20377950) (v0.1.3 deposit)
 
-These two are the only intentional placeholders. Everything else in the
-paper is self-contained.
+For future paper-bearing releases that need to refer to a new release
+tag or DOI, edit `paper/main.tex` (abstract footnote) and
+`paper/sections/07_reproducibility.tex` (reproducibility table) in the
+same commit that closes the new release; do not reintroduce placeholder
+syntax.

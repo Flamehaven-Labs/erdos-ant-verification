@@ -5,6 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.4] - 2026-05-25 (placeholder fill-in)
+
+Patch release over v0.1.3. No source-code, claim, or numerical change;
+the verifier still returns PASS with eq (2.2) excess `6.2391e-38`
+(rel.err `1.4e-4`). This release exists only to substitute the two
+deferred values that became known after v0.1.3 was published:
+
+### Changed (0.1.4)
+
+- `paper/main.tex` abstract footnote: `<COMMIT_HASH>` and `<ZENODO_DOI>`
+  placeholders replaced with the actual values — commit `c8fe529`
+  (the v0.1.3 tag commit) and DOI [10.5281/zenodo.20377950](https://doi.org/10.5281/zenodo.20377950) (the v0.1.3 Zenodo deposit).
+- `paper/sections/07_reproducibility.tex` reproducibility table:
+  `Commit hash` row now reads `c8fe529 (v0.1.3 release tag)`; `DOI
+  (this release)` row now resolves to the v0.1.3 DOI link.
+- `CITATION.cff`: bump `version` to `0.1.4`; add top-level `doi` field
+  pointing at `10.5281/zenodo.20377950` (so the GitHub "Cite this
+  repository" sidebar and Zenodo cross-link both resolve to a real
+  DOI rather than to "issued upon publish").
+- `README.md`: Citation section now lists the v0.1.3 DOI as the latest
+  paper-bearing DOI alongside the v0.1.1 source-only DOI; the bibtex
+  block points at the v0.1.3 DOI.
+
+### Audit log (0.1.4)
+
+This release closes the two placeholder items that v0.1.3's CHANGELOG
+explicitly deferred to v0.1.4. With this commit, no `<COMMIT_HASH>` or
+`<ZENODO_DOI>` token remains in the paper sources.
+
 ## [0.1.3] - 2026-05-25 (release-surface closure)
 
 First release with the accompanying paper compiled, attached, and free

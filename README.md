@@ -130,7 +130,7 @@ The figures `0.014` and `0.0318` that have circulated in secondary coverage of t
 
 Preferred citation metadata lives in [`CITATION.cff`](CITATION.cff) (recognised by Zenodo and by the GitHub "Cite this repository" sidebar).
 
-DOI is issued by Zenodo on each tagged release; see [Releases](https://github.com/Flamehaven-Labs/erdos-ant-verification/releases). The predecessor source-only DOI is [10.5281/zenodo.20366884](https://doi.org/10.5281/zenodo.20366884) (v0.1.1).
+DOI is issued by Zenodo on each tagged release; see [Releases](https://github.com/Flamehaven-Labs/erdos-ant-verification/releases). Latest paper-bearing DOI: [10.5281/zenodo.20377950](https://doi.org/10.5281/zenodo.20377950) (v0.1.3). Predecessor source-only DOI: [10.5281/zenodo.20366884](https://doi.org/10.5281/zenodo.20366884) (v0.1.1).
 
 ```bibtex
 @software{erdos_ant_verification,
@@ -139,7 +139,7 @@ DOI is issued by Zenodo on each tagged release; see [Releases](https://github.co
              for the 2026 Disproof of the Erd\H{o}s Unit-Distance Conjecture},
   version = {0.1.3},
   year    = {2026},
-  doi     = {10.5281/zenodo.20366884},
+  doi     = {10.5281/zenodo.20377950},
   url     = {https://github.com/Flamehaven-Labs/erdos-ant-verification}
 }
 ```

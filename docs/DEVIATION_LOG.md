@@ -15,7 +15,7 @@ numerical claim.
   treated as "matches source within reasonable rounding". Anything
   larger is investigated before release.
 
-## Current ledger (artifact version 0.1.3)
+## Current ledger (artifact version 0.1.4)
 
 | Item | Source | Computed | Relative error | Status |
 |---|---|---|---|---|
@@ -65,6 +65,14 @@ would fail the test immediately).
   per release; they are implied stable.
 
 ## Per-release notes
+
+### v0.1.4 (2026-05-25)
+
+- No source-code or numerical-claim change versus v0.1.3.
+- Substitutes the two placeholder values deferred in v0.1.3:
+  - `<COMMIT_HASH>` -> `c8fe529` (v0.1.3 release-tag commit)
+  - `<ZENODO_DOI>` -> `10.5281/zenodo.20377950` (v0.1.3 Zenodo deposit)
+- All ledger entries above remain bit-for-bit identical to v0.1.3.
 
 ### v0.1.3 (2026-05-25)
 
