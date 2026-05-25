@@ -1,6 +1,7 @@
 # erdos-ant-verification
 
 [![CI](https://github.com/Flamehaven-Labs/erdos-ant-verification/actions/workflows/ci.yml/badge.svg)](https://github.com/Flamehaven-Labs/erdos-ant-verification/actions/workflows/ci.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20377950.svg)](https://doi.org/10.5281/zenodo.20377950)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](https://www.python.org/downloads/)
 [![Tests: 60+](https://img.shields.io/badge/tests-60%2B-brightgreen.svg)](tests/)
