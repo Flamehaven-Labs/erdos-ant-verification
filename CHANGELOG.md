@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- Hardened the verification CLI's internal pytest subprocess against
+  user-environment plugin leakage by setting `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1`
+  by default and recording a bounded timeout result instead of allowing a hung
+  subprocess to block the verification run indefinitely.
+- Refreshed tracked verification evidence so the source hash manifest binds to
+  the updated `src/erdos_ant/verify.py` implementation.
+
 ## [0.2.0] - 2026-05-25 (positioning + jargon overhaul)
 
 Documentation-only minor release. **No source-code change** and **no

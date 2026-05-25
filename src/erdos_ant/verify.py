@@ -91,22 +91,44 @@ def _sha256_of(path: Path) -> str:
 
 def _run_pytest(repo_root: Path) -> dict[str, object]:
     cmd = [sys.executable, "-m", "pytest", "-q", "tests"]
-    proc = subprocess.run(
-        cmd,
-        cwd=repo_root,
-        text=True,
-        capture_output=True,
-        check=False,
-    )
+    env = os.environ.copy()
+    env.setdefault("PYTEST_DISABLE_PLUGIN_AUTOLOAD", "1")
+    try:
+        proc = subprocess.run(
+            cmd,
+            cwd=repo_root,
+            env=env,
+            text=True,
+            capture_output=True,
+            check=False,
+            timeout=90,
+        )
+        returncode = proc.returncode
+        stdout = proc.stdout.strip()
+        stderr = proc.stderr.strip()
+    except subprocess.TimeoutExpired as exc:
+        returncode = 124
+        stdout = (exc.stdout or "").strip() if isinstance(exc.stdout, str) else ""
+        stderr = (exc.stderr or "").strip() if isinstance(exc.stderr, str) else ""
+        stderr = "\n".join(
+            part
+            for part in (
+                stderr,
+                "pytest subprocess timed out after 90 seconds",
+            )
+            if part
+        )
     # The recorded "command" string uses the canonical "python" placeholder
     # rather than sys.executable, so the recorded value is environment
     # independent (the actual subprocess still runs with sys.executable).
     return {
         "command": "python -m pytest -q tests",
-        "returncode": proc.returncode,
-        "stdout": proc.stdout.strip(),
-        "stderr": proc.stderr.strip(),
-        "passed": proc.returncode == 0,
+        "pytest_disable_plugin_autoload": env["PYTEST_DISABLE_PLUGIN_AUTOLOAD"],
+        "timeout_seconds": 90,
+        "returncode": returncode,
+        "stdout": stdout,
+        "stderr": stderr,
+        "passed": returncode == 0,
     }
 
 
