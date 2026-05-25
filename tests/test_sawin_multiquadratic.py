@@ -129,10 +129,10 @@ def test_k_is_positive_and_huge_per_remarks_construction() -> None:
     assert out.r == 510510
 
 
-# -- Charter alignment -----------------------------------------------------
+# -- Provenance tags -------------------------------------------------------
 
 
-def test_analyze_carries_charter_result_tags() -> None:
+def test_analyze_carries_provenance_result_tags() -> None:
     result = analyze()
     tags = result["result_tags"]
     assert tags["tier"] == "validated_numeric_proxy"

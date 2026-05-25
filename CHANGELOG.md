@@ -5,12 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.2.3] - 2026-05-25 (paper readability + public-source framing)
+## [0.2.3] - 2026-05-25 (paper readability + jargon cleanup)
 
-Patch release over v0.2.2. No numerical claim, code path, or test-count
-change. This release fixes PDF readability defects and removes
-project-specific release-check terminology from the public paper/README
-surface.
+Patch release over v0.2.2. No numerical claim and no test-count change
+(60 unit tests still pass). This release fixes PDF readability defects,
+removes residual internal-tooling jargon from the executable evidence
+surface, and trims an overclaim from the acknowledgements.
 
 ### Changed (0.2.3)
 
@@ -32,6 +32,22 @@ surface.
 - Softened the Limits section tone so the artifact's strength is framed
   as deterministic numerical reproduction with explicit scope
   boundaries, not as a list of disclaimers.
+- Removed the residual `charter_phase: "Phase 1: Discovery Engine"`
+  key from `result_tags` in `imaginary_quadratic_lattice.py`,
+  `genus_class_field.py`, and `sawin_multiquadratic.py`. v0.2.0 had
+  declared internal-tooling vocabulary removed, but this key persisted
+  in the three module `analyze()` outputs and leaked into the tracked
+  `reports/verification_result.json` evidence file that the paper
+  references. The corresponding test names and the
+  `charter_phase` assertion were renamed/removed accordingly; the
+  full 60-test suite still passes.
+- Removed the "anonymous external reviewer" sentence from
+  `paper/sections/08_acknowledgements.tex`. The v0.1.x audit pass was
+  AI/scanner-driven, not mathematician peer review; both calling it
+  an external reviewer and calling it an internal tool would be
+  inaccurate, so the sentence is dropped. The acknowledgements section
+  now names only the source-paper authors and the cited
+  number-theoretic predecessors.
 
 ### Audit log (0.2.3)
 
@@ -39,7 +55,10 @@ The public paper remains an executable reproduction of remarks PDF
 eq. (2.2), not a formal proof verification and not a reproduction of
 Sawin's separate explicit lower bound. The eq. (2.2) output remains
 `6.2391e-38` with `1.4e-4` relative error against the published
-two-significant-figure value.
+two-significant-figure value. The `result_tags` dict in each phase
+module retains the externally meaningful provenance keys (`tier`,
+`evidence_level`, `model_kind`, `exactness`, `registry_state`); only
+the project-internal `charter_phase` key was dropped.
 
 ## [0.2.2] - 2026-05-25 (public naming alignment)
 

@@ -143,7 +143,7 @@ def test_lemma_22_pigeonhole_with_two_non_principal_primes() -> None:
     assert out.predicted_lower_bound == 2
 
 
-def test_analyze_carries_charter_result_tags() -> None:
+def test_analyze_carries_provenance_result_tags() -> None:
     result = GenusClassFieldProbe(split_primes=(29, 41)).analyze()
     tags = result["result_tags"]
     assert tags["tier"] == "validated_numeric_proxy"

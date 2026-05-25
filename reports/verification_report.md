@@ -1,7 +1,7 @@
 # erdos-ant-verification report
 
 **Verdict:** `PASS`
-**Generated:** `2026-05-25T14:41:18.645398+00:00`
+**Generated:** `2026-05-25T15:50:22.295815+00:00`
 
 ## Checks
 
@@ -41,10 +41,10 @@
 
 | File | SHA-256 |
 |---|---|
-| `src/erdos_ant/sawin_multiquadratic.py` | `5f8ad4688129a332b807f4dbdfabd236ae18327e7c0fc52103198186cd44538d` |
+| `src/erdos_ant/sawin_multiquadratic.py` | `635007a604081ffdc422a861e254486bf9b85c1f76bccb41162c4dc2524f7188` |
 | `src/erdos_ant/algebraic_geometry.py` | `847769efc93a601de6931aae794910bd83e986f4217c0efc867350f2228f23c9` |
-| `src/erdos_ant/imaginary_quadratic_lattice.py` | `db385ddd935108e83632bfbfdcadb471cda480d29fa3f054b7ea5c3687d9b785` |
-| `src/erdos_ant/genus_class_field.py` | `246e768575601d48bc074128b4e2a6f025534c925e0f25389af3d5611db7e89a` |
+| `src/erdos_ant/imaginary_quadratic_lattice.py` | `8f975ebdf2355be76430a3d2585588e6588144bfb1e1c0beb2ca141fd1d683b0` |
+| `src/erdos_ant/genus_class_field.py` | `bd614cb7362c3bd7bcafa4505b8069b43458e7d23d3e9bd722db4006576af91a` |
 | `src/erdos_ant/verify.py` | `401de26d28b9d54b6449d9ecda505f8d0f2500d8a34ebf933a92fcab34841551` |
 
 ## Pytest

@@ -283,7 +283,6 @@ class GenusClassFieldProbe:
                 "model_kind": "imaginary_quadratic_h_eq_2",
                 "exactness": "exact",
                 "registry_state": "research_only",
-                "charter_phase": "Phase 1: Discovery Engine",
             },
         }
 

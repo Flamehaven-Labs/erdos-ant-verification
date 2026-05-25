@@ -68,15 +68,23 @@ release. The observed error is `1.4e-4`.
 
 ### v0.2.3 (2026-05-25)
 
-- Paper/readability release only. The abstract reproduction instructions
-  were shortened, the pinned-environment table was made line-wrappable,
-  and the public paper now frames supplementary checks as local
-  author-operated engineering evidence only.
+- Paper readability + jargon cleanup release. The abstract reproduction
+  instructions were shortened, the pinned-environment table was made
+  line-wrappable, and the public paper now frames supplementary checks
+  as local author-operated engineering evidence only.
 - Added a precision-budget explanation for the 200-bit mpmath setting,
   clarified the `1e-3` tolerance versus observed `1.4e-4` relative error,
   and softened the finite Golod-Shafarevich admissibility wording.
-- No numerical claim, code path, test count, or source-PDF mapping
-  changed versus v0.2.2.
+- Removed residual `charter_phase` key from the three phase modules'
+  `result_tags`. The remaining provenance keys (`tier`,
+  `evidence_level`, `model_kind`, `exactness`, `registry_state`) are
+  externally meaningful and unchanged.
+- Removed the "anonymous external reviewer" sentence from §8 of the
+  paper; the v0.1.x audit pass was scanner-driven and is not claimed
+  as mathematician peer review.
+- No numerical claim, test count, or source-PDF mapping changed versus
+  v0.2.2. The `result_tags` dict structure changed only by dropping
+  one project-internal key.
 
 ### v0.2.2 (2026-05-25)
 

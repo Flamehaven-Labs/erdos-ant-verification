@@ -170,7 +170,6 @@ class ImaginaryQuadraticLattice:
                 "model_kind": "ring_of_integers_O_K",
                 "exactness": "exact",
                 "registry_state": "research_only",
-                "charter_phase": "Phase 1: Discovery Engine",
             },
         }
 

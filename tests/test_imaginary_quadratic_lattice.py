@@ -107,13 +107,13 @@ def test_analyze_returns_expected_keys_and_claim_tier() -> None:
     assert "Theorem 1.1" in result["not_claimed"][0]
 
 
-def test_result_tags_match_generative_discovery_charter_schema() -> None:
+def test_result_tags_have_expected_provenance_keys() -> None:
     result = gaussian_integer_grid(bound=2).analyze()
     tags = result["result_tags"]
-    # Required keys per docs/GENERATIVE_DISCOVERY_CHARTER.md
+    # Required machine-readable provenance keys.
     for key in ("tier", "evidence_level", "model_kind", "exactness"):
         assert key in tags
-    # Charter-permitted Phase 1 states
+    # Permitted tier values for a finite, exact enumeration phase.
     assert tags["tier"] in {
         "generated_candidate",
         "validated_numeric_proxy",
@@ -123,7 +123,6 @@ def test_result_tags_match_generative_discovery_charter_schema() -> None:
     # h(K) = 1 enumeration is exact, not heuristic.
     assert tags["exactness"] == "exact"
     assert tags["registry_state"] == "research_only"
-    assert "Phase 1" in tags["charter_phase"]
 
 
 def test_observed_delta_is_zero_for_finite_classical_grids() -> None:

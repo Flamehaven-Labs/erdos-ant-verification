@@ -281,7 +281,6 @@ def analyze() -> dict[str, object]:
             "model_kind": "multi_quadratic_pro_2_tower_finite_part",
             "exactness": "exact",
             "registry_state": "research_only",
-            "charter_phase": "Phase 1: Discovery Engine",
             "ground_truth_document": "unit-distance-remarks.pdf section 2.1",
         },
     }
