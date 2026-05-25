@@ -154,7 +154,7 @@ DOI is issued by Zenodo on each tagged release; see [Releases](https://github.co
              Disproof Remarks},
   version = {0.2.6},
   year    = {2026},
-  doi     = {10.5281/zenodo.20382963},
+  doi     = {10.5281/zenodo.20383217},
   url     = {https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction}
 }
 ```
