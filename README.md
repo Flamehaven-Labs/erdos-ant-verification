@@ -1,13 +1,13 @@
-# erdos-ant-verification
+# OpenAI Erdős Unit-Distance Disproof: Eq. (2.2) Executable Reproduction
 
-[![CI](https://github.com/Flamehaven-Labs/erdos-ant-verification/actions/workflows/ci.yml/badge.svg)](https://github.com/Flamehaven-Labs/erdos-ant-verification/actions/workflows/ci.yml)
+[![CI](https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction/actions/workflows/ci.yml/badge.svg)](https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction/actions/workflows/ci.yml)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20377950.svg)](https://doi.org/10.5281/zenodo.20377950)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](https://www.python.org/downloads/)
 [![Tests: 60](https://img.shields.io/badge/tests-60-brightgreen.svg)](tests/)
 [![Reproduction: 0.014%](https://img.shields.io/badge/eq(2.2)%20rel.%20err.-0.014%25-brightgreen.svg)](docs/REMARKS_PDF_REPRODUCTION.md)
 
-Executable reproduction of **equation (2.2)** in the 2026 Erdős unit-distance disproof remarks paper by Alon, Bloom, Gowers, Litt, Sawin, Shankar, Tsimerman, Wang, and Matchett Wood. Pure Python (NumPy + `mpmath` at 200-bit precision), MIT-licensed. Matches the published value `δ_excess ≈ 6.24 × 10⁻³⁸` to `1.4 × 10⁻⁴` relative error. **Not** a new proof, **not** a verification of any sharpened bound (e.g., Sawin's separately published `δ ≈ 0.014`), **not** peer-reviewed.
+Independent Python reproduction for the 2026 OpenAI/Sawin disproof of the Erdős unit-distance conjecture: `mpmath`-200-bit check of remarks PDF equation (2.2), matching the published value at 0.014% relative error. MIT, NumPy + `mpmath` only. **Not** a new proof, **not** a verification of any sharpened bound (e.g., Sawin's separately published `δ ≈ 0.014`), **not** peer-reviewed.
 
 ## What this is
 
@@ -27,8 +27,8 @@ The intended reader is anyone who, having read §2 of the remarks paper, wants a
 ## Quick Start
 
 ```bash
-git clone https://github.com/Flamehaven-Labs/erdos-ant-verification
-cd erdos-ant-verification
+git clone https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction
+cd openai-erdos-eq22-reproduction
 pip install -e ".[dev]"
 
 # Default: print verdict only (does not touch tracked evidence)
@@ -145,18 +145,18 @@ If a reader has seen the larger numbers `0.014` or `0.0318` attributed to "the O
 
 Preferred citation metadata lives in [`CITATION.cff`](CITATION.cff) (recognised by Zenodo and by the GitHub "Cite this repository" sidebar).
 
-DOI is issued by Zenodo on each tagged release; see [Releases](https://github.com/Flamehaven-Labs/erdos-ant-verification/releases). Latest paper-bearing DOI: [10.5281/zenodo.20377950](https://doi.org/10.5281/zenodo.20377950) (v0.1.3). Predecessor source-only DOI: [10.5281/zenodo.20366884](https://doi.org/10.5281/zenodo.20366884) (v0.1.1).
+DOI is issued by Zenodo on each tagged release; see [Releases](https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction/releases). Latest paper-bearing DOI: [10.5281/zenodo.20377950](https://doi.org/10.5281/zenodo.20377950) (v0.1.3). Predecessor source-only DOI: [10.5281/zenodo.20366884](https://doi.org/10.5281/zenodo.20366884) (v0.1.1).
 
 ```bibtex
 @software{erdos_ant_verification,
   author  = {Yun, Kwansub},
-  title   = {erdos-ant-verification: An Executable Reproduction Artifact
-             for Equation (2.2) of the Erd\H{o}s Unit-Distance
-             Disproof Remarks Paper},
-  version = {0.2.1},
+  title   = {openai-erdos-eq22-reproduction: Executable Reproduction
+             of Equation (2.2) in the OpenAI Erd\H{o}s Unit-Distance
+             Disproof Remarks},
+  version = {0.2.2},
   year    = {2026},
   doi     = {10.5281/zenodo.20377950},
-  url     = {https://github.com/Flamehaven-Labs/erdos-ant-verification}
+  url     = {https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction}
 }
 ```
 

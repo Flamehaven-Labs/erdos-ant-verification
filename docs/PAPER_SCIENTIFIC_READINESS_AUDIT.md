@@ -64,7 +64,7 @@ workflow:
 - scans for overclaiming language before compilation;
 - compiles `paper/main.tex` via `xu-cheng/latex-action`;
 - validates that `paper/main.pdf` exists and is non-empty;
-- uploads the PDF as `erdos-ant-verification-paper`.
+- uploads the PDF as `openai-erdos-eq22-reproduction-paper`.
 
 Local PDF compilation is not required for scientific validity, but the
 tagged release should not be treated as paper-final until the CI artifact

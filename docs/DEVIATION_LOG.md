@@ -15,7 +15,7 @@ numerical claim.
   treated as "matches source within reasonable rounding". Anything
   larger is investigated before release.
 
-## Current ledger (artifact version 0.2.1)
+## Current ledger (artifact version 0.2.2)
 
 | Item | Source | Computed | Relative error | Status |
 |---|---|---|---|---|
@@ -65,6 +65,14 @@ release. The observed error is `1.4e-4`.
   per release; they are implied stable.
 
 ## Per-release notes
+
+### v0.2.2 (2026-05-25)
+
+- Public naming alignment only. Repository/package metadata now uses
+  `openai-erdos-eq22-reproduction`; README and paper title now foreground
+  the OpenAI Erdős unit-distance eq. (2.2) reproduction scope.
+- No numerical claim, code path, test count, or source-PDF mapping
+  changed versus v0.2.1.
 
 ### v0.2.1 (2026-05-25)
 

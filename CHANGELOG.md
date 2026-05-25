@@ -5,6 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2026-05-25 (public naming alignment)
+
+Patch release over v0.2.1. No numerical claim, code path, or test-count
+change. This release aligns the public project name with the repository
+slug `openai-erdos-eq22-reproduction`.
+
+### Changed (0.2.2)
+
+- README display title changed to `OpenAI Erdős Unit-Distance Disproof:
+  Eq. (2.2) Executable Reproduction`.
+- README / package description changed to a GitHub-about-ready summary:
+  `Independent Python reproduction of equation (2.2) in the 2026
+  OpenAI/Sawin Erdős unit-distance disproof remarks PDF. mpmath-200-bit,
+  NumPy + mpmath only.`
+- Paper title changed to `Executable Reproduction of Equation (2.2) in
+  the OpenAI Erdős Unit-Distance Disproof Remarks`.
+- Paper subtitle added: `A High-Precision Python Check of the Published
+  Eq. (2.2) Calculation`.
+- `pyproject.toml`, `CITATION.cff`, README clone commands, paper
+  reproducibility commands, paper CI artifact name, and documentation
+  links now point to
+  `https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction`.
+
+### Audit log (0.2.2)
+
+The Python import package remains `erdos_ant` for compatibility with the
+existing code, tests, and reports. The distribution/repository name is
+the public-facing name; the import namespace is treated as a stable
+internal API.
+
 ## [0.2.1] - 2026-05-25 (source-alignment audit + paper CI hardening)
 
 Patch release over v0.2.0. The eq (2.2) numerical claim remains
@@ -109,7 +139,7 @@ al. lower bound" → eq (2.2) binding, "three independent" → measured
 wording, and test-count inconsistency. The reviewer's fifth
 suggestion (a "what we verify vs what we only cite" table) is added
 to the README. The reviewer's sixth suggestion (GitHub About text
-revision) is a UI-level edit on `github.com/Flamehaven-Labs/erdos-ant-verification`
+revision) is a UI-level edit on `github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction`
 that does not affect this commit; the suggested replacement matches
 the new `pyproject.toml` `description` field.
 

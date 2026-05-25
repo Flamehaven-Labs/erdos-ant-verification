@@ -3,9 +3,9 @@ requires = ["hatchling>=1.18"]
 build-backend = "hatchling.build"
 
 [project]
-name = "erdos-ant-verification"
-version = "0.2.1"
-description = "Executable reproduction of equation (2.2) in the 2026 Erdos unit-distance disproof remarks paper; finite numerical checks only."
+name = "openai-erdos-eq22-reproduction"
+version = "0.2.2"
+description = "Independent Python reproduction for the 2026 OpenAI/Sawin Erdos unit-distance disproof: mpmath-200-bit check of remarks PDF equation (2.2)."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
@@ -44,9 +44,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/flamehaven01/erdos-ant-verification"
-Repository = "https://github.com/flamehaven01/erdos-ant-verification"
-Issues = "https://github.com/flamehaven01/erdos-ant-verification/issues"
+Homepage = "https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction"
+Repository = "https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction"
+Issues = "https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction/issues"
 
 [project.scripts]
 erdos-ant-verify = "erdos_ant.verify:main"

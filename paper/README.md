@@ -23,7 +23,7 @@ Every push to `main` that touches `paper/**`, every `v*` tag push, and
 manual `workflow_dispatch` run triggers `.github/workflows/paper.yml`.
 The workflow compiles `paper/main.tex`, checks that `paper/main.pdf`
 exists and is non-empty, and uploads the compiled PDF as a workflow
-artifact named `erdos-ant-verification-paper`.
+artifact named `openai-erdos-eq22-reproduction-paper`.
 
 ## Honesty scan
 

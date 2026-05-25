@@ -1,6 +1,6 @@
 % main.tex
-% An Executable Reproduction Artifact for Equation (2.2)
-% of the Erdős Unit-Distance Disproof Remarks Paper
+% Executable Reproduction of Equation (2.2)
+% in the OpenAI Erdős Unit-Distance Disproof Remarks
 %
 % Compile:  latexmk -pdf main.tex   (uses biber for the bibliography)
 %
@@ -32,7 +32,7 @@
   linkcolor=black,
   citecolor=black,
   urlcolor=blue!50!black,
-  pdftitle={An Executable Reproduction Artifact for Equation (2.2) of the Erdős Unit-Distance Disproof Remarks Paper},
+  pdftitle={Executable Reproduction of Equation (2.2) in the OpenAI Erdős Unit-Distance Disproof Remarks},
   pdfauthor={Yun Kwansub}
 }
 
@@ -71,22 +71,23 @@
 
 % --- Title block ------------------------------------------------------------
 \title{%
-  An Executable Reproduction Artifact for\\
-  Equation (2.2) of the Erd\H{o}s Unit-Distance\\
-  Disproof Remarks Paper}
+  Executable Reproduction of Equation (2.2)\\
+  in the OpenAI Erd\H{o}s Unit-Distance\\
+  Disproof Remarks\\[0.5em]
+  \large A High-Precision Python Check of the Published Eq.~(2.2) Calculation}
 \author{%
   Yun Kwansub%
   \thanks{Independent author. Code distribution:
-    \href{https://github.com/Flamehaven-Labs/erdos-ant-verification}{github.com/Flamehaven-Labs/erdos-ant-verification}.}%
+    \href{https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction}{github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction}.}%
 }
-\date{Version 0.2.1 --- 2026-05-25}
+\date{Version 0.2.2 --- 2026-05-25}
 
 % --- Document --------------------------------------------------------------
 \begin{document}
 \maketitle
 
 \begin{abstract}
-We present \texttt{erdos-ant-verification}, an open-source Python package
+We present \texttt{openai-erdos-eq22-reproduction}, an open-source Python package
 that re-derives, in pure NumPy and \texttt{mpmath}, the finite and
 numerically explicit parts of the 2026 disproof of the Erd\H{o}s planar
 unit-distance conjecture announced by an OpenAI reasoning model
@@ -114,7 +115,7 @@ The intended audience is anyone who, having read \S2 of
 \cite{Sawin2026Remarks}, wants a citable, CI-tested Python
 implementation of its eq.~(2.2) on which they can run their own
 sensitivity checks. The package is distributed under the MIT licence
-at \url{https://github.com/Flamehaven-Labs/erdos-ant-verification}.
+at \url{https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction}.
 
 \noindent\textbf{Reproduction.}
 After cloning the repository,
@@ -125,7 +126,7 @@ the tracked JSON certificate at
 \path{reports/verification_result.json}. The frozen evidence for this
 paper corresponds to commit \texttt{c8fe529} (release tag
 \texttt{v0.1.3}) with Zenodo DOI
-\href{https://doi.org/10.5281/zenodo.20377950}{10.5281/zenodo.20377950}.\footnote{The earlier source-only release \texttt{v0.1.1} carries DOI \href{https://doi.org/10.5281/zenodo.20366884}{10.5281/zenodo.20366884}. The intermediate \texttt{v0.1.2} was a pre-PDF snapshot, and \texttt{v0.1.3}/\texttt{v0.1.4} bundled the first compiled paper. The tagged \texttt{v0.2.0} paper was a documentation-only revision that tightened scope wording and removed terminology specific to the author's internal tooling. This \texttt{v0.2.1} source revision adds verifier-process hardening, a source-code alignment audit, and paper/docs consistency corrections; the eq.~(2.2) numerical claim and test count are unchanged.}
+\href{https://doi.org/10.5281/zenodo.20377950}{10.5281/zenodo.20377950}.\footnote{The earlier source-only release \texttt{v0.1.1} carries DOI \href{https://doi.org/10.5281/zenodo.20366884}{10.5281/zenodo.20366884}. The intermediate \texttt{v0.1.2} was a pre-PDF snapshot, and \texttt{v0.1.3}/\texttt{v0.1.4} bundled the first compiled paper. The tagged \texttt{v0.2.0} paper was a documentation-only revision that tightened scope wording and removed terminology specific to the author's internal tooling. The \texttt{v0.2.1} source revision added verifier-process hardening, a source-code alignment audit, and paper/docs consistency corrections. This \texttt{v0.2.2} revision aligns the public repository slug, README display name, paper title, and metadata naming; the eq.~(2.2) numerical claim and test count are unchanged.}
 \end{abstract}
 
 \clearpage

@@ -95,8 +95,8 @@ digits of trustworthy accuracy.
 
 ```bash
 # Clone, install
-git clone https://github.com/Flamehaven-Labs/erdos-ant-verification
-cd erdos-ant-verification
+git clone https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction
+cd openai-erdos-eq22-reproduction
 pip install -e ".[dev]"
 
 # Single-line verification
