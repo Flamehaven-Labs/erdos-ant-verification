@@ -48,13 +48,23 @@ jobs:
           python-version: "3.11"
           cache: pip
       - run: pip install -e ".[dev]"
-      - name: Run verification script
-        run: python scripts/verify.py
-      - name: Confirm verdict is PASS
+      - name: Run verification (default frozen-report mode; exit code = verdict)
+        run: python -m erdos_ant.verify
+      - name: Re-run with --write-evidence and confirm tracked evidence is unchanged
         run: |
-          python -c "import json,sys; d=json.load(open('reports/verification_result.json')); sys.exit(0 if d['verdict']=='PASS' else 1)"
+          python -m erdos_ant.verify --write-evidence
+          # If the freshly written evidence differs from the tracked version
+          # by more than the timestamp line, the release-evidence is stale
+          # and needs to be re-committed.
+          git diff --unified=0 reports/verification_result.json | grep -vE '^(\+\+\+|---|@@|\+\s*"generated_at_utc"|-\s*"generated_at_utc")' > /tmp/diff.txt || true
+          if [ -s /tmp/diff.txt ]; then
+            echo "ERROR: tracked reports/verification_result.json is stale (non-timestamp diff):"
+            cat /tmp/diff.txt
+            exit 1
+          fi
+          echo "Tracked evidence is fresh (only timestamp differs)."
       - name: Upload verification artifacts
         uses: actions/upload-artifact@v4
         with:
           name: verification-report
-          path: reports/
+          path: reports/verification_*.{json,md}

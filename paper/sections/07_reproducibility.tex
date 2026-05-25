@@ -6,7 +6,7 @@
 git clone https://github.com/Flamehaven-Labs/erdos-ant-verification\\
 cd erdos-ant-verification\\
 pip install -e ".[dev]"\\
-python scripts/verify.py
+python -m erdos\_ant.verify
 \end{quote}
 
 \noindent
@@ -14,9 +14,17 @@ Expected terminal output:
 
 \begin{quote}\ttfamily
 Verdict: PASS\\
-Wrote: reports/verification\_result.json\\
-Wrote: reports/verification\_report.md
+Checks: 21/21 passed\\
+eq (2.2) exponent excess: 6.2391e-38 (published \textasciitilde 6.24e-38, rel.err 0.0001)\\
+(frozen-report mode: tracked evidence not written; pass --write-evidence to refresh)
 \end{quote}
+
+\noindent
+By default the command does not write to disk; the working tree stays
+clean. Release maintainers pass \texttt{--write-evidence} to refresh the
+tracked files
+\path{reports/verification_result.json} and
+\path{reports/verification_report.md}.
 
 \subsection{Pinned environment}
 

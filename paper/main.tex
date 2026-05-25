@@ -99,8 +99,9 @@ under the MIT licence.
 
 \noindent\textbf{Reproduction.}
 \verb|pip install erdos-ant-verification && python -m erdos_ant.verify|
-runs all unit tests and writes a JSON certificate confirming the
-eq.~(2.2) reproduction. Pinned to commit
+runs the unit tests and prints the verdict; the same command with
+\verb|--write-evidence| also refreshes the tracked JSON certificate at
+\path{reports/verification_result.json}. Pinned to commit
 \texttt{<COMMIT\_HASH>}\footnote{Filled in at release-tag time; see
 GitHub release \texttt{v0.1.2}.} and Zenodo
 \texttt{<ZENODO\_DOI>}\footnote{For this artifact's first paper-bearing

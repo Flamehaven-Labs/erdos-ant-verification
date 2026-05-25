@@ -4,6 +4,8 @@ The verification logic itself lives in ``src/erdos_ant/verify.py`` so it
 is reachable as the console script ``erdos-ant-verify`` and via
 ``python -m erdos_ant.verify``. This script remains as a convenience for
 users who prefer ``python scripts/verify.py`` from a clean checkout.
+
+All CLI flags (``--write-evidence``, ``--quiet``) are forwarded.
 """
 
 from __future__ import annotations
@@ -19,4 +21,4 @@ if str(_SRC) not in sys.path:
 from erdos_ant.verify import main  # noqa: E402
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(main(sys.argv[1:]))

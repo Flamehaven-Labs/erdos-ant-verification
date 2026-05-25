@@ -1,16 +1,28 @@
 """End-to-end verification entry point for the erdos-ant-verification artifact.
 
 Runs the Phase 1/2/3 analyses, evaluates the remarks PDF eq (2.2) exponent
-excess, and writes machine-readable + human-readable reports under the
-project's ``reports/`` directory.
+excess, prints the verdict, and optionally writes machine-readable +
+human-readable reports under the project's ``reports/`` directory.
 
 Exposed as the console script ``erdos-ant-verify`` (see
 ``pyproject.toml``) and also runnable as ``python -m erdos_ant.verify``.
 Exits 0 if the verdict is PASS, 1 otherwise.
+
+Frozen-report mode (default)
+----------------------------
+By default this command does **not** write to the tracked
+``reports/verification_result.json`` or ``reports/verification_report.md``
+files. It prints the verdict and (optionally) a summary table to stdout.
+This keeps the working tree clean for ordinary developer runs.
+
+To refresh the tracked evidence files (intended for release maintainers
+freezing a new release), pass ``--write-evidence``. Continuous integration
+uses this flag during release-tag builds.
 """
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
@@ -322,13 +334,67 @@ returncode={pytest_result["returncode"]}
     return json_path, md_path
 
 
-def main() -> int:
+def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        prog="erdos-ant-verify",
+        description=(
+            "Run the erdos-ant-verification end-to-end checks and print "
+            "the verdict. By default does not write to tracked evidence "
+            "files; use --write-evidence to refresh them."
+        ),
+    )
+    parser.add_argument(
+        "--write-evidence",
+        action="store_true",
+        help=(
+            "Write reports/verification_result.json and "
+            "reports/verification_report.md (the tracked release-evidence "
+            "files). Without this flag the verification runs but only "
+            "prints the verdict, keeping the working tree clean."
+        ),
+    )
+    parser.add_argument(
+        "--quiet",
+        action="store_true",
+        help="Print only the verdict line (no per-check summary).",
+    )
+    return parser.parse_args(argv)
+
+
+def _print_summary(analysis: dict[str, object], quiet: bool) -> None:
+    print(f"Verdict: {analysis['verdict']}")
+    if quiet:
+        return
+    checks = analysis["checks"]
+    passed = sum(1 for v in checks.values() if v)
+    print(f"Checks: {passed}/{len(checks)} passed")
+    eq22 = analysis["observations"]["phase3_eq_2_2_evaluation"]
+    print(
+        f"eq (2.2) exponent excess: {eq22['exponent_excess']:.4e} "
+        f"(published ~{eq22['published_value']:.2e}, "
+        f"rel.err {eq22['relative_error_vs_published']:.4f})"
+    )
+    failed = [name for name, v in checks.items() if not v]
+    if failed:
+        print("Failed checks:")
+        for name in failed:
+            print(f"  - {name}")
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = _parse_args(argv)
     repo_root = _resolve_repo_root()
     analysis = execute_verification(repo_root)
-    json_path, md_path = write_report(analysis, repo_root)
-    print(f"Verdict: {analysis['verdict']}")
-    print(f"Wrote: {json_path}")
-    print(f"Wrote: {md_path}")
+    _print_summary(analysis, args.quiet)
+
+    if args.write_evidence:
+        json_path, md_path = write_report(analysis, repo_root)
+        print(f"Wrote: {json_path}")
+        print(f"Wrote: {md_path}")
+    else:
+        print("(frozen-report mode: tracked evidence not written; "
+              "pass --write-evidence to refresh)")
+
     return 0 if analysis["verdict"] == "PASS" else 1
 
 

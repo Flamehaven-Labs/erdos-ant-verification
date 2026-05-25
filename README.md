@@ -14,8 +14,8 @@ Independent Python reproduction of the **2026 OpenAI/Sawin disproof of the Erdő
 - **Maintained by:** [Flamehaven Initiative](https://github.com/Flamehaven-Labs)
 - **License:** MIT — see [LICENSE](LICENSE)
 - **Citation file:** [`CITATION.cff`](CITATION.cff) — recognised by Zenodo and the GitHub "Cite this repository" sidebar
-- **Accompanying paper:** [`paper/main.pdf`](paper/main.pdf) (compiled from [`paper/main.tex`](paper/main.tex))
-- **DOI:** issued by Zenodo on each tagged release — see [Releases](https://github.com/Flamehaven-Labs/erdos-ant-verification/releases)
+- **Accompanying paper (draft):** LaTeX source in [`paper/main.tex`](paper/main.tex). The compiled PDF is produced as a CI/release artifact once the paper text is finalized; it is **not** committed to the repository.
+- **DOI:** issued by Zenodo on each tagged release — see [Releases](https://github.com/Flamehaven-Labs/erdos-ant-verification/releases). Latest source-only DOI: [10.5281/zenodo.20366884](https://doi.org/10.5281/zenodo.20366884) (v0.1.1).
 
 ## Zenodo deposit contents
 
@@ -23,11 +23,12 @@ When a tagged release is archived to Zenodo, the deposit contains the
 full source tarball at that tag. The most relevant files for a reader
 opening the Zenodo page are:
 
-1. **`paper/main.pdf`** — accompanying verification paper (~10 pages)
-2. **`README.md`** — this file (Zenodo renders it as the deposit description)
-3. **`CITATION.cff`** — formal citation metadata
+1. **`README.md`** — this file (Zenodo renders it as the deposit description)
+2. **`CITATION.cff`** — formal citation metadata
+3. **`paper/main.tex`** + `paper/sections/*.tex` — LaTeX source of the accompanying paper (compiled PDF is attached as a release asset once the paper text is finalized; see GitHub Releases)
 4. **`reports/TRIPLE_INSPECTION_REPORT.md`** — frozen output of three independent inspection tools (AI-SLOP-Detector, SPAR Framework, SIDRCE SaaS)
-5. Full source tree (`src/`, `tests/`, `scripts/`, `docs/`, `paper/`)
+5. **`reports/verification_result.json`** + `verification_report.md` — frozen evidence of `python -m erdos_ant.verify` at the tagged commit, including per-source-file SHA-256 manifest
+6. Full source tree (`src/`, `tests/`, `scripts/`, `docs/`, `paper/`)
 
 ## Why This Exists
 

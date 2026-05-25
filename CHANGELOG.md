@@ -5,7 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.2] - 2026-05-25
+## [0.1.2] - 2026-05-25 (round 2 polish)
+
+### Added (round 2)
+
+- `--write-evidence` flag on `erdos-ant-verify` / `python -m erdos_ant.verify` / `scripts/verify.py`. Default is now **frozen-report mode**: the verification runs, prints the verdict + summary, and does NOT touch tracked evidence files. Maintainers pass `--write-evidence` to refresh `reports/verification_result.json` and `reports/verification_report.md`.
+- `--quiet` flag on the same command for verdict-only output.
+- CI workflow `verify` job now uses `python -m erdos_ant.verify` (exit code as verdict) plus a `--write-evidence` re-run that fails if the tracked evidence differs from the freshly generated version by anything other than the timestamp line.
+
+### Changed (round 2)
+
+- `README.md` author/citation section: the `paper/main.pdf` direct link was replaced by `LaTeX source in paper/main.tex. The compiled PDF is produced as a CI/release artifact once the paper text is finalized; it is not committed to the repository.` This closes the audit finding that the README was promising a file not present in the tracked repository.
+- `README.md` Zenodo deposit contents section reordered: README + CITATION + LaTeX source come first, with the compiled PDF described as a release-asset attachment rather than a tracked file.
+- `paper/main.tex` abstract and `paper/sections/07_reproducibility.tex`: reproduction commands updated to reflect frozen-report-mode default (`python -m erdos_ant.verify` for the verdict, `--write-evidence` to also refresh the tracked JSON certificate).
+
+### Audit log (round 2)
+
+External audit re-checked v0.1.2 first commit (`2fee65f`) and accepted the code artifact; the remaining HOLD reasons were release-surface issues (PDF absent, placeholders, regenerated-report timestamps dirtying the tree). The round-2 commit (`db14fbe` + this commit) addresses all three release-surface points; the compiled PDF and DOI fill-in remain pending until the actual v0.1.2 release tag is published on GitHub.
+
+## [0.1.2] - 2026-05-25 (round 1)
 
 ### Added
 
