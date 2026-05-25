@@ -19,9 +19,11 @@ the main document to `main.tex` and the compiler to `pdfLaTeX` with
 
 ## Compile via CI
 
-Every push to `main` that touches `paper/**` triggers
-`.github/workflows/paper.yml`. The compiled PDF is uploaded as a
-workflow artifact named `erdos-ant-verification-paper`.
+Every push to `main` that touches `paper/**`, every `v*` tag push, and
+manual `workflow_dispatch` run triggers `.github/workflows/paper.yml`.
+The workflow compiles `paper/main.tex`, checks that `paper/main.pdf`
+exists and is non-empty, and uploads the compiled PDF as a workflow
+artifact named `erdos-ant-verification-paper`.
 
 ## Honesty scan
 
@@ -67,7 +69,6 @@ tag or DOI, edit `paper/main.tex` (abstract footnote) and
 same commit that closes the new release; do not reintroduce placeholder
 syntax.
 
-The current paper source may identify itself as a draft when it contains
-unreleased wording or verifier-process corrections. Do not retag it as a
-numbered release until the corresponding code, report evidence, and DOI
-surface are frozen together.
+Do not retag a paper source as a numbered release until the
+corresponding code, report evidence, and CI-produced PDF artifact are
+frozen together.

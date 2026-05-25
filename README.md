@@ -129,6 +129,7 @@ If a reader has seen the larger numbers `0.014` or `0.0318` attributed to "the O
 - [`docs/PROOF_ORIGIN.md`](docs/PROOF_ORIGIN.md) — what was proved (by the authors), what was not, primary sources.
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — module boundaries, claim / non-claim per layer.
 - [`docs/SOURCE_CODE_ALIGNMENT_AUDIT.md`](docs/SOURCE_CODE_ALIGNMENT_AUDIT.md) — source-PDF to code mapping, hardcoding audit, slop / spaghetti boundary.
+- [`docs/PAPER_SCIENTIFIC_READINESS_AUDIT.md`](docs/PAPER_SCIENTIFIC_READINESS_AUDIT.md) — paper content suitability, bibliography scope, and CI/CD PDF production boundary.
 - [`docs/REMARKS_PDF_REPRODUCTION.md`](docs/REMARKS_PDF_REPRODUCTION.md) — the eq (2.2) reproduction in detail, why `mpmath` is required.
 - [`docs/DEVIATION_LOG.md`](docs/DEVIATION_LOG.md) — every place a number, command, or claim in the paper differs from a published source, and why.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md), [`SECURITY.md`](SECURITY.md), [`CHANGELOG.md`](CHANGELOG.md).
@@ -152,7 +153,7 @@ DOI is issued by Zenodo on each tagged release; see [Releases](https://github.co
   title   = {erdos-ant-verification: An Executable Reproduction Artifact
              for Equation (2.2) of the Erd\H{o}s Unit-Distance
              Disproof Remarks Paper},
-  version = {0.2.0},
+  version = {0.2.1},
   year    = {2026},
   doi     = {10.5281/zenodo.20377950},
   url     = {https://github.com/Flamehaven-Labs/erdos-ant-verification}

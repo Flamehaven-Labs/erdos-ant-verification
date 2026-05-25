@@ -15,7 +15,7 @@ numerical claim.
   treated as "matches source within reasonable rounding". Anything
   larger is investigated before release.
 
-## Current ledger (artifact version 0.2.0)
+## Current ledger (artifact version 0.2.1)
 
 | Item | Source | Computed | Relative error | Status |
 |---|---|---|---|---|
@@ -66,7 +66,7 @@ release. The observed error is `1.4e-4`.
 
 ## Per-release notes
 
-### Unreleased
+### v0.2.1 (2026-05-25)
 
 - Verification CLI hardened against user-environment pytest plugin
   leakage: the internal pytest subprocess now defaults
@@ -80,6 +80,8 @@ release. The observed error is `1.4e-4`.
 - Paper/docs consistency pass: Phase 2 text now follows the corrected
   v0.1.2 class-fiber partition `(29, 3) -> 0+4`, not the earlier `2+2`
   description.
+- Paper CI/CD pass: `.github/workflows/paper.yml` now runs on `v*` tag
+  pushes and validates that `paper/main.pdf` is non-empty before upload.
 
 ### v0.2.0 (2026-05-25)
 

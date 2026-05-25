@@ -5,16 +5,48 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.2.1] - 2026-05-25 (source-alignment audit + paper CI hardening)
 
-### Fixed
+Patch release over v0.2.0. The eq (2.2) numerical claim remains
+`6.2391e-38` with `1.4e-4` relative error against the published
+two-significant-figure value, and the unit-test count remains exactly
+`60`. This release tightens the executable reproduction surface and
+prepares paper PDF generation to run reliably in CI/CD.
+
+### Changed (0.2.1)
 
 - Hardened the verification CLI's internal pytest subprocess against
   user-environment plugin leakage by setting `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1`
   by default and recording a bounded timeout result instead of allowing a hung
   subprocess to block the verification run indefinitely.
+- Tightened the eq (2.2) source-match tolerance from `0.5` relative
+  error to `1e-3`, matching the deviation-ledger policy and preventing
+  an overly loose pass condition from masquerading as reproduction.
+- Added `docs/SOURCE_CODE_ALIGNMENT_AUDIT.md`, mapping each executable
+  source-PDF claim to its code anchor and documenting where source
+  constants end and computed values begin.
+- Added `docs/PAPER_SCIENTIFIC_READINESS_AUDIT.md`, documenting that
+  the manuscript is suitable as a reproducibility-artifact paper, not
+  as an original mathematics paper, and recording the CI/CD PDF
+  production boundary.
+- Updated `paper/main.tex`, `paper/sections/*`, and `paper/README.md`
+  from `v0.2.1-draft` to `v0.2.1`, with the paper positioned as a
+  reproduction artifact rather than a proof-verification paper.
+- Hardened `.github/workflows/paper.yml` so `v*` tag pushes also build
+  the paper, and added an explicit non-empty `paper/main.pdf`
+  validation step before uploading the workflow artifact.
 - Refreshed tracked verification evidence so the source hash manifest binds to
-  the updated `src/erdos_ant/verify.py` implementation.
+  the updated `src/erdos_ant/*` implementation.
+
+### Audit log (0.2.1)
+
+The source-code alignment audit found that `6.24e-38` is used as a
+published comparison target, not as the generated output. The computed
+value is still obtained from the remarks PDF eq (2.2) formula using
+`mpmath` at 200-bit precision. Local PDF recompilation was not possible
+in this environment because `latexmk` is not installed; paper PDF
+generation is therefore delegated to the CI paper workflow and checked
+there as a build artifact.
 
 ## [0.2.0] - 2026-05-25 (positioning + jargon overhaul)
 

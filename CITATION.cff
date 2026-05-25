@@ -8,7 +8,7 @@
 
 cff-version: 1.2.0
 message: >-
-  This artifact is an executable verification of a published numerical
+  This artifact is an executable reproduction of a published numerical
   lower bound on the Erdős planar unit-distance exponent. It is not an
   independent mathematical contribution. When citing it in academic
   work, please cite BOTH this software record AND the primary
@@ -46,7 +46,7 @@ authors:
   - name: Flamehaven Initiative
     website: 'https://github.com/Flamehaven-Labs'
 
-version: 0.2.0
+version: 0.2.1
 date-released: '2026-05-25'
 
 doi: 10.5281/zenodo.20377950
