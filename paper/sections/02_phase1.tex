@@ -43,7 +43,11 @@ test\_gaussian\_3x3\_grid\_has\_12\_unit\_distances}.
 \begin{verification}\label{ver:gauss_7x7}
 For $\Z[i]$ with $b = 3$ (the $7 \times 7$ Gaussian grid, $n = 49$),
 the artifact computes exactly $2 \cdot 7 \cdot 6 = 84$ unit-distance
-pairs. Pinned in \texttt{scripts/verify.py} as the assertion
+pairs.
+\textit{Source:
+\texttt{src/erdos\_ant/imaginary\_quadratic\_lattice.py},
+class \texttt{ImaginaryQuadraticLattice.count\_unit\_distance\_pairs}.}
+Pinned in \texttt{src/erdos\_ant/verify.py} as the assertion
 \texttt{phase1\_gaussian\_7x7\_grid\_has\_expected\_84\_pairs}.
 \end{verification}
 
