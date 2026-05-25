@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "openai-erdos-eq22-reproduction"
-version = "0.2.5"
+version = "0.2.6"
 description = "Independent Python reproduction for the 2026 OpenAI/Sawin Erdos unit-distance disproof: mpmath-200-bit check of remarks PDF equation (2.2)."
 readme = "README.md"
 requires-python = ">=3.11"

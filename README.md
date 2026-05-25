@@ -152,7 +152,7 @@ DOI is issued by Zenodo on each tagged release; see [Releases](https://github.co
   title   = {openai-erdos-eq22-reproduction: Executable Reproduction
              of Equation (2.2) in the OpenAI Erd\H{o}s Unit-Distance
              Disproof Remarks},
-  version = {0.2.5},
+  version = {0.2.6},
   year    = {2026},
   doi     = {10.5281/zenodo.20382963},
   url     = {https://github.com/Flamehaven-Labs/openai-erdos-eq22-reproduction}

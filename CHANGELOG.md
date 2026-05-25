@@ -5,6 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.6] - 2026-05-26 (paper-bearing patch over v0.2.5)
+
+Patch release over v0.2.5. No source code, no test count, and no
+numerical claim change. This release exists to:
+
+- bundle the actually-rebuilt `paper/main.pdf` matching the v0.2.5
+  paper sources, fixing the source/PDF mismatch that v0.2.5 shipped
+  with;
+- bump metadata to v0.2.6.
+
+### Changed (0.2.6)
+
+- `paper/main.pdf`: rebuilt from v0.2.5 paper sources. The PDF no
+  longer carries the inline DOI footnote in its abstract or the
+  per-release DOI rows in the reproducibility table. Size: 476 KB
+  (down from 503 KB at v0.2.4).
+- `pyproject.toml`, `CITATION.cff`, `README.md`: bump to `0.2.6`.
+
+### Audit log (0.2.6)
+
+v0.2.5 was published with updated paper sources (no inline DOI) but
+the previously committed `paper/main.pdf` was still the v0.2.4-era
+PDF (with inline DOI). Tags being immutable, the v0.2.5 Zenodo
+deposit retains that internal inconsistency. v0.2.6 closes the
+inconsistency by shipping the rebuilt PDF.
+
+The v0.2.5 release notes (and Zenodo deposit) remain the correct
+permanent record of the source-level change. v0.2.6 is the
+PDF-rebuild patch that brings the released PDF into agreement with
+those sources.
+
 ## [0.2.5] - 2026-05-25 (drop inline DOI from PDF)
 
 Patch release over v0.2.4. No source code, no test count, and no

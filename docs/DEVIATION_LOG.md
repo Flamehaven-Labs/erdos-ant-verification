@@ -15,7 +15,7 @@ numerical claim.
   treated as "matches source within reasonable rounding". Anything
   larger is investigated before release.
 
-## Current ledger (artifact version 0.2.5)
+## Current ledger (artifact version 0.2.6)
 
 | Item | Source | Computed | Relative error | Status |
 |---|---|---|---|---|
@@ -65,6 +65,14 @@ release. The observed error is `1.4e-4`.
   per release; they are implied stable.
 
 ## Per-release notes
+
+### v0.2.6 (2026-05-26)
+
+- Rebuilt `paper/main.pdf` from v0.2.5 paper sources (no inline DOI).
+  Closes the source/PDF inconsistency that v0.2.5 shipped with: the
+  v0.2.5 tag tree contained updated .tex sources but the old v0.2.4
+  PDF. v0.2.6 ships the matching rebuilt PDF.
+- No source code, test count, or numerical claim changed.
 
 ### v0.2.5 (2026-05-25)
 
