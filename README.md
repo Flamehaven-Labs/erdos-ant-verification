@@ -137,14 +137,14 @@ DOI is issued by Zenodo on each tagged release; see [Releases](https://github.co
   author  = {Yun, Kwansub},
   title   = {erdos-ant-verification: An Executable Verification Artifact
              for the 2026 Disproof of the Erd\H{o}s Unit-Distance Conjecture},
-  version = {0.1.2},
+  version = {0.1.3},
   year    = {2026},
   doi     = {10.5281/zenodo.20366884},
   url     = {https://github.com/Flamehaven-Labs/erdos-ant-verification}
 }
 ```
 
-The companion paper (LaTeX source in [`paper/main.tex`](paper/main.tex), compiled PDF attached as a release asset starting with `v0.1.2`) cites the same key. **Citing this software is not a substitute for citing the primary mathematical sources above** — please cite both.
+The companion paper (LaTeX source in [`paper/main.tex`](paper/main.tex), compiled PDF bundled in the tag commit and attached as a release asset starting with `v0.1.3`) cites the same key. **Citing this software is not a substitute for citing the primary mathematical sources above** — please cite both.
 
 ## License
 

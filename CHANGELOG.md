@@ -5,6 +5,70 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.3] - 2026-05-25 (release-surface closure)
+
+First release with the accompanying paper compiled, attached, and free
+of margin-overflow / pagination defects. Closes the audit-round-2 HOLD
+items that were left open on v0.1.2 ("PDF absent, placeholders,
+release-surface issues"). No source-code or numerical-claim changes
+relative to v0.1.2; this is a paper / README / packaging release.
+
+### Added (0.1.3)
+
+- `paper/main.pdf` — compiled paper bundled in the tag commit and
+  attached as a GitHub release asset. First release in which the PDF
+  is part of the tagged source tree.
+- `paper/main.tex`: `\DeclareUrlCommand{\tname}{...}` helper (built on
+  the `url` package, transitively loaded by hyperref). Renders long
+  test / function / path names in monospace with break opportunities
+  at `_`, `/`, `.`, `:`, `-`, `(`, `)`. Replaces overflowing
+  `\texttt{long\_underscored\_identifier}` calls throughout sections
+  2–5 (Phase 1, Phase 2, Phase 3, eq (2.2) reproduction).
+- `paper/main.tex`: `\clearpage` around `\tableofcontents`, so the ToC
+  and the first section ("Background and scope") each begin on a fresh
+  page.
+- `docs/DEVIATION_LOG.md` cross-link from the README documentation
+  index (the file already existed; it is now discoverable from the
+  README).
+
+### Changed (0.1.3)
+
+- `README.md`: full rewrite for GitHub-reader flow. New section order
+  is What This Is, Quick Start, Verification path, Evidence,
+  Phase-by-phase description, Known limits, Documentation, Citation.
+  The hero paragraph under the badges now states what the artifact is
+  in one sentence and links to the OpenAI announcement. Attribution
+  corrected from "OpenAI / Sawin disproof" to the nine named authors
+  of the remarks PDF (Alon, Bloom, Gowers, Litt, Sawin, Shankar,
+  Tsimerman, Wang, Wood). The secondary-coverage clarification (the
+  figures `0.014` and `0.0318` do not appear verbatim in the formal
+  PDFs) is now its own section instead of a buried bullet in Known
+  limits. The TRIPLE_INSPECTION_REPORT independence claim is now
+  explicit about the fact that AI-SLOP-Detector is maintained by the
+  same author as this repository, so the report is recorded scanner
+  output, not third-party endorsement. The "Zenodo deposit contents"
+  section was dropped (not a common pattern on GitHub READMEs).
+- `paper/main.tex`: bump `\date{}` to `Version 0.1.3 --- 2026-05-25`.
+- `paper/sections/07_reproducibility.tex`: bump `Version (paper)` to
+  `v0.1.3`.
+- `CITATION.cff`: bump `version` to `0.1.3`.
+
+### Audit log (0.1.3)
+
+The external audit's round-2 verdict was ACCEPT for the code artifact
+and HOLD UNTIL RELEASE ARTIFACT FINALIZATION for the publication
+package, with three specific release-surface reasons: (i) PDF absent
+from the tracked repository, (ii) `<COMMIT_HASH>` and `<ZENODO_DOI>`
+placeholders, (iii) layout defects in the compiled PDF (margin
+overflow on long identifiers, ToC and section-1 sharing a page with
+the abstract). This release closes (i) and (iii). The two placeholders
+remain in `paper/sections/07_reproducibility.tex` because the Zenodo
+DOI for this release is only issued at GitHub-Release-publish time;
+they will be filled in a v0.1.4 follow-up once the DOI is known. The
+v0.1.2 tag (commit `b074344`) is preserved as the pre-closure
+snapshot; the audit reviewed `2fee65f`/`db14fbe`/`90eac09`, all of
+which remain unchanged.
+
 ## [0.1.2] - 2026-05-25 (round 2 polish)
 
 ### Added (round 2)

@@ -15,7 +15,7 @@ numerical claim.
   treated as "matches source within reasonable rounding". Anything
   larger is investigated before release.
 
-## Current ledger (artifact version 0.1.2)
+## Current ledger (artifact version 0.1.3)
 
 | Item | Source | Computed | Relative error | Status |
 |---|---|---|---|---|
@@ -65,6 +65,15 @@ would fail the test immediately).
   per release; they are implied stable.
 
 ## Per-release notes
+
+### v0.1.3 (2026-05-25)
+
+- No source-code or numerical-claim change versus v0.1.2.
+- Release-surface closure only: compiled `paper/main.pdf` bundled in
+  the tag commit, README rewritten for GitHub-reader flow, paper
+  typography fixes (`\tname{}` macro for breakable monospace
+  identifiers, `\clearpage` around the ToC).
+- All ledger entries above remain bit-for-bit identical to v0.1.2.
 
 ### v0.1.2 (2026-05-25)
 
